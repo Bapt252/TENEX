@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenex - Révolutionnez votre recrutement</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e7e34 0%, #28a745 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .cta-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1e7e34;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #1e7e34, #28a745);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1e7e34;
+        }
+
+        /* How it works */
+        .how-it-works {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #1e7e34, #28a745);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1e7e34;
+        }
+
+        /* Stats */
+        .stats {
+            background: linear-gradient(135deg, #1e7e34, #28a745);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: #f8f9fa;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-icon::before,
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #1e7e34;
+            border-radius: 4px;
+        }
+
+        .logo-icon::before {
+            top: 0;
+            left: 20px;
+        }
+
+        .logo-icon::after {
+            bottom: 0;
+            left: 20px;
+        }
+
+        .logo-icon .diamond1,
+        .logo-icon .diamond2 {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #1e7e34;
+            border-radius: 4px;
+        }
+
+        .logo-icon .diamond1 {
+            top: 20px;
+            left: 0;
+        }
+
+        .logo-icon .diamond2 {
+            top: 20px;
+            right: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .beta-badge {
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <div class="diamond1"></div>
+                            <div class="diamond2"></div>
+                        </div>
+                        Tenex
+                    </div>
+                    <div class="beta-badge">🚀 Bientôt disponible</div>
+                    <h1>Révolutionnez votre recrutement</h1>
+                    <p class="subtitle">Le jobboard intelligent qui connecte automatiquement les meilleures opportunités aux meilleurs profils</p>
+                    <p>Tenex combine CVthèque intelligente et matching précis : accès illimité aux profils inactifs, 10 connexions actives simultanées pour maximiser votre réactivité, le tout avec une IA qui comprend vos vrais besoins.</p>
+                </div>
+                
+                <div class="cta-section">
+                    <h2>🎯 Rejoignez les beta-testeurs</h2>
+                    <p style="margin-bottom: 30px; opacity: 0.9;">Soyez parmi les premiers à tester Tenex gratuitement et révolutionnez vos recrutements dès aujourd'hui</p>
+                    
+                    <form id="betaForm">
+                        <div class="form-group">
+                            <label for="company">Nom de votre entreprise</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email professionnel</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="role">Votre fonction</label>
+                            <select id="role" name="role" required>
+                                <option value="">Sélectionnez votre fonction</option>
+                                <option value="rh">RH / Recrutement</option>
+                                <option value="direction">Direction générale</option>
+                                <option value="manager">Manager opérationnel</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="size">Taille de votre entreprise</label>
+                            <select id="size" name="size" required>
+                                <option value="">Sélectionnez</option>
+                                <option value="1-10">1-10 salariés</option>
+                                <option value="11-50">11-50 salariés</option>
+                                <option value="51-200">51-200 salariés</option>
+                                <option value="200+">200+ salariés</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-rocket"></i> Je veux tester Tenex !
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Features -->
+    <section style="padding: 100px 0; background: white;">
+        <div class="container">
+            <h2 class="section-title">Un dashboard pensé pour les entreprises</h2>
+            <p class="section-subtitle">Toutes les fonctionnalités dont vous avez besoin, centralisées dans une interface intuitive</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 60px;">
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; border-left: 4px solid #1e7e34;">
+                    <h3 style="color: #1e7e34; margin-bottom: 15px;"><i class="fas fa-tachometer-alt"></i> Statistiques en temps réel</h3>
+                    <p>Postes ouverts, recrutements en cours, taux de conversion, délais moyens - tous vos KPIs sur un seul écran.</p>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; border-left: 4px solid #1e7e34;">
+                    <h3 style="color: #1e7e34; margin-bottom: 15px;"><i class="fas fa-plus-circle"></i> Création assistée par IA</h3>
+                    <p>Importez vos fiches de poste existantes, notre IA les parse et structure automatiquement tous les critères.</p>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; border-left: 4px solid #1e7e34;">
+                    <h3 style="color: #1e7e34; margin-bottom: 15px;"><i class="fas fa-flow-chart"></i> Processus modulable</h3>
+                    <p>Créez votre pipeline sur-mesure : ajoutez, supprimez, réorganisez les étapes et assignez-les à vos équipes.</p>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; border-left: 4px solid #1e7e34;">
+                    <h3 style="color: #1e7e34; margin-bottom: 15px;"><i class="fas fa-star"></i> Scoring automatique</h3>
+                    <p>Chaque candidat reçoit un score de matching personnalisé basé sur vos critères spécifiques.</p>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; border-left: 4px solid #1e7e34;">
+                    <h3 style="color: #1e7e34; margin-bottom: 15px;"><i class="fas fa-users"></i> Gestion d'équipe</h3>
+                    <p>Ajoutez vos collaborateurs, définissez les rôles et permissions, organisez vos processus de recrutement.</p>
+                </div>
+                
+                <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; border-left: 4px solid #1e7e34;">
+                    <h3 style="color: #1e7e34; margin-bottom: 15px;"><i class="fas fa-headset"></i> Support intégré</h3>
+                    <p>Posez vos questions, faites des recommandations ou signalez un problème directement depuis la plateforme.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Pourquoi Tenex change tout ?</h2>
+            <p class="section-subtitle">Une approche révolutionnaire qui résout enfin les vrais problèmes du recrutement</p>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Matching Intelligent</h3>
+                    <p>Notre IA analyse la sémantique, les motivations réelles et le contexte professionnel pour proposer les 10 meilleurs matchs des deux côtés.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Géolocalisation Précise</h3>
+                    <p>Prise en compte du mode de transport, des temps de trajet réels via Google Maps. Fini les candidatures impossibles géographiquement.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Timing Parfait</h3>
+                    <p>Analyse des disponibilités réelles, préavis, fin de contrats pour matcher au bon moment. Plus de perte de temps.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>CVthèque Intelligente</h3>
+                    <p>Accès illimité aux profils inactifs + 10 connexions actives simultanées pour maximiser votre réactivité et efficacité.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightning-bolt"></i>
+                    </div>
+                    <h3>Réactivité Maximale</h3>
+                    <p>Limite de 10 connexions simultanées pour booster l'engagement. Les candidatures avancent ou sont libérées pour d'autres.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>IA Intégrée</h3>
+                    <p>Parsing automatique des fiches de poste, matching sémantique avancé et scoring automatique des candidats selon vos critères.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Comment ça marche ?</h2>
+            <p class="section-subtitle">Un processus personnalisable que vous définissez selon vos besoins</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Définissez votre processus</h3>
+                    <p>Créez, organisez et activez les étapes selon vos méthodes de recrutement</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>IA trouve les matchs parfaits</h3>
+                    <p>Notre algorithme identifie automatiquement les meilleurs profils</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Suivez via Kanban</h3>
+                    <p>Visualisez l'avancement de chaque candidat dans votre pipeline</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Collaborez en équipe</h3>
+                    <p>Assignez les étapes, partagez les évaluations et commentaires</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Recrutez plus vite</h3>
+                    <p>Finalisez vos recrutements avec une efficacité maximale</p>
+                </div>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 40px; border-radius: 20px; margin-top: 60px; text-align: center;">
+                <h3 style="color: #1e7e34; margin-bottom: 20px;"><i class="fas fa-cogs"></i> Processus 100% modulable</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">Validation CV • Pré-qualification téléphonique • Entretien visio • Tests techniques • Entretien présentiel • Décision finale</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div><i class="fas fa-plus-circle" style="color: #28a745;"></i> <strong>Ajouter</strong> des étapes</div>
+                    <div><i class="fas fa-edit" style="color: #28a745;"></i> <strong>Modifier</strong> l'ordre</div>
+                    <div><i class="fas fa-user-tag" style="color: #28a745;"></i> <strong>Assigner</strong> aux membres</div>
+                    <div><i class="fas fa-toggle-on" style="color: #28a745;"></i> <strong>Activer/Désactiver</strong></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10</h3>
+                    <p>Connexions actives max pour booster la réactivité</p>
+                </div>
+                <div class="stat-item">
+                    <h3>∞</h3>
+                    <p>Accès illimité aux profils inactifs</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Processus personnalisables selon vos méthodes</p>
+                </div>
+                <div class="stat-item">
+                    <h3>IDF</h3>
+                    <p>Fonctions supports spécialisées</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2 style="color: #1e7e34; margin-bottom: 20px;">Prêt à révolutionner vos recrutements ?</h2>
+                <p style="margin-bottom: 30px; font-size: 1.1rem;">Rejoignez dès maintenant notre programme de beta-test exclusif et découvrez comment Tenex peut transformer votre façon de recruter.</p>
+                <button class="btn-primary" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-arrow-up"></i> Je m'inscris maintenant
+                </button>
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
+                    <i class="fas fa-lock"></i> Vos données sont sécurisées - Pas de spam
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.1s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Form handling
+        document.getElementById('betaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Show success message
+            const button = this.querySelector('.btn-primary');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-check"></i> Inscription réussie !';
+            button.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-envelope"></i> Merci ! On vous recontacte très bientôt';
+            }, 1000);
+            
+            // Here you would typically send data to your backend
+            console.log('Beta signup:', data);
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
