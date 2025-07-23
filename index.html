@@ -298,43 +298,38 @@
             position: relative;
         }
 
-        .logo-icon::before,
-        .logo-icon::after {
-            content: '';
+        /* Logo Tenex avec 4 losanges verts */
+        .logo-icon .diamond {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             background: #1e7e34;
-            border-radius: 4px;
+            border-radius: 3px;
+            transform: rotate(45deg);
         }
 
-        .logo-icon::before {
-            top: 0;
-            left: 20px;
+        .logo-icon .diamond.top {
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
         }
 
-        .logo-icon::after {
-            bottom: 0;
-            left: 20px;
+        .logo-icon .diamond.bottom {
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
         }
 
-        .logo-icon .diamond1,
-        .logo-icon .diamond2 {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #1e7e34;
-            border-radius: 4px;
+        .logo-icon .diamond.left {
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
         }
 
-        .logo-icon .diamond1 {
-            top: 20px;
-            left: 0;
-        }
-
-        .logo-icon .diamond2 {
-            top: 20px;
-            right: 0;
+        .logo-icon .diamond.right {
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
         }
 
         /* Animations */
@@ -392,8 +387,10 @@
                 <div class="hero-text">
                     <div class="logo">
                         <div class="logo-icon">
-                            <div class="diamond1"></div>
-                            <div class="diamond2"></div>
+                            <div class="diamond top"></div>
+                            <div class="diamond bottom"></div>
+                            <div class="diamond left"></div>
+                            <div class="diamond right"></div>
                         </div>
                         Tenex
                     </div>
