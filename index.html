@@ -312,197 +312,6 @@
             50% { box-shadow: 0 32px 80px rgba(255, 107, 53, 0.4); }
         }
 
-        /* Enhanced Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            padding: 16px 0;
-            transition: var(--transition);
-        }
-
-        [data-theme="dark"] .header {
-            background: rgba(15, 23, 42, 0.92);
-        }
-
-        .header.scrolled {
-            padding: 12px 0;
-            box-shadow: var(--shadow-light);
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .header-brand {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .header-logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.8rem;
-            font-weight: var(--font-weight-black);
-            color: var(--primary);
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .header-logo:hover {
-            transform: translateY(-1px);
-        }
-
-        .header-logo::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            transition: width 0.3s ease;
-        }
-
-        .header-logo:hover::after {
-            width: 100%;
-        }
-
-        /* Logo officiel Tenex - 4 losanges en croix avec couleurs bleu-vert */
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            margin-right: 12px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-bounce);
-        }
-
-        .header-logo:hover .logo-icon {
-            transform: rotate(5deg) scale(1.05);
-        }
-
-        .diamond {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: var(--primary);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            border-radius: 2px;
-            transform: rotate(45deg);
-            transition: var(--transition);
-        }
-
-        /* Positionnement en croix parfaite */
-        .diamond:nth-child(1) { 
-            top: 6px; 
-            left: 50%; 
-            transform: translateX(-50%) rotate(45deg);
-        }
-        .diamond:nth-child(2) { 
-            right: 6px; 
-            top: 50%; 
-            transform: translateY(-50%) rotate(45deg);
-        }
-        .diamond:nth-child(3) { 
-            bottom: 6px; 
-            left: 50%; 
-            transform: translateX(-50%) rotate(45deg);
-        }
-        .diamond:nth-child(4) { 
-            left: 6px; 
-            top: 50%; 
-            transform: translateY(-50%) rotate(45deg);
-        }
-
-        .header-logo:hover .diamond {
-            background: var(--accent);
-            animation: pulse-diamond 0.6s ease;
-            border-color: rgba(255, 255, 255, 1);
-        }
-
-        @keyframes pulse-diamond {
-            0%, 100% { 
-                transform: translateX(-50%) rotate(45deg) scale(1); 
-                box-shadow: 0 0 0 rgba(0, 158, 196, 0.3);
-            }
-            50% { 
-                transform: translateX(-50%) rotate(45deg) scale(1.2); 
-                box-shadow: 0 0 15px rgba(0, 158, 196, 0.5);
-            }
-        }
-
-        .header-slogan {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            font-weight: var(--font-weight-medium);
-            opacity: 0;
-            animation: slideInFromRight 0.8s ease 0.5s forwards;
-            position: relative;
-        }
-
-        .header-slogan::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            width: 12px;
-            height: 1px;
-            background: var(--accent);
-            transform: translateY(-50%);
-        }
-
-        .header-cta {
-            background: var(--gradient-cta);
-            color: white;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: var(--font-weight-bold);
-            cursor: pointer;
-            text-decoration: none;
-            transition: var(--transition-bounce);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-        }
-
-        .header-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .header-cta:hover::before {
-            left: 100%;
-        }
-
-        .header-cta:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
-        }
-
         /* Hero Section */
         .hero {
             background: var(--gradient-primary);
@@ -512,7 +321,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 80px;
+            padding-top: 40px;
         }
 
         .hero::before {
@@ -597,6 +406,88 @@
 
         .hero-text {
             animation: slideInLeft 1s ease-out;
+        }
+
+        /* Logo Tenex dans le hero */
+        .hero-logo {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 40px;
+            font-size: 3rem;
+            font-weight: var(--font-weight-black);
+            color: white;
+            transition: var(--transition);
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .hero-logo:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Logo officiel Tenex - 4 losanges en croix avec couleurs bleu-vert */
+        .hero-logo-icon {
+            width: 70px;
+            height: 70px;
+            margin-right: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-bounce);
+        }
+
+        .hero-logo:hover .hero-logo-icon {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .hero-diamond {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 2px;
+            transform: rotate(45deg);
+            transition: var(--transition);
+        }
+
+        /* Positionnement en croix parfaite */
+        .hero-diamond:nth-child(1) { 
+            top: 8px; 
+            left: 50%; 
+            transform: translateX(-50%) rotate(45deg);
+        }
+        .hero-diamond:nth-child(2) { 
+            right: 8px; 
+            top: 50%; 
+            transform: translateY(-50%) rotate(45deg);
+        }
+        .hero-diamond:nth-child(3) { 
+            bottom: 8px; 
+            left: 50%; 
+            transform: translateX(-50%) rotate(45deg);
+        }
+        .hero-diamond:nth-child(4) { 
+            left: 8px; 
+            top: 50%; 
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .hero-logo:hover .hero-diamond {
+            background: var(--accent);
+            animation: pulse-diamond 0.6s ease;
+            border-color: rgba(255, 255, 255, 1);
+            box-shadow: 0 0 15px rgba(0, 158, 196, 0.4);
+        }
+
+        @keyframes pulse-diamond {
+            0%, 100% { 
+                transform: translateX(-50%) rotate(45deg) scale(1); 
+            }
+            50% { 
+                transform: translateX(-50%) rotate(45deg) scale(1.2); 
+            }
         }
 
         .beta-badge {
@@ -1379,7 +1270,7 @@
                 display: none;
             }
             
-            .header-content, .container {
+            .container {
                 padding: 0 20px;
             }
             
@@ -1407,22 +1298,6 @@
                 right: 10px;
             }
 
-            .header-brand {
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
-            }
-
-            .header-slogan {
-                font-size: 0.85rem;
-                opacity: 1;
-                animation: none;
-            }
-
-            .header-slogan::before {
-                display: none;
-            }
-
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1441,21 +1316,30 @@
                 width: 100px;
                 height: 100px;
             }
+
+            .hero-logo {
+                justify-content: center;
+                font-size: 2.5rem;
+            }
+
+            .hero-logo-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .hero-diamond {
+                width: 14px;
+                height: 14px;
+            }
         }
 
         @media (max-width: 480px) {
-            .header-content {
-                flex-direction: column;
-                gap: 16px;
-                padding: 0 16px;
-            }
-
             .container {
                 padding: 0 16px;
             }
 
             .hero {
-                padding-top: 120px;
+                padding-top: 20px;
             }
 
             .cta-section {
@@ -1466,6 +1350,20 @@
             .step-shape {
                 width: 80px;
                 height: 80px;
+            }
+
+            .hero-logo {
+                font-size: 2rem;
+            }
+
+            .hero-logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .hero-diamond {
+                width: 12px;
+                height: 12px;
             }
         }
 
@@ -1521,25 +1419,6 @@
     </div>
 
     <div class="scroll-indicator" id="scrollIndicator"></div>
-    
-    <!-- Enhanced Header -->
-    <header class="header" id="header">
-        <div class="header-content">
-            <div class="header-brand">
-                <a href="#" class="header-logo">
-                    <div class="logo-icon">
-                        <div class="diamond"></div>
-                        <div class="diamond"></div>
-                        <div class="diamond"></div>
-                        <div class="diamond"></div>
-                    </div>
-                    Tenex
-                </a>
-                <div class="header-slogan">Le recrutement en 10 connexions stratégiques</div>
-            </div>
-            <a href="#betaForm" class="header-cta">Je veux tester Tenex gratuitement</a>
-        </div>
-    </header>
 
     <!-- Enhanced Hero Section -->
     <section class="hero" id="hero">
@@ -1554,6 +1433,17 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <!-- Logo Tenex dans le hero au-dessus du badge beta -->
+                    <div class="hero-logo">
+                        <div class="hero-logo-icon">
+                            <div class="hero-diamond"></div>
+                            <div class="hero-diamond"></div>
+                            <div class="hero-diamond"></div>
+                            <div class="hero-diamond"></div>
+                        </div>
+                        Tenex
+                    </div>
+                    
                     <div class="beta-badge">
                         <span>🎉</span>
                         Bêta gratuite – Places limitées
@@ -2008,13 +1898,6 @@
                     const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
                     document.getElementById('scrollIndicator').style.width = scrolled + '%';
                     
-                    const header = document.getElementById('header');
-                    if (window.scrollY > 100) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
-                    }
-                    
                     this.updateFloatingNav();
                     ticking = false;
                 };
@@ -2036,8 +1919,7 @@
                         const target = document.getElementById(targetId);
                         
                         if (target) {
-                            const headerHeight = document.querySelector('.header').offsetHeight;
-                            const targetPosition = target.offsetTop - headerHeight - 20;
+                            const targetPosition = target.offsetTop - 20;
                             
                             window.scrollTo({
                                 top: targetPosition,
@@ -2221,8 +2103,7 @@
                 const targetSection = document.getElementById(this.sections[this.currentSection]);
                 
                 if (targetSection) {
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const targetPosition = targetSection.offsetTop - headerHeight - 20;
+                    const targetPosition = targetSection.offsetTop - 20;
                     
                     window.scrollTo({
                         top: targetPosition,
