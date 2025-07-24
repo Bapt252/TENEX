@@ -367,64 +367,213 @@
             font-weight: 400;
         }
 
-        /* How it works */
+        /* How it works - NOUVEAU DESIGN GRAPHIQUE */
         .how-it-works {
             padding: 120px 0;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-            margin-top: 80px;
+            background: linear-gradient(135deg, #106680 0%, #0A3E5D 50%, #009EC4 100%);
+            color: white;
             position: relative;
+            overflow: hidden;
         }
 
-        .step {
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+            opacity: 0.3;
+        }
+
+        .how-it-works .section-title {
+            color: white;
+            background: linear-gradient(45deg, #ffffff, #e8f5e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .how-it-works .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 100px;
+        }
+
+        .process-flow {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .process-pipeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin: 60px 0;
+        }
+
+        .process-step {
+            position: relative;
             text-align: center;
-            position: relative;
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            flex: 1;
+            margin: 0 20px;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: calc(var(--step) * 0.2s);
+            opacity: 0;
         }
 
-        .step:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        .process-step:nth-child(1) { --step: 1; }
+        .process-step:nth-child(2) { --step: 2; }
+        .process-step:nth-child(3) { --step: 3; }
+        .process-step:nth-child(4) { --step: 4; }
+
+        .step-shape {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .step-shape:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Formes géométriques différentes pour chaque étape */
+        .step-1 .step-shape {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            border-radius: 50%;
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .step-2 .step-shape {
+            background: linear-gradient(135deg, #009EC4, #106680);
+            border-radius: 25px;
+            transform: rotate(45deg);
+            box-shadow: 0 15px 35px rgba(0, 158, 196, 0.4);
+        }
+
+        .step-3 .step-shape {
+            background: linear-gradient(135deg, #0A3E5D, #106680);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            box-shadow: 0 15px 35px rgba(10, 62, 93, 0.4);
+        }
+
+        .step-4 .step-shape {
+            background: linear-gradient(135deg, #ff8c42, #ff6b35);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            box-shadow: 0 15px 35px rgba(255, 140, 66, 0.4);
+        }
+
+        .step-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .step-2 .step-icon {
+            transform: translate(-50%, -50%) rotate(-45deg);
         }
 
         .step-number {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, #106680, #0A3E5D);
-            color: white;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 35px;
+            height: 35px;
+            background: white;
+            color: #106680;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 1.6rem;
             font-weight: bold;
-            box-shadow: 0 10px 25px rgba(16, 102, 128, 0.3);
-            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 3;
         }
 
-        .step:hover .step-number {
-            transform: scale(1.1);
-        }
-
-        .step h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #106680;
+        .step-title {
+            font-size: 1.3rem;
             font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
         }
 
-        .step p {
-            color: #666;
+        .step-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        /* Connecteurs animés entre les étapes */
+        .process-connector {
+            position: absolute;
+            top: 50%;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+            z-index: 1;
+            animation: flowAnimation 3s ease-in-out infinite;
+        }
+
+        .connector-1 {
+            left: 20%;
+            width: 15%;
+            animation-delay: 0s;
+        }
+
+        .connector-2 {
+            left: 40%;
+            width: 15%;
+            animation-delay: 1s;
+        }
+
+        .connector-3 {
+            left: 60%;
+            width: 15%;
+            animation-delay: 2s;
+        }
+
+        @keyframes flowAnimation {
+            0%, 100% {
+                opacity: 0.3;
+                transform: translateY(-50%) scaleX(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-50%) scaleX(1.2);
+            }
+        }
+
+        .process-summary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            margin-top: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .process-summary h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .process-summary p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
         }
 
@@ -844,7 +993,6 @@
             }
             
             .features-grid,
-            .steps,
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
@@ -875,6 +1023,29 @@
             .dashboard-icon {
                 margin-right: 0;
                 margin-bottom: 15px;
+            }
+
+            /* Responsive pour la section process */
+            .process-pipeline {
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .process-connector {
+                display: none;
+            }
+
+            .step-shape {
+                width: 100px;
+                height: 100px;
+            }
+
+            .step-icon {
+                font-size: 2rem;
+            }
+
+            .step-description {
+                max-width: 250px;
             }
         }
 
@@ -907,58 +1078,6 @@
             background: linear-gradient(90deg, #106680, #0A3E5D, #009EC4);
             z-index: 1000;
             transition: width 0.3s ease;
-        }
-
-        /* Visual flow diagram */
-        .flow-diagram {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 40px 0;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .flow-step {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-            position: relative;
-        }
-
-        .flow-step::after {
-            content: '→';
-            position: absolute;
-            right: -25px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: #106680;
-            font-weight: bold;
-        }
-
-        .flow-step:last-child::after {
-            display: none;
-        }
-
-        .flow-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, #106680, #0A3E5D);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            color: white;
-            font-size: 2rem;
-            box-shadow: 0 10px 25px rgba(16, 102, 128, 0.3);
-        }
-
-        .flow-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #106680;
         }
     </style>
 </head>
@@ -1127,51 +1246,59 @@
         </div>
     </section>
 
-    <!-- How it works -->
+    <!-- How it works - NOUVEAU DESIGN GRAPHIQUE -->
     <section class="how-it-works">
         <div class="container">
             <h2 class="section-title">Comment ça marche ?</h2>
-            <p class="section-subtitle">Un processus en 4 étapes qui maximise vos chances de succès</p>
+            <p class="section-subtitle">Un processus visuel en 4 étapes qui maximise vos chances de succès</p>
             
-            <div class="flow-diagram">
-                <div class="flow-step">
-                    <div class="flow-icon"><i class="fas fa-search"></i></div>
-                    <div class="flow-text">IA trouve les matchs parfaits</div>
+            <div class="process-flow">
+                <div class="process-pipeline">
+                    <!-- Connecteurs animés -->
+                    <div class="process-connector connector-1"></div>
+                    <div class="process-connector connector-2"></div>
+                    <div class="process-connector connector-3"></div>
+                    
+                    <div class="process-step step-1">
+                        <div class="step-shape">
+                            <div class="step-icon"><i class="fas fa-brain"></i></div>
+                            <div class="step-number">1</div>
+                        </div>
+                        <h3 class="step-title">IA Analyse</h3>
+                        <p class="step-description">L'algorithme identifie les profils compatibles selon vos critères et leurs aspirations</p>
+                    </div>
+                    
+                    <div class="process-step step-2">
+                        <div class="step-shape">
+                            <div class="step-icon"><i class="fas fa-handshake"></i></div>
+                            <div class="step-number">2</div>
+                        </div>
+                        <h3 class="step-title">Connexions Stratégiques</h3>
+                        <p class="step-description">Sélectionnez vos 10 candidats actifs pour maximiser vos chances</p>
+                    </div>
+                    
+                    <div class="process-step step-3">
+                        <div class="step-shape">
+                            <div class="step-icon"><i class="fas fa-tasks"></i></div>
+                            <div class="step-number">3</div>
+                        </div>
+                        <h3 class="step-title">Pipeline Interactif</h3>
+                        <p class="step-description">Suivez chaque candidat dans votre processus personnalisé</p>
+                    </div>
+                    
+                    <div class="process-step step-4">
+                        <div class="step-shape">
+                            <div class="step-icon"><i class="fas fa-trophy"></i></div>
+                            <div class="step-number">4</div>
+                        </div>
+                        <h3 class="step-title">Recrutement Réussi</h3>
+                        <p class="step-description">Finalisez vos recrutements et libérez les places pour de nouveaux candidats</p>
+                    </div>
                 </div>
-                <div class="flow-step">
-                    <div class="flow-icon"><i class="fas fa-handshake"></i></div>
-                    <div class="flow-text">Connectez stratégiquement</div>
-                </div>
-                <div class="flow-step">
-                    <div class="flow-icon"><i class="fas fa-tasks"></i></div>
-                    <div class="flow-text">Suivez votre pipeline</div>
-                </div>
-                <div class="flow-step">
-                    <div class="flow-icon"><i class="fas fa-trophy"></i></div>
-                    <div class="flow-text">Recrutez efficacement</div>
-                </div>
-            </div>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>IA analyse et recommande</h3>
-                    <p>L'algorithme identifie les profils compatibles selon vos critères, leurs aspirations et contextes</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Choisissez vos 10 connexions</h3>
-                    <p>Sélectionnez stratégiquement vos candidats actifs pour maximiser vos chances</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Pipeline Kanban interactif</h3>
-                    <p>Suivez chaque candidat dans votre processus personnalisé</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Recrutez et libérez</h3>
-                    <p>Finalisez vos recrutements et libérez les places pour de nouveaux candidats</p>
+                
+                <div class="process-summary">
+                    <h3><i class="fas fa-chart-line"></i> Résultat : 3x plus efficace</h3>
+                    <p>Notre méthode garantit des recrutements plus rapides, plus précis et un taux de rétention supérieur grâce à l'engagement mutuel et au matching IA.</p>
                 </div>
             </div>
         </div>
@@ -1409,9 +1536,29 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .step, .ai-feature, .dashboard-card').forEach(card => {
+        document.querySelectorAll('.feature-card, .ai-feature, .dashboard-card').forEach(card => {
             observer.observe(card);
         });
+
+        // Animation spéciale pour les étapes du processus
+        const processObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const steps = entry.target.querySelectorAll('.process-step');
+                    steps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.style.opacity = '1';
+                            step.style.transform = 'translateY(0)';
+                        }, index * 200);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const processFlow = document.querySelector('.process-flow');
+        if (processFlow) {
+            processObserver.observe(processFlow);
+        }
 
         // Enhanced form handling
         document.getElementById('betaForm').addEventListener('submit', function(e) {
