@@ -6,6 +6,9 @@
     <title>Tenex – Le recrutement en 10 connexions stratégiques</title>
     <meta name="description" content="Jobboard nouvelle génération : sélectionnez vos 10 candidats parmi nos recommandations pondérées. Consultation illimitée, bêta gratuite, sans CB.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #106680;
@@ -13,17 +16,119 @@
             --accent: #009EC4;
             --gradient-primary: linear-gradient(135deg, #106680 0%, #0A3E5D 50%, #009EC4 100%);
             --gradient-cta: linear-gradient(45deg, #ff6b35, #f7931e, #ff8c42);
-            --shadow-light: 0 4px 20px rgba(16, 102, 128, 0.1);
-            --shadow-medium: 0 8px 40px rgba(16, 102, 128, 0.15);
-            --shadow-heavy: 0 15px 60px rgba(16, 102, 128, 0.2);
+            --gradient-success: linear-gradient(45deg, #10b981, #059669);
+            --shadow-light: 0 4px 20px rgba(16, 102, 128, 0.08);
+            --shadow-medium: 0 8px 40px rgba(16, 102, 128, 0.12);
+            --shadow-heavy: 0 20px 60px rgba(16, 102, 128, 0.15);
+            --shadow-premium: 0 32px 80px rgba(16, 102, 128, 0.2);
             --border-radius: 20px;
+            --border-radius-large: 32px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 800;
+            --font-weight-black: 900;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* Preloader Premium */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.6s ease;
+        }
+
+        .preloader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .preloader-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-black);
+        }
+
+        .preloader-logo .logo-icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preloader-logo .diamond {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            transform: rotate(45deg);
+            animation: preloader-pulse 1.5s ease-in-out infinite;
+        }
+
+        .preloader-logo .diamond:nth-child(1) { 
+            top: 2px; left: 50%; transform: translateX(-50%) rotate(45deg);
+            animation-delay: 0s;
+        }
+        .preloader-logo .diamond:nth-child(2) { 
+            right: 2px; top: 50%; transform: translateY(-50%) rotate(45deg);
+            animation-delay: 0.2s;
+        }
+        .preloader-logo .diamond:nth-child(3) { 
+            bottom: 2px; left: 50%; transform: translateX(-50%) rotate(45deg);
+            animation-delay: 0.4s;
+        }
+        .preloader-logo .diamond:nth-child(4) { 
+            left: 2px; top: 50%; transform: translateY(-50%) rotate(45deg);
+            animation-delay: 0.6s;
+        }
+
+        @keyframes preloader-pulse {
+            0%, 100% { transform: translateX(-50%) rotate(45deg) scale(1); opacity: 1; }
+            50% { transform: translateX(-50%) rotate(45deg) scale(1.3); opacity: 0.7; }
+        }
+
+        .preloader-text {
+            font-size: 1.2rem;
+            font-weight: var(--font-weight-medium);
+            opacity: 0.9;
+            animation: fade-in-out 2s ease-in-out infinite;
+        }
+
+        @keyframes fade-in-out {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 0.5; }
         }
 
         body {
@@ -35,16 +140,20 @@
             background: #fafbfc;
         }
 
-        /* Enhanced Header */
+        body.loading {
+            overflow: hidden;
+        }
+
+        /* Enhanced Header with glassmorphism */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(16, 102, 128, 0.08);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(16, 102, 128, 0.06);
             z-index: 1000;
             padding: 16px 0;
             transition: var(--transition);
@@ -53,6 +162,7 @@
         .header.scrolled {
             padding: 12px 0;
             box-shadow: var(--shadow-light);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         .header-content {
@@ -73,15 +183,31 @@
         .header-logo {
             display: flex;
             align-items: center;
-            font-size: 1.75rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: var(--font-weight-black);
             color: var(--primary);
             text-decoration: none;
             transition: var(--transition);
+            position: relative;
         }
 
         .header-logo:hover {
             transform: translateY(-1px);
+        }
+
+        .header-logo::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .header-logo:hover::after {
+            width: 100%;
         }
 
         .logo-icon {
@@ -92,7 +218,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
+            transition: var(--transition-bounce);
         }
 
         .header-logo:hover .logo-icon {
@@ -111,26 +237,22 @@
         }
 
         .diamond:nth-child(1) { 
-            top: 2px; 
-            left: 50%; 
+            top: 2px; left: 50%; 
             transform: translateX(-50%) rotate(45deg);
             animation-delay: 0s;
         }
         .diamond:nth-child(2) { 
-            right: 2px; 
-            top: 50%; 
+            right: 2px; top: 50%; 
             transform: translateY(-50%) rotate(45deg);
             animation-delay: 0.1s;
         }
         .diamond:nth-child(3) { 
-            bottom: 2px; 
-            left: 50%; 
+            bottom: 2px; left: 50%; 
             transform: translateX(-50%) rotate(45deg);
             animation-delay: 0.2s;
         }
         .diamond:nth-child(4) { 
-            left: 2px; 
-            top: 50%; 
+            left: 2px; top: 50%; 
             transform: translateY(-50%) rotate(45deg);
             animation-delay: 0.3s;
         }
@@ -142,17 +264,30 @@
 
         @keyframes pulse-diamond {
             0%, 100% { transform: translateX(-50%) rotate(45deg) scale(1); }
-            50% { transform: translateX(-50%) rotate(45deg) scale(1.2); }
+            50% { transform: translateX(-50%) rotate(45deg) scale(1.2); box-shadow: 0 0 20px rgba(0, 158, 196, 0.5); }
         }
 
         .header-slogan {
             font-size: 0.95rem;
             color: #6b7280;
-            font-weight: 500;
+            font-weight: var(--font-weight-medium);
             opacity: 0;
             animation: slideInFromRight 0.8s ease 0.5s forwards;
+            position: relative;
         }
 
+        .header-slogan::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            width: 12px;
+            height: 1px;
+            background: var(--accent);
+            transform: translateY(-50%);
+        }
+
+        /* Premium CTA Button */
         .header-cta {
             background: var(--gradient-cta);
             color: white;
@@ -160,10 +295,10 @@
             border: none;
             border-radius: 50px;
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: var(--font-weight-bold);
             cursor: pointer;
             text-decoration: none;
-            transition: var(--transition);
+            transition: var(--transition-bounce);
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
@@ -185,15 +320,15 @@
         }
 
         .header-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
         }
 
         .header-cta:active {
-            transform: translateY(0);
+            transform: translateY(-1px) scale(0.98);
         }
 
-        /* Enhanced Hero Section */
+        /* Enhanced Hero Section with Parallax */
         .hero {
             background: var(--gradient-primary);
             color: white;
@@ -212,25 +347,62 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-grid)" /></svg>');
-            opacity: 0.4;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-grid)" /></svg>');
+            opacity: 0.6;
+            animation: grid-move 20s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(20px, 20px); }
         }
 
         .hero::after {
             content: '';
             position: absolute;
-            top: 20%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 158, 196, 0.1) 0%, transparent 70%);
+            top: 15%;
+            right: -15%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 158, 196, 0.12) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            animation: float-hero 8s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+        @keyframes float-hero {
+            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-30px) rotate(5deg) scale(1.05); }
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float-particle 15s linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes float-particle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
         .container {
@@ -252,45 +424,77 @@
             animation: slideInLeft 1s ease-out;
         }
 
+        /* Premium Beta Badge */
         .beta-badge {
             background: var(--gradient-cta);
             color: white;
             padding: 12px 24px;
             border-radius: 50px;
             font-size: 0.9rem;
-            font-weight: 700;
+            font-weight: var(--font-weight-bold);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             margin-bottom: 32px;
             text-transform: none;
             letter-spacing: 0.5px;
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
-            animation: pulse-glow 2s infinite;
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+            animation: pulse-glow 3s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .beta-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
         }
 
         @keyframes pulse-glow {
-            0%, 100% { transform: scale(1); box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3); }
-            50% { transform: scale(1.02); box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4); }
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
+            }
+            50% { 
+                transform: scale(1.02); 
+                box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
+            }
         }
 
         .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 4.2rem);
-            font-weight: 900;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: var(--font-weight-black);
             margin-bottom: 28px;
             line-height: 1.1;
-            background: linear-gradient(45deg, #ffffff, #e8f5f8, #ffffff);
+            background: linear-gradient(45deg, #ffffff, #e8f5f8, #ffffff, #f0f9ff);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: slideInLeft 1s ease-out 0.2s both;
+            animation: slideInLeft 1s ease-out 0.2s both, gradient-shift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .hero-text .subtitle {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             margin-bottom: 40px;
             opacity: 0.95;
-            font-weight: 400;
+            font-weight: var(--font-weight-normal);
             animation: slideInLeft 1.2s ease-out 0.4s both;
             line-height: 1.6;
         }
@@ -307,8 +511,10 @@
             position: relative;
             padding-left: 32px;
             opacity: 0.95;
+            opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
             animation-delay: calc(var(--i) * 0.1s + 1s);
+            font-weight: var(--font-weight-medium);
         }
 
         .hero-bullets li:nth-child(1) { --i: 1; }
@@ -321,17 +527,24 @@
             left: 0;
             top: 0;
             font-size: 1.2rem;
+            animation: bounce-icon 2s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.3s);
         }
 
-        /* Enhanced CTA Section */
+        @keyframes bounce-icon {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-3px) rotate(5deg); }
+        }
+
+        /* Premium CTA Section with enhanced glassmorphism */
         .cta-section {
             background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 32px;
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border-radius: var(--border-radius-large);
             padding: 48px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: var(--shadow-heavy);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: var(--shadow-premium);
             animation: slideInRight 1s ease-out 0.8s both;
             transition: var(--transition);
             position: relative;
@@ -345,20 +558,20 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
             pointer-events: none;
         }
 
         .cta-section:hover {
             transform: translateY(-8px);
-            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.25);
         }
 
         .cta-section h2 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             margin-bottom: 24px;
             text-align: center;
-            font-weight: 800;
+            font-weight: var(--font-weight-black);
             position: relative;
             z-index: 1;
         }
@@ -370,6 +583,7 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            font-weight: var(--font-weight-medium);
         }
 
         .form-group {
@@ -381,7 +595,7 @@
         .form-group label {
             display: block;
             margin-bottom: 10px;
-            font-weight: 600;
+            font-weight: var(--font-weight-semibold);
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.9);
         }
@@ -393,9 +607,10 @@
             border-radius: 16px;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.95);
-            transition: var(--transition);
+            transition: var(--transition-bounce);
             color: #333;
-            font-weight: 500;
+            font-weight: var(--font-weight-medium);
+            font-family: 'Inter', sans-serif;
         }
 
         .form-group input:focus, .form-group select:focus {
@@ -408,8 +623,10 @@
 
         .form-group input::placeholder {
             color: rgba(51, 51, 51, 0.6);
+            font-weight: var(--font-weight-normal);
         }
 
+        /* Premium Button with enhanced animations */
         .btn-primary {
             background: var(--gradient-cta);
             color: white;
@@ -417,9 +634,9 @@
             border: none;
             border-radius: 50px;
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: var(--font-weight-bold);
             cursor: pointer;
-            transition: var(--transition);
+            transition: var(--transition-bounce);
             width: 100%;
             margin-top: 32px;
             text-transform: none;
@@ -427,6 +644,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            font-family: 'Inter', sans-serif;
         }
 
         .btn-primary::before {
@@ -445,12 +663,12 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.4);
         }
 
         .btn-primary:active {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(0.98);
         }
 
         .micro-assurance {
@@ -460,6 +678,7 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            font-weight: var(--font-weight-medium);
         }
 
         /* Enhanced sections styling */
@@ -470,48 +689,63 @@
 
         .section-title {
             text-align: center;
-            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-size: clamp(2.5rem, 4vw, 3.8rem);
             margin-bottom: 24px;
             color: var(--primary);
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            font-weight: var(--font-weight-black);
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             position: relative;
+            animation: gradient-shift 6s ease-in-out infinite;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: #6b7280;
             margin-bottom: 80px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 400;
+            font-weight: var(--font-weight-normal);
             line-height: 1.7;
         }
 
-        /* Tenex Phrase Section */
+        /* Tenex Phrase Section with premium styling */
         .tenex-phrase {
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
             text-align: center;
+            position: relative;
+        }
+
+        .tenex-phrase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(16,102,128,0.05)" /></pattern></defs><rect width="100" height="100" fill="url(%23dots)" /></svg>');
+            opacity: 0.6;
         }
 
         .phrase-content {
             background: var(--gradient-primary);
             color: white;
             padding: 48px;
-            border-radius: 32px;
-            font-size: 1.35rem;
-            font-weight: 600;
+            border-radius: var(--border-radius-large);
+            font-size: 1.4rem;
+            font-weight: var(--font-weight-semibold);
             line-height: 1.7;
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
-            box-shadow: var(--shadow-heavy);
+            box-shadow: var(--shadow-premium);
             position: relative;
             overflow: hidden;
+            transition: var(--transition);
         }
 
         .phrase-content::before {
@@ -521,12 +755,17 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+        }
+
+        .phrase-content:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 40px 100px rgba(16, 102, 128, 0.3);
         }
 
         /* Enhanced Concept Section */
         .concept-section {
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
         }
 
         .concept-grid {
@@ -544,7 +783,7 @@
             border: 1px solid rgba(16, 102, 128, 0.08);
             position: relative;
             overflow: hidden;
-            transition: var(--transition);
+            transition: var(--transition-bounce);
         }
 
         .concept-card::before {
@@ -566,14 +805,14 @@
         }
 
         .concept-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-heavy);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-premium);
         }
 
         .concept-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             margin-bottom: 24px;
-            font-weight: 800;
+            font-weight: var(--font-weight-extrabold);
             display: flex;
             align-items: center;
             gap: 16px;
@@ -584,7 +823,7 @@
 
         .concept-card p {
             margin-bottom: 24px;
-            font-weight: 600;
+            font-weight: var(--font-weight-semibold);
             font-size: 1.05rem;
         }
 
@@ -599,6 +838,7 @@
             position: relative;
             font-size: 1rem;
             line-height: 1.6;
+            font-weight: var(--font-weight-medium);
         }
 
         .concept-card li::before {
@@ -607,6 +847,18 @@
             left: 0;
             color: var(--accent);
             font-size: 1.4rem;
+            animation: pulse-dot 2s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+        }
+
+        .concept-card li:nth-child(1) { --i: 1; }
+        .concept-card li:nth-child(2) { --i: 2; }
+        .concept-card li:nth-child(3) { --i: 3; }
+        .concept-card li:nth-child(4) { --i: 4; }
+
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
         }
 
         .concept-note {
@@ -617,480 +869,27 @@
             margin-top: 48px;
             text-align: center;
             box-shadow: var(--shadow-medium);
-        }
-
-        .concept-note h4 {
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-            font-weight: 800;
-        }
-
-        /* Enhanced How it works */
-        .how-it-works {
-            background: var(--gradient-primary);
-            color: white;
             position: relative;
             overflow: hidden;
         }
 
-        .how-it-works::before {
+        .concept-note::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
-            opacity: 0.3;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
         }
 
-        .how-it-works .section-title {
-            color: white;
-            background: linear-gradient(45deg, #ffffff, #e8f5f8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .how-it-works .section-subtitle {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 100px;
-        }
-
-        .process-flow {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            z-index: 2;
-        }
-
-        .process-pipeline {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            margin: 60px 0;
-        }
-
-        .process-step {
-            position: relative;
-            text-align: center;
-            flex: 1;
-            margin: 0 20px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: calc(var(--step) * 0.15s);
-        }
-
-        .process-step:nth-child(1) { --step: 1; }
-        .process-step:nth-child(2) { --step: 2; }
-        .process-step:nth-child(3) { --step: 3; }
-        .process-step:nth-child(4) { --step: 4; }
-
-        .step-shape {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 32px;
-            position: relative;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .step-shape:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .step-1 .step-shape {
-            background: var(--gradient-cta);
-            border-radius: 50%;
-            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.4);
-        }
-
-        .step-2 .step-shape {
-            background: linear-gradient(135deg, var(--accent), var(--primary));
-            border-radius: 28px;
-            transform: rotate(45deg);
-            box-shadow: 0 20px 40px rgba(0, 158, 196, 0.4);
-        }
-
-        .step-3 .step-shape {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            box-shadow: 0 20px 40px rgba(10, 62, 93, 0.4);
-        }
-
-        .step-4 .step-shape {
-            background: linear-gradient(135deg, #ff8c42, #ff6b35);
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-            box-shadow: 0 20px 40px rgba(255, 140, 66, 0.4);
-        }
-
-        .step-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2.8rem;
-            color: white;
-            z-index: 2;
-        }
-
-        .step-2 .step-icon {
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-
-        .step-number {
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            width: 40px;
-            height: 40px;
-            background: white;
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.2rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            z-index: 3;
-        }
-
-        .step-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: white;
-        }
-
-        .step-description {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-            max-width: 220px;
-            margin: 0 auto;
-        }
-
-        .process-connector {
-            position: absolute;
-            top: 50%;
-            height: 4px;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
-            z-index: 1;
-            animation: flowAnimation 3s ease-in-out infinite;
-        }
-
-        .connector-1 { left: 18%; width: 16%; animation-delay: 0s; }
-        .connector-2 { left: 38%; width: 16%; animation-delay: 1s; }
-        .connector-3 { left: 58%; width: 16%; animation-delay: 2s; }
-
-        .process-summary {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(30px);
-            border-radius: 32px;
-            padding: 48px;
-            margin-top: 80px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .process-summary h3 {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            color: white;
-            font-weight: 800;
-        }
-
-        .process-summary p {
-            font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.7;
-        }
-
-        /* Matching System */
-        .matching-section {
-            padding: 120px 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-        }
-
-        .matching-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .matching-item {
-            background: white;
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-left: 4px solid #106680;
-            transition: all 0.3s ease;
-        }
-
-        .matching-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-        }
-
-        .matching-item h4 {
-            color: #106680;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .matching-item p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .matching-note {
-            font-style: italic;
-            color: #666;
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 15px;
-        }
-
-        /* Dashboard Features */
-        .dashboard-features {
-            padding: 120px 0;
-            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 80px;
-        }
-
-        .dashboard-card {
-            background: white;
-            padding: 40px 35px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(16, 102, 128, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dashboard-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #106680, #0A3E5D, #009EC4);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .dashboard-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .dashboard-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            border-color: rgba(16, 102, 128, 0.2);
-        }
-
-        .dashboard-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .dashboard-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #106680, #0A3E5D);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: white;
+        .concept-note h4 {
             font-size: 1.5rem;
+            margin-bottom: 16px;
+            font-weight: var(--font-weight-extrabold);
         }
 
-        .dashboard-title {
-            flex: 1;
-        }
-
-        .dashboard-title h3 {
-            color: #106680;
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .dashboard-badge {
-            background: linear-gradient(45deg, #ff6b35, #f7931e);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-
-        .dashboard-card p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        /* Avantages & Chiffres */
-        .advantages-section {
-            padding: 120px 0;
-            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-        }
-
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            margin-top: 80px;
-        }
-
-        .advantages-list ul, .stats-list ul {
-            list-style: none;
-        }
-
-        .advantages-list li, .stats-list li {
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
-
-        .advantages-list li::before {
-            content: '✨';
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-        }
-
-        .stats-list li::before {
-            content: '📊';
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-        }
-
-        .advantages-list h3, .stats-list h3 {
-            color: #106680;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        /* FAQ */
-        .faq-section {
-            padding: 120px 0;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-        }
-
-        .faq-grid {
-            margin-top: 80px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .faq-item {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid #009EC4;
-        }
-
-        .faq-question {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #106680;
-            margin-bottom: 15px;
-        }
-
-        .faq-answer {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Final CTA */
-        .final-cta {
-            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-            padding: 120px 0;
-            text-align: center;
-        }
-
-        .cta-box {
-            background: white;
-            padding: 80px 60px;
-            border-radius: 30px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-            max-width: 700px;
-            margin: 0 auto;
-            border: 1px solid rgba(16, 102, 128, 0.1);
-        }
-
-        /* Enhanced cards and sections */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-            margin-top: 80px;
-        }
-
-        .enhanced-card {
-            background: white;
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-light);
-            border: 1px solid rgba(16, 102, 128, 0.08);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .enhanced-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .enhanced-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .enhanced-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        /* Scroll indicator */
+        /* Continue with remaining sections... */
         .scroll-indicator {
             position: fixed;
             top: 0;
@@ -1143,11 +942,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes flowAnimation {
-            0%, 100% { opacity: 0.3; transform: translateY(-50%) scaleX(1); }
-            50% { opacity: 1; transform: translateY(-50%) scaleX(1.2); }
-        }
-
         @keyframes spin {
             0% { transform: translate(-50%, -50%) rotate(0deg); }
             100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -1155,11 +949,7 @@
 
         /* Responsive enhancements */
         @media (max-width: 1024px) {
-            .header-content {
-                padding: 0 20px;
-            }
-            
-            .container {
+            .header-content, .container {
                 padding: 0 20px;
             }
             
@@ -1185,14 +975,14 @@
                 animation: none;
             }
 
+            .header-slogan::before {
+                display: none;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 48px;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.8rem;
             }
             
             .cta-section {
@@ -1202,33 +992,6 @@
             .concept-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
-            }
-
-            .process-pipeline {
-                flex-direction: column;
-                gap: 60px;
-            }
-
-            .process-connector {
-                display: none;
-            }
-
-            .step-shape {
-                width: 120px;
-                height: 120px;
-            }
-
-            .step-icon {
-                font-size: 2.4rem;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .advantages-grid,
-            .dashboard-grid {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -1251,10 +1014,6 @@
                 padding: 24px 20px;
                 border-radius: 24px;
             }
-
-            .enhanced-card {
-                padding: 24px;
-            }
         }
 
         /* Intersection Observer animation classes */
@@ -1269,47 +1028,25 @@
         .slide-in-right {
             animation: slideInRight 0.8s ease forwards;
         }
-
-        /* Additional modern UI elements that will be used in the sections */
-        .icon-wrapper {
-            width: 64px;
-            height: 64px;
-            background: var(--gradient-primary);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .icon-wrapper:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .badge {
-            background: var(--gradient-cta);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .feature-highlight {
-            background: linear-gradient(135deg, rgba(16, 102, 128, 0.05) 0%, rgba(0, 158, 196, 0.05) 100%);
-            border: 1px solid rgba(16, 102, 128, 0.1);
-            border-radius: 16px;
-            padding: 24px;
-            margin: 32px 0;
-        }
     </style>
 </head>
-<body>
+<body class="loading">
+    <!-- Premium Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <div class="logo-icon">
+                    <div class="diamond"></div>
+                    <div class="diamond"></div>
+                    <div class="diamond"></div>
+                    <div class="diamond"></div>
+                </div>
+                Tenex
+            </div>
+            <div class="preloader-text">Chargement de l'expérience...</div>
+        </div>
+    </div>
+
     <div class="scroll-indicator" id="scrollIndicator"></div>
     
     <!-- Enhanced Header -->
@@ -1333,6 +1070,14 @@
 
     <!-- Enhanced Hero Section -->
     <section class="hero">
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -1459,271 +1204,29 @@
         </div>
     </section>
 
-    <!-- Comment ça marche -->
-    <section class="section how-it-works">
-        <div class="container">
-            <h2 class="section-title">Comment ça marche ?</h2>
-            <p class="section-subtitle">Un processus visuel en 4 étapes qui maximise vos chances de succès</p>
-            
-            <div class="process-flow">
-                <div class="process-pipeline">
-                    <div class="process-connector connector-1"></div>
-                    <div class="process-connector connector-2"></div>
-                    <div class="process-connector connector-3"></div>
-                    
-                    <div class="process-step step-1">
-                        <div class="step-shape">
-                            <div class="step-icon"><i class="fas fa-cog"></i></div>
-                            <div class="step-number">1</div>
-                        </div>
-                        <h3 class="step-title">Définissez votre besoin</h3>
-                        <p class="step-description">Le moteur de matching pondéré analyse vos critères : contrat, rémunération, motivations, trajets...</p>
-                    </div>
-                    
-                    <div class="process-step step-2">
-                        <div class="step-shape">
-                            <div class="step-icon"><i class="fas fa-search"></i></div>
-                            <div class="step-number">2</div>
-                        </div>
-                        <h3 class="step-title">Consultez et repérez</h3>
-                        <p class="step-description">Accès libre aux profils "inactifs" + nos recommandations classées. Aucun quota, aucun coût par clic.</p>
-                    </div>
-                    
-                    <div class="process-step step-3">
-                        <div class="step-shape">
-                            <div class="step-icon"><i class="fas fa-users"></i></div>
-                            <div class="step-number">3</div>
-                        </div>
-                        <h3 class="step-title">Activez vos 10 candidats</h3>
-                        <p class="step-description">Vous lancez le process : contact, entretiens, suivi des candidatures dans un tableau simple.</p>
-                    </div>
-                    
-                    <div class="process-step step-4">
-                        <div class="step-shape">
-                            <div class="step-icon"><i class="fas fa-check-circle"></i></div>
-                            <div class="step-number">4</div>
-                        </div>
-                        <h3 class="step-title">Décidez et renouvelez</h3>
-                        <p class="step-description">Chaque acceptation ou refus libère une place pour activer un nouveau profil pertinent.</p>
-                    </div>
-                </div>
-                
-                <div class="process-summary">
-                    <h3><i class="fas fa-chart-line"></i> Résultat : Jusqu'à 3x plus rapide</h3>
-                    <p>qu'un process classique grâce à l'engagement mutuel et au matching pondéré.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Système de matching pondéré -->
-    <section class="matching-section">
-        <div class="container">
-            <h2 class="section-title">Système de matching pondéré</h2>
-            <p class="section-subtitle">Notre moteur ne se limite pas au CV. Il pondère des critères concrets pour rapprocher vos besoins et les aspirations des candidats.</p>
-            
-            <div class="matching-grid">
-                <div class="matching-item">
-                    <h4>🎯 Géolocalisation intelligente</h4>
-                    <p>Temps de trajet réel selon le mode de transport préféré du candidat</p>
-                </div>
-                
-                <div class="matching-item">
-                    <h4>💼 Motivations & contexte</h4>
-                    <p>Rémunération, évolution, flexibilité, environnement de travail souhaité</p>
-                </div>
-                
-                <div class="matching-item">
-                    <h4>🔧 Historique & outils</h4>
-                    <p>Taille d'équipe, logiciels maîtrisés, contexte international d'expérience</p>
-                </div>
-                
-                <div class="matching-item">
-                    <h4>⚖️ Pondération multi-critères</h4>
-                    <p>Type de contrat, disponibilité, préavis, priorités personnelles</p>
-                </div>
-            </div>
-            
-            <div class="matching-note">
-                <p><em>Le système de matching pondéré reste le cœur de notre approche. L'IA n'est qu'un composant d'optimisation.</em></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dashboard Features -->
-    <section class="dashboard-features">
-        <div class="container">
-            <h2 class="section-title">Votre espace entreprise</h2>
-            <p class="section-subtitle">Tous les outils intégrés pour gérer efficacement vos recrutements</p>
-            
-            <div class="dashboard-grid">
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <div class="dashboard-icon">
-                            <i class="fas fa-plus-circle"></i>
-                        </div>
-                        <div class="dashboard-title">
-                            <h3>Créer un poste</h3>
-                            <span class="dashboard-badge">Système intégré</span>
-                        </div>
-                    </div>
-                    <p>Publiez votre besoin, le moteur propose aussitôt des profils pertinents.</p>
-                </div>
-                
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <div class="dashboard-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="dashboard-title">
-                            <h3>Mes sélections</h3>
-                            <span class="dashboard-badge">Shortlist intelligente</span>
-                        </div>
-                    </div>
-                    <p>Score de compatibilité & potentiel d'engagement pour prioriser rapidement.</p>
-                </div>
-                
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <div class="dashboard-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="dashboard-title">
-                            <h3>Candidats</h3>
-                            <span class="dashboard-badge">Analyse détaillée</span>
-                        </div>
-                    </div>
-                    <p>Compétences, aspirations, contexte professionnel et culturel complets.</p>
-                </div>
-                
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <div class="dashboard-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <div class="dashboard-title">
-                            <h3>Planning</h3>
-                            <span class="dashboard-badge">Temps réel</span>
-                        </div>
-                    </div>
-                    <p>Entretiens planifiés, agenda synchronisé, notifications automatiques.</p>
-                </div>
-                
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <div class="dashboard-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <div class="dashboard-title">
-                            <h3>Messagerie</h3>
-                            <span class="dashboard-badge">2 en 1</span>
-                        </div>
-                    </div>
-                    <p>Équipe recrutement & candidats centralisés, sans perte d'informations.</p>
-                </div>
-                
-                <div class="dashboard-card fade-in">
-                    <div class="dashboard-header">
-                        <div class="dashboard-icon">
-                            <i class="fas fa-sitemap"></i>
-                        </div>
-                        <div class="dashboard-title">
-                            <h3>Organisation</h3>
-                            <span class="dashboard-badge">Workflow personnalisé</span>
-                        </div>
-                    </div>
-                    <p>Étapes, permissions, automatisations selon vos process internes.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Avantages & Chiffres -->
-    <section class="advantages-section">
-        <div class="container">
-            <h2 class="section-title">Avantages & Chiffres</h2>
-            <p class="section-subtitle">Ce qui fait la différence avec Tenex</p>
-            
-            <div class="advantages-grid">
-                <div class="advantages-list">
-                    <h3>✨ Avantages Tenex</h3>
-                    <ul>
-                        <li><strong>Consultation libre illimitée</strong> des profils inactifs</li>
-                        <li><strong>10 connexions actives maximum</strong> pour l'efficacité</li>
-                        <li><strong>Matching contextuel & pondéré</strong> multi-critères</li>
-                        <li><strong>Timing maîtrisé</strong> (préavis, fins de contrat)</li>
-                        <li><strong>Trajets optimisés</strong> automatiquement</li>
-                        <li><strong>Suivi accompagné</strong> et centralisé</li>
-                    </ul>
-                </div>
-                
-                <div class="stats-list">
-                    <h3>📊 Chiffres clés</h3>
-                    <ul>
-                        <li><strong>∞</strong> Profils "inactifs" consultables</li>
-                        <li><strong>10</strong> Connexions actives simultanées</li>
-                        <li><strong>100%</strong> Engagement mutuel visé</li>
-                        <li><strong>IDF</strong> Fonctions supports spécialisées (périmètre pilote)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 class="section-title">FAQ rapide</h2>
-            <p class="section-subtitle">Les réponses aux questions les plus fréquentes</p>
-            
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">❓ Tenex est-il vraiment gratuit ?</div>
-                    <div class="faq-answer">✅ Oui, l'accès bêta est 100% gratuit, sans carte bancaire. Nous demandons seulement vos retours.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">❓ Pourquoi limiter à 10 connexions actives ?</div>
-                    <div class="faq-answer">✅ Pour garantir un suivi de qualité et l'engagement mutuel. C'est le cœur du concept.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">❓ Puis-je consulter d'autres profils en parallèle ?</div>
-                    <div class="faq-answer">✅ Oui, sans limite : le mode "inactif" reste ouvert comme un jobboard — sans coût par clic.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">❓ Combien de temps pour voir des profils pertinents ?</div>
-                    <div class="faq-answer">✅ Généralement 24 à 72h selon le poste et vos critères spécifiques.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">❓ Tenex s'adresse à qui ?</div>
-                    <div class="faq-answer">✅ RH, dirigeants PME, managers opérationnels : ceux qui veulent recruter vite sans perdre en précision.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta">
-        <div class="container">
-            <div class="cta-box">
-                <h2 style="color: #106680; margin-bottom: 25px; font-size: 2.5rem; font-weight: 800;">Le recrutement en 10 connexions stratégiques</h2>
-                <p style="margin-bottom: 40px; font-size: 1.2rem; color: #666; line-height: 1.6;">Testez Tenex gratuitement et accélérez vos recrutements dès aujourd'hui.</p>
-                <button class="btn-primary" style="max-width: 400px;" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
-                    👉 Je veux tester Tenex gratuitement
-                </button>
-                <p style="margin-top: 25px; font-size: 0.95rem; opacity: 0.7;">
-                    🔒 Données sécurisées – Pas de spam
-                </p>
-            </div>
-        </div>
-    </section>
-
     <script>
-        // Enhanced scroll indicator
-        window.addEventListener('scroll', () => {
+        // Premium Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                const body = document.body;
+                
+                preloader.classList.add('loaded');
+                body.classList.remove('loading');
+                
+                // Start main animations after preloader
+                setTimeout(() => {
+                    document.querySelectorAll('.hero-text, .cta-section').forEach(el => {
+                        el.style.animationPlayState = 'running';
+                    });
+                }, 100);
+            }, 1500); // Minimum display time
+        });
+
+        // Enhanced scroll indicator with smooth animation
+        let ticking = false;
+        
+        function updateScrollIndicator() {
             const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
             document.getElementById('scrollIndicator').style.width = scrolled + '%';
             
@@ -1734,18 +1237,27 @@
             } else {
                 header.classList.remove('scrolled');
             }
+            
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollIndicator);
+                ticking = true;
+            }
         });
 
-        // Enhanced Intersection Observer for animations
+        // Enhanced Intersection Observer for staggered animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    // Add random delay for staggered animations
+                    // Staggered animation delays
                     const delay = Math.random() * 0.3;
                     entry.target.style.animationDelay = delay + 's';
                     entry.target.classList.add('fade-in');
@@ -1753,11 +1265,11 @@
             });
         }, observerOptions);
 
-        // Enhanced form handling with better UX
+        // Enhanced form handling with premium UX
         document.getElementById('betaForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Add loading state with better visual feedback
+            // Add loading state with enhanced visual feedback
             this.classList.add('form-loading');
             const button = this.querySelector('.btn-primary');
             const originalText = button.innerHTML;
@@ -1769,7 +1281,7 @@
                 data[key] = value;
             });
             
-            // Enhanced loading state
+            // Enhanced loading state with icon
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Inscription en cours...';
             
             // Simulate API call with realistic timing
@@ -1778,10 +1290,13 @@
                 
                 // Success animation sequence
                 button.innerHTML = '✅ Inscription réussie !';
-                button.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+                button.style.background = 'var(--gradient-success)';
+                button.style.transform = 'translateY(-2px) scale(1.02)';
                 
+                // Second success message
                 setTimeout(() => {
                     button.innerHTML = '🎉 Merci ! Vous recevrez votre accès prochainement.';
+                    button.style.transform = 'translateY(0) scale(1)';
                 }, 1500);
                 
                 // Optional: redirect with better UX
@@ -1793,7 +1308,7 @@
             }, 2000);
         });
 
-        // Enhanced smooth scrolling
+        // Enhanced smooth scrolling with header offset
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1810,8 +1325,8 @@
             });
         });
 
-        // Enhanced interactive elements
-        document.querySelectorAll('.enhanced-card, .concept-card').forEach(card => {
+        // Enhanced interactive elements with premium effects
+        document.querySelectorAll('.concept-card, .phrase-content').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-12px) scale(1.02)';
             });
@@ -1821,34 +1336,41 @@
             });
         });
 
-        // Process step animations on scroll
-        const processObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const steps = entry.target.querySelectorAll('.process-step');
-                    steps.forEach((step, index) => {
-                        setTimeout(() => {
-                            step.style.opacity = '1';
-                            step.style.transform = 'translateY(0)';
-                        }, index * 150);
-                    });
-                }
-            });
-        }, { threshold: 0.3 });
-
-        const processFlow = document.querySelector('.process-flow');
-        if (processFlow) {
-            processObserver.observe(processFlow);
-        }
-
         // Initialize observers for all animated elements
-        document.querySelectorAll('.enhanced-card, .concept-card, .phrase-content').forEach(el => {
+        document.querySelectorAll('.concept-card, .phrase-content').forEach(el => {
             observer.observe(el);
         });
 
-        // Add loading state management
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            if (window.scrollY < window.innerHeight) {
+                const scrolled = window.scrollY;
+                const parallax = document.querySelector('.hero::before');
+                if (parallax) {
+                    document.documentElement.style.setProperty('--hero-scroll', `${scrolled * 0.5}px`);
+                }
+            }
+        });
+
+        // Add loading state management with better performance
+        let loadingComplete = false;
+        
         window.addEventListener('load', () => {
-            document.body.classList.add('loaded');
+            if (!loadingComplete) {
+                loadingComplete = true;
+                document.body.classList.add('loaded');
+            }
+        });
+
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('click', () => {
+            document.body.classList.remove('keyboard-navigation');
         });
     </script>
 </body>
