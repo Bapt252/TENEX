@@ -56,7 +56,7 @@
             --font-weight-extrabold: 800;
             --font-weight-black: 900;
             
-            /* Dark mode variables */
+            /* Theme variables */
             --bg-primary: #fafbfc;
             --bg-secondary: #ffffff;
             --text-primary: #333333;
@@ -78,7 +78,7 @@
             box-sizing: border-box;
         }
 
-        /* Premium Preloader with advanced animations */
+        /* Premium Preloader */
         .preloader {
             position: fixed;
             top: 0;
@@ -183,7 +183,33 @@
             overflow: hidden;
         }
 
-        /* Floating Navigation Menu */
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-light);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .theme-toggle i {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        /* Floating Navigation */
         .floating-nav {
             position: fixed;
             top: 50%;
@@ -244,32 +270,6 @@
             opacity: 1;
         }
 
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            padding: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow-light);
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .theme-toggle i {
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            transition: var(--transition);
-        }
-
         /* Floating Action Button */
         .fab {
             position: fixed;
@@ -304,7 +304,7 @@
             50% { box-shadow: 0 32px 80px rgba(255, 107, 53, 0.4); }
         }
 
-        /* Enhanced Header with glassmorphism */
+        /* Enhanced Header */
         .header {
             position: fixed;
             top: 0;
@@ -402,22 +402,18 @@
         .diamond:nth-child(1) { 
             top: 2px; left: 50%; 
             transform: translateX(-50%) rotate(45deg);
-            animation-delay: 0s;
         }
         .diamond:nth-child(2) { 
             right: 2px; top: 50%; 
             transform: translateY(-50%) rotate(45deg);
-            animation-delay: 0.1s;
         }
         .diamond:nth-child(3) { 
             bottom: 2px; left: 50%; 
             transform: translateX(-50%) rotate(45deg);
-            animation-delay: 0.2s;
         }
         .diamond:nth-child(4) { 
             left: 2px; top: 50%; 
             transform: translateY(-50%) rotate(45deg);
-            animation-delay: 0.3s;
         }
 
         .header-logo:hover .diamond {
@@ -450,7 +446,6 @@
             transform: translateY(-50%);
         }
 
-        /* Premium CTA Button */
         .header-cta {
             background: var(--gradient-cta);
             color: white;
@@ -487,11 +482,7 @@
             box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4);
         }
 
-        .header-cta:active {
-            transform: translateY(-1px) scale(0.98);
-        }
-
-        /* Enhanced Hero Section with Parallax */
+        /* Hero Section */
         .hero {
             background: var(--gradient-primary);
             color: white;
@@ -587,7 +578,6 @@
             animation: slideInLeft 1s ease-out;
         }
 
-        /* Premium Beta Badge */
         .beta-badge {
             background: var(--gradient-cta);
             color: white;
@@ -673,7 +663,6 @@
             margin-bottom: 16px;
             position: relative;
             padding-left: 32px;
-            opacity: 0.95;
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
             animation-delay: calc(var(--i) * 0.1s + 1s);
@@ -699,7 +688,7 @@
             50% { transform: translateY(-3px) rotate(5deg); }
         }
 
-        /* Premium CTA Section with enhanced glassmorphism */
+        /* Premium CTA Section */
         .cta-section {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(32px);
@@ -749,7 +738,6 @@
             font-weight: var(--font-weight-medium);
         }
 
-        /* Enhanced Form with Progress Indicator */
         .form-progress {
             display: flex;
             justify-content: center;
@@ -810,7 +798,6 @@
             font-weight: var(--font-weight-normal);
         }
 
-        /* Premium Button with enhanced animations */
         .btn-primary {
             background: var(--gradient-cta);
             color: white;
@@ -900,15 +887,7 @@
             line-height: 1.7;
         }
 
-        /* Animated Counter */
-        .counter {
-            font-size: 3rem;
-            font-weight: var(--font-weight-black);
-            color: var(--primary);
-            display: block;
-        }
-
-        /* Stats Section with Animated Counters */
+        /* Stats Section */
         .stats-section {
             background: var(--gradient-primary);
             color: white;
@@ -948,8 +927,110 @@
             opacity: 0.9;
         }
 
-        /* Continue with all other sections... */
-        /* For brevity, I'll continue with key responsive and scroll indicator styles */
+        /* Tenex Phrase */
+        .tenex-phrase {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .tenex-phrase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(16,102,128,0.05)" /></pattern></defs><rect width="100" height="100" fill="url(%23dots)" /></svg>');
+            opacity: 0.6;
+        }
+
+        .phrase-content {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 48px;
+            border-radius: var(--border-radius-large);
+            font-size: 1.4rem;
+            font-weight: var(--font-weight-semibold);
+            line-height: 1.7;
+            max-width: 950px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-premium);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .phrase-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+        }
+
+        .phrase-content:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 40px 100px rgba(16, 102, 128, 0.3);
+        }
+
+        /* Enhanced Cards System */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 80px;
+        }
+
+        .enhanced-card {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .enhanced-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .enhanced-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .enhanced-card h4 {
+            font-size: 1.3rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .enhanced-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-weight: var(--font-weight-medium);
+        }
 
         .scroll-indicator {
             position: fixed;
@@ -982,7 +1063,6 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Enhanced animations */
         @keyframes slideInLeft {
             from { opacity: 0; transform: translateX(-60px); }
             to { opacity: 1; transform: translateX(0); }
@@ -1008,7 +1088,7 @@
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* Responsive enhancements */
+        /* Responsive */
         @media (max-width: 1024px) {
             .floating-nav, .fab {
                 display: none;
@@ -1058,6 +1138,10 @@
             .cta-section {
                 padding: 32px 24px;
             }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1081,7 +1165,6 @@
             }
         }
 
-        /* Intersection Observer animation classes */
         .fade-in {
             animation: fadeInUp 0.8s ease forwards;
         }
@@ -1278,23 +1361,136 @@
         </div>
     </section>
 
-    <!-- Simplified sections for demo - in production, add all sections from previous version -->
+    <!-- Tenex en 1 phrase -->
+    <section class="section tenex-phrase">
+        <div class="container">
+            <div class="phrase-content">
+                <strong>Jobboard nouvelle génération :</strong> vous consultez librement tous les profils et vous activez seulement 10 candidats à la fois, choisis par vos soins parmi nos recommandations classées.
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIFS vs INACTIFS -->
     <section class="section" id="concept">
         <div class="container">
             <h2 class="section-title">ACTIFS vs INACTIFS - Le concept clé</h2>
             <p class="section-subtitle">Comprenez la différence entre consultation libre et process de recrutement actif</p>
-            <!-- Content from previous version -->
+            
+            <div class="card-grid">
+                <div class="enhanced-card">
+                    <h4>📋 PROFILS INACTIFS</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px; font-weight: var(--font-weight-semibold);">Hors process, accès libre</p>
+                    <ul style="list-style: none; margin: 0;">
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                            <strong>Consultation illimitée</strong>, comme un jobboard classique
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                            <strong>Aucun coût par clic</strong>, aucun verrouillage
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                            Vous repérez, marquez, préparez votre sélection
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                            <strong>Pas comptés dans les 10</strong> : ils ne déclenchent pas votre process
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="enhanced-card">
+                    <h4>⚡ PROFILS ACTIFS</h4>
+                    <p style="color: var(--accent); margin-bottom: 20px; font-weight: var(--font-weight-semibold);">En process de recrutement</p>
+                    <ul style="list-style: none; margin: 0;">
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                            <strong>Candidats choisis</strong> et préqualifiés par vos soins
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                            <strong>Limité à 10 connexions</strong> simultanées pour un suivi de qualité
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                            Tableau de suivi intégré, messagerie, planning, décisions
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
+                            <strong>Chaque décision libère une place</strong> pour un nouveau profil
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: var(--gradient-primary); color: white; padding: 40px; border-radius: 24px; margin-top: 48px; text-align: center; box-shadow: var(--shadow-medium); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);"></div>
+                <h4 style="font-size: 1.4rem; margin-bottom: 16px; font-weight: var(--font-weight-extrabold); position: relative; z-index: 1;">💡 Important</h4>
+                <p style="position: relative; z-index: 1; font-weight: var(--font-weight-medium);">On ne cloisonne pas nos clients. L'accès reste ouvert sur tous les profils. La limite concerne uniquement les connexions actives pour rester efficace.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Système de matching pondéré -->
+    <section class="section" id="matching">
+        <div class="container">
+            <h2 class="section-title">Système de matching pondéré</h2>
+            <p class="section-subtitle">Notre moteur ne se limite pas au CV. Il pondère des critères concrets pour rapprocher vos besoins et les aspirations des candidats.</p>
+            
+            <div class="card-grid">
+                <div class="enhanced-card">
+                    <h4>🎯 Géolocalisation intelligente</h4>
+                    <p>Temps de trajet réel selon le mode de transport préféré du candidat</p>
+                </div>
+                
+                <div class="enhanced-card">
+                    <h4>💼 Motivations & contexte</h4>
+                    <p>Rémunération, évolution, flexibilité, environnement de travail souhaité</p>
+                </div>
+                
+                <div class="enhanced-card">
+                    <h4>🔧 Historique & outils</h4>
+                    <p>Taille d'équipe, logiciels maîtrisés, contexte international d'expérience</p>
+                </div>
+                
+                <div class="enhanced-card">
+                    <h4>⚖️ Pondération multi-critères</h4>
+                    <p>Type de contrat, disponibilité, préavis, priorités personnelles</p>
+                </div>
+            </div>
+            
+            <div style="font-style: italic; color: var(--text-secondary); text-align: center; margin-top: 40px; padding: 24px; background: var(--bg-secondary); border-radius: 16px; font-weight: var(--font-weight-medium); border: 1px solid var(--border-color);">
+                <p><em>Le système de matching pondéré reste le cœur de notre approche. L'IA n'est qu'un composant d'optimisation.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section" id="faq" style="text-align: center;">
+        <div class="container">
+            <div style="background: var(--bg-secondary); padding: 80px 60px; border-radius: var(--border-radius-large); box-shadow: var(--shadow-premium); max-width: 800px; margin: 0 auto; border: 1px solid var(--border-color); position: relative; overflow: hidden; transition: var(--transition);">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(16, 102, 128, 0.02) 0%, transparent 50%);"></div>
+                <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 2.8rem; font-weight: var(--font-weight-black); position: relative; z-index: 1;">Le recrutement en 10 connexions stratégiques</h2>
+                <p style="margin-bottom: 40px; font-size: 1.25rem; color: var(--text-secondary); line-height: 1.6; font-weight: var(--font-weight-medium); position: relative; z-index: 1;">Testez Tenex gratuitement et accélérez vos recrutements dès aujourd'hui.</p>
+                <button class="btn-primary" style="max-width: 450px; margin: 0 auto; position: relative; z-index: 1;" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
+                    👉 Je veux tester Tenex gratuitement
+                </button>
+                <p style="margin-top: 25px; font-size: 0.95rem; opacity: 0.7; font-weight: var(--font-weight-medium); position: relative; z-index: 1; color: var(--text-secondary);">
+                    🔒 Données sécurisées – Pas de spam
+                </p>
+            </div>
         </div>
     </section>
 
     <script>
-        // Advanced JavaScript with premium features
+        // Complete TenexApp Class with all premium features
         class TenexApp {
             constructor() {
                 this.currentTheme = localStorage.getItem('theme') || 'light';
-                this.sections = ['hero', 'concept', 'how-it-works', 'matching', 'dashboard', 'faq'];
+                this.sections = ['hero', 'concept', 'matching', 'faq'];
                 this.currentSection = 0;
-                this.formStep = 0;
+                this.countersAnimated = false;
                 
                 this.init();
             }
@@ -1305,7 +1501,6 @@
                 this.setupScrollIndicator();
                 this.setupFloatingNav();
                 this.setupFormProgress();
-                this.setupCounters();
                 this.setupFAB();
                 this.setupIntersectionObserver();
                 this.setupKeyboardNavigation();
@@ -1321,10 +1516,8 @@
                         preloader.classList.add('loaded');
                         body.classList.remove('loading');
                         
-                        // Start main animations
                         setTimeout(() => {
                             this.setupFloatingNavVisibility();
-                            this.animateCounters();
                         }, 500);
                     }, 1800);
                 });
@@ -1385,7 +1578,7 @@
             setupFloatingNav() {
                 const navDots = document.querySelectorAll('.nav-dot');
                 
-                navDots.forEach((dot, index) => {
+                navDots.forEach((dot) => {
                     dot.addEventListener('click', () => {
                         const targetId = dot.getAttribute('data-target');
                         const target = document.getElementById(targetId);
@@ -1430,7 +1623,7 @@
                 const inputs = form.querySelectorAll('input, select');
                 const progressDots = document.querySelectorAll('.progress-dot');
                 
-                inputs.forEach((input, index) => {
+                inputs.forEach((input) => {
                     input.addEventListener('input', () => {
                         let filledInputs = 0;
                         inputs.forEach(inp => {
@@ -1443,7 +1636,6 @@
                     });
                 });
 
-                // Enhanced form submission
                 form.addEventListener('submit', (e) => {
                     e.preventDefault();
                     this.handleFormSubmission(form);
@@ -1453,7 +1645,6 @@
             handleFormSubmission(form) {
                 form.classList.add('form-loading');
                 const button = form.querySelector('.btn-primary');
-                const originalText = button.innerHTML;
                 
                 const formData = new FormData(form);
                 const data = {};
@@ -1463,11 +1654,9 @@
                 
                 button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Inscription en cours...';
                 
-                // Simulate API call
                 setTimeout(() => {
                     form.classList.remove('form-loading');
                     
-                    // Success sequence
                     button.innerHTML = '✅ Inscription réussie !';
                     button.style.background = 'var(--gradient-success)';
                     button.style.transform = 'translateY(-2px) scale(1.02)';
@@ -1485,8 +1674,40 @@
                 }, 2000);
             }
 
-            setupCounters() {
-                this.countersAnimated = false;
+            setupFAB() {
+                const fab = document.getElementById('fab');
+                
+                fab.addEventListener('click', () => {
+                    const betaForm = document.getElementById('betaForm');
+                    betaForm.scrollIntoView({ behavior: 'smooth' });
+                    
+                    fab.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        fab.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            }
+
+            setupIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in');
+                            
+                            // Trigger counter animation when stats section is visible
+                            if (entry.target.classList.contains('stats-section')) {
+                                this.animateCounters();
+                            }
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                document.querySelectorAll('.section, .stats-section, .enhanced-card').forEach(section => {
+                    observer.observe(section);
+                });
             }
 
             animateCounters() {
@@ -1523,51 +1744,12 @@
                 this.countersAnimated = true;
             }
 
-            setupFAB() {
-                const fab = document.getElementById('fab');
-                
-                fab.addEventListener('click', () => {
-                    const betaForm = document.getElementById('betaForm');
-                    betaForm.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // FAB animation
-                    fab.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        fab.style.transform = 'scale(1)';
-                    }, 150);
-                });
-            }
-
-            setupIntersectionObserver() {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('fade-in');
-                            
-                            // Trigger counter animation when stats section is visible
-                            if (entry.target.classList.contains('stats-section')) {
-                                this.animateCounters();
-                            }
-                        }
-                    });
-                }, {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                });
-
-                // Observe all sections
-                document.querySelectorAll('.section, .stats-section').forEach(section => {
-                    observer.observe(section);
-                });
-            }
-
             setupKeyboardNavigation() {
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Tab') {
                         document.body.classList.add('keyboard-navigation');
                     }
                     
-                    // Arrow key navigation
                     if (e.key === 'ArrowDown') {
                         e.preventDefault();
                         this.navigateToSection(1);
