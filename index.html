@@ -889,7 +889,517 @@
             font-weight: var(--font-weight-extrabold);
         }
 
-        /* Continue with remaining sections... */
+        /* Enhanced How it works */
+        .how-it-works {
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+            opacity: 0.3;
+        }
+
+        .how-it-works .section-title {
+            color: white;
+            background: linear-gradient(45deg, #ffffff, #e8f5f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .how-it-works .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 100px;
+        }
+
+        .process-flow {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .process-pipeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin: 60px 0;
+        }
+
+        .process-step {
+            position: relative;
+            text-align: center;
+            flex: 1;
+            margin: 0 20px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: calc(var(--step) * 0.15s);
+        }
+
+        .process-step:nth-child(1) { --step: 1; }
+        .process-step:nth-child(2) { --step: 2; }
+        .process-step:nth-child(3) { --step: 3; }
+        .process-step:nth-child(4) { --step: 4; }
+
+        .step-shape {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 32px;
+            position: relative;
+            transition: var(--transition-bounce);
+            cursor: pointer;
+        }
+
+        .step-shape:hover {
+            transform: scale(1.15) rotate(8deg);
+        }
+
+        .step-1 .step-shape {
+            background: var(--gradient-cta);
+            border-radius: 50%;
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .step-2 .step-shape {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 28px;
+            transform: rotate(45deg);
+            box-shadow: 0 20px 40px rgba(0, 158, 196, 0.4);
+        }
+
+        .step-3 .step-shape {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            box-shadow: 0 20px 40px rgba(10, 62, 93, 0.4);
+        }
+
+        .step-4 .step-shape {
+            background: linear-gradient(135deg, #ff8c42, #ff6b35);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            box-shadow: 0 20px 40px rgba(255, 140, 66, 0.4);
+        }
+
+        .step-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.8rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .step-2 .step-icon {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--font-weight-black);
+            font-size: 1.2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: var(--font-weight-extrabold);
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .step-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            max-width: 220px;
+            margin: 0 auto;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .process-connector {
+            position: absolute;
+            top: 50%;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+            z-index: 1;
+            animation: flowAnimation 3s ease-in-out infinite;
+        }
+
+        .connector-1 { left: 18%; width: 16%; animation-delay: 0s; }
+        .connector-2 { left: 38%; width: 16%; animation-delay: 1s; }
+        .connector-3 { left: 58%; width: 16%; animation-delay: 2s; }
+
+        @keyframes flowAnimation {
+            0%, 100% { opacity: 0.3; transform: translateY(-50%) scaleX(1); }
+            50% { opacity: 1; transform: translateY(-50%) scaleX(1.2); }
+        }
+
+        .process-summary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(30px);
+            border-radius: var(--border-radius-large);
+            padding: 48px;
+            margin-top: 80px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .process-summary h3 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: white;
+            font-weight: var(--font-weight-extrabold);
+        }
+
+        .process-summary p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Enhanced Cards System */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 80px;
+        }
+
+        .enhanced-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(16, 102, 128, 0.08);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enhanced-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .enhanced-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .enhanced-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .enhanced-card h4 {
+            font-size: 1.3rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .enhanced-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Premium Dashboard Section */
+        .dashboard-features {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 40px 35px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-bounce);
+            border: 1px solid rgba(16, 102, 128, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            color: white;
+            font-size: 1.6rem;
+            transition: var(--transition-bounce);
+        }
+
+        .dashboard-card:hover .dashboard-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .dashboard-title {
+            flex: 1;
+        }
+
+        .dashboard-title h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            font-weight: var(--font-weight-bold);
+        }
+
+        .dashboard-badge {
+            background: var(--gradient-cta);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: var(--font-weight-bold);
+            margin-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .dashboard-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 1rem;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Premium Advantages Section */
+        .advantages-section {
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 80px;
+        }
+
+        .advantages-list, .stats-list {
+            background: white;
+            padding: 48px 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(16, 102, 128, 0.08);
+            transition: var(--transition);
+        }
+
+        .advantages-list:hover, .stats-list:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .advantages-list ul, .stats-list ul {
+            list-style: none;
+        }
+
+        .advantages-list li, .stats-list li {
+            margin-bottom: 18px;
+            padding-left: 36px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .advantages-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+            animation: sparkle 3s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.2s);
+        }
+
+        .stats-list li::before {
+            content: '📊';
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+            animation: bounce-stats 2s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.3s);
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+        }
+
+        @keyframes bounce-stats {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-2px); }
+        }
+
+        .advantages-list h3, .stats-list h3 {
+            color: var(--primary);
+            font-size: 1.9rem;
+            margin-bottom: 32px;
+            font-weight: var(--font-weight-extrabold);
+        }
+
+        /* Enhanced FAQ Section */
+        .faq-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
+        }
+
+        .faq-grid {
+            margin-top: 80px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(16, 102, 128, 0.08);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .faq-question {
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .faq-answer {
+            color: #6b7280;
+            line-height: 1.7;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Premium Final CTA */
+        .final-cta {
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            text-align: center;
+        }
+
+        .cta-box {
+            background: white;
+            padding: 80px 60px;
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-premium);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(16, 102, 128, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 102, 128, 0.02) 0%, transparent 50%);
+        }
+
+        .cta-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 50px 120px rgba(16, 102, 128, 0.25);
+        }
+
         .scroll-indicator {
             position: fixed;
             top: 0;
@@ -960,6 +1470,15 @@
             .cta-section {
                 padding: 40px 32px;
             }
+
+            .process-pipeline {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+
+            .process-step {
+                flex: 0 1 calc(50% - 20px);
+            }
         }
 
         @media (max-width: 768px) {
@@ -989,9 +1508,31 @@
                 padding: 32px 24px;
             }
             
-            .concept-grid {
+            .concept-grid, .advantages-grid, .dashboard-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
+            }
+
+            .process-pipeline {
+                flex-direction: column;
+                gap: 60px;
+            }
+
+            .process-connector {
+                display: none;
+            }
+
+            .step-shape {
+                width: 120px;
+                height: 120px;
+            }
+
+            .step-icon {
+                font-size: 2.4rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1013,6 +1554,14 @@
             .cta-section {
                 padding: 24px 20px;
                 border-radius: 24px;
+            }
+
+            .enhanced-card, .dashboard-card, .advantages-list, .stats-list, .faq-item {
+                padding: 24px;
+            }
+
+            .cta-box {
+                padding: 48px 32px;
             }
         }
 
@@ -1204,8 +1753,270 @@
         </div>
     </section>
 
+    <!-- Comment ça marche -->
+    <section class="section how-it-works">
+        <div class="container">
+            <h2 class="section-title">Comment ça marche ?</h2>
+            <p class="section-subtitle">Un processus visuel en 4 étapes qui maximise vos chances de succès</p>
+            
+            <div class="process-flow">
+                <div class="process-pipeline">
+                    <div class="process-connector connector-1"></div>
+                    <div class="process-connector connector-2"></div>
+                    <div class="process-connector connector-3"></div>
+                    
+                    <div class="process-step step-1">
+                        <div class="step-shape">
+                            <div class="step-icon"><i class="fas fa-cog"></i></div>
+                            <div class="step-number">1</div>
+                        </div>
+                        <h3 class="step-title">Définissez votre besoin</h3>
+                        <p class="step-description">Le moteur de matching pondéré analyse vos critères : contrat, rémunération, motivations, trajets...</p>
+                    </div>
+                    
+                    <div class="process-step step-2">
+                        <div class="step-shape">
+                            <div class="step-icon"><i class="fas fa-search"></i></div>
+                            <div class="step-number">2</div>
+                        </div>
+                        <h3 class="step-title">Consultez et repérez</h3>
+                        <p class="step-description">Accès libre aux profils "inactifs" + nos recommandations classées. Aucun quota, aucun coût par clic.</p>
+                    </div>
+                    
+                    <div class="process-step step-3">
+                        <div class="step-shape">
+                            <div class="step-icon"><i class="fas fa-users"></i></div>
+                            <div class="step-number">3</div>
+                        </div>
+                        <h3 class="step-title">Activez vos 10 candidats</h3>
+                        <p class="step-description">Vous lancez le process : contact, entretiens, suivi des candidatures dans un tableau simple.</p>
+                    </div>
+                    
+                    <div class="process-step step-4">
+                        <div class="step-shape">
+                            <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="step-number">4</div>
+                        </div>
+                        <h3 class="step-title">Décidez et renouvelez</h3>
+                        <p class="step-description">Chaque acceptation ou refus libère une place pour activer un nouveau profil pertinent.</p>
+                    </div>
+                </div>
+                
+                <div class="process-summary">
+                    <h3><i class="fas fa-chart-line"></i> Résultat : Jusqu'à 3x plus rapide</h3>
+                    <p>qu'un process classique grâce à l'engagement mutuel et au matching pondéré.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Système de matching pondéré -->
+    <section class="section matching-section">
+        <div class="container">
+            <h2 class="section-title">Système de matching pondéré</h2>
+            <p class="section-subtitle">Notre moteur ne se limite pas au CV. Il pondère des critères concrets pour rapprocher vos besoins et les aspirations des candidats.</p>
+            
+            <div class="card-grid">
+                <div class="enhanced-card">
+                    <h4>🎯 Géolocalisation intelligente</h4>
+                    <p>Temps de trajet réel selon le mode de transport préféré du candidat</p>
+                </div>
+                
+                <div class="enhanced-card">
+                    <h4>💼 Motivations & contexte</h4>
+                    <p>Rémunération, évolution, flexibilité, environnement de travail souhaité</p>
+                </div>
+                
+                <div class="enhanced-card">
+                    <h4>🔧 Historique & outils</h4>
+                    <p>Taille d'équipe, logiciels maîtrisés, contexte international d'expérience</p>
+                </div>
+                
+                <div class="enhanced-card">
+                    <h4>⚖️ Pondération multi-critères</h4>
+                    <p>Type de contrat, disponibilité, préavis, priorités personnelles</p>
+                </div>
+            </div>
+            
+            <div style="font-style: italic; color: #6b7280; text-align: center; margin-top: 40px; padding: 24px; background: #f8f9fa; border-radius: 16px; font-weight: var(--font-weight-medium);">
+                <p><em>Le système de matching pondéré reste le cœur de notre approche. L'IA n'est qu'un composant d'optimisation.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Features -->
+    <section class="section dashboard-features">
+        <div class="container">
+            <h2 class="section-title">Votre espace entreprise</h2>
+            <p class="section-subtitle">Tous les outils intégrés pour gérer efficacement vos recrutements</p>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="dashboard-header">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <div class="dashboard-title">
+                            <h3>Créer un poste</h3>
+                            <span class="dashboard-badge">Système intégré</span>
+                        </div>
+                    </div>
+                    <p>Publiez votre besoin, le moteur propose aussitôt des profils pertinents.</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-header">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="dashboard-title">
+                            <h3>Mes sélections</h3>
+                            <span class="dashboard-badge">Shortlist intelligente</span>
+                        </div>
+                    </div>
+                    <p>Score de compatibilité & potentiel d'engagement pour prioriser rapidement.</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-header">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="dashboard-title">
+                            <h3>Candidats</h3>
+                            <span class="dashboard-badge">Analyse détaillée</span>
+                        </div>
+                    </div>
+                    <p>Compétences, aspirations, contexte professionnel et culturel complets.</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-header">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="dashboard-title">
+                            <h3>Planning</h3>
+                            <span class="dashboard-badge">Temps réel</span>
+                        </div>
+                    </div>
+                    <p>Entretiens planifiés, agenda synchronisé, notifications automatiques.</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-header">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="dashboard-title">
+                            <h3>Messagerie</h3>
+                            <span class="dashboard-badge">2 en 1</span>
+                        </div>
+                    </div>
+                    <p>Équipe recrutement & candidats centralisés, sans perte d'informations.</p>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-header">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <div class="dashboard-title">
+                            <h3>Organisation</h3>
+                            <span class="dashboard-badge">Workflow personnalisé</span>
+                        </div>
+                    </div>
+                    <p>Étapes, permissions, automatisations selon vos process internes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avantages & Chiffres -->
+    <section class="section advantages-section">
+        <div class="container">
+            <h2 class="section-title">Avantages & Chiffres</h2>
+            <p class="section-subtitle">Ce qui fait la différence avec Tenex</p>
+            
+            <div class="advantages-grid">
+                <div class="advantages-list">
+                    <h3>✨ Avantages Tenex</h3>
+                    <ul>
+                        <li style="--i: 1;"><strong>Consultation libre illimitée</strong> des profils inactifs</li>
+                        <li style="--i: 2;"><strong>10 connexions actives maximum</strong> pour l'efficacité</li>
+                        <li style="--i: 3;"><strong>Matching contextuel & pondéré</strong> multi-critères</li>
+                        <li style="--i: 4;"><strong>Timing maîtrisé</strong> (préavis, fins de contrat)</li>
+                        <li style="--i: 5;"><strong>Trajets optimisés</strong> automatiquement</li>
+                        <li style="--i: 6;"><strong>Suivi accompagné</strong> et centralisé</li>
+                    </ul>
+                </div>
+                
+                <div class="stats-list">
+                    <h3>📊 Chiffres clés</h3>
+                    <ul>
+                        <li style="--i: 1;"><strong>∞</strong> Profils "inactifs" consultables</li>
+                        <li style="--i: 2;"><strong>10</strong> Connexions actives simultanées</li>
+                        <li style="--i: 3;"><strong>100%</strong> Engagement mutuel visé</li>
+                        <li style="--i: 4;"><strong>IDF</strong> Fonctions supports spécialisées (périmètre pilote)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section">
+        <div class="container">
+            <h2 class="section-title">FAQ rapide</h2>
+            <p class="section-subtitle">Les réponses aux questions les plus fréquentes</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">❓ Tenex est-il vraiment gratuit ?</div>
+                    <div class="faq-answer">✅ Oui, l'accès bêta est 100% gratuit, sans carte bancaire. Nous demandons seulement vos retours.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">❓ Pourquoi limiter à 10 connexions actives ?</div>
+                    <div class="faq-answer">✅ Pour garantir un suivi de qualité et l'engagement mutuel. C'est le cœur du concept.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">❓ Puis-je consulter d'autres profils en parallèle ?</div>
+                    <div class="faq-answer">✅ Oui, sans limite : le mode "inactif" reste ouvert comme un jobboard — sans coût par clic.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">❓ Combien de temps pour voir des profils pertinents ?</div>
+                    <div class="faq-answer">✅ Généralement 24 à 72h selon le poste et vos critères spécifiques.</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">❓ Tenex s'adresse à qui ?</div>
+                    <div class="faq-answer">✅ RH, dirigeants PME, managers opérationnels : ceux qui veulent recruter vite sans perdre en précision.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section final-cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 2.8rem; font-weight: var(--font-weight-black);">Le recrutement en 10 connexions stratégiques</h2>
+                <p style="margin-bottom: 40px; font-size: 1.25rem; color: #6b7280; line-height: 1.6; font-weight: var(--font-weight-medium);">Testez Tenex gratuitement et accélérez vos recrutements dès aujourd'hui.</p>
+                <button class="btn-primary" style="max-width: 450px; margin: 0 auto;" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
+                    👉 Je veux tester Tenex gratuitement
+                </button>
+                <p style="margin-top: 25px; font-size: 0.95rem; opacity: 0.7; font-weight: var(--font-weight-medium);">
+                    🔒 Données sécurisées – Pas de spam
+                </p>
+            </div>
+        </div>
+    </section>
+
     <script>
-        // Premium Preloader
+        // Premium Preloader with advanced animations
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
@@ -1220,17 +2031,17 @@
                         el.style.animationPlayState = 'running';
                     });
                 }, 100);
-            }, 1500); // Minimum display time
+            }, 1500); // Minimum display time for premium experience
         });
 
-        // Enhanced scroll indicator with smooth animation
+        // Enhanced scroll indicator with smooth RAF animation
         let ticking = false;
         
         function updateScrollIndicator() {
             const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
             document.getElementById('scrollIndicator').style.width = scrolled + '%';
             
-            // Enhanced header behavior
+            // Enhanced header behavior with smoother transitions
             const header = document.getElementById('header');
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
@@ -1248,7 +2059,7 @@
             }
         });
 
-        // Enhanced Intersection Observer for staggered animations
+        // Enhanced Intersection Observer for premium staggered animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1257,19 +2068,19 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    // Staggered animation delays
-                    const delay = Math.random() * 0.3;
+                    // Premium staggered animation delays
+                    const delay = Math.random() * 0.3 + (index * 0.1);
                     entry.target.style.animationDelay = delay + 's';
                     entry.target.classList.add('fade-in');
                 }
             });
         }, observerOptions);
 
-        // Enhanced form handling with premium UX
+        // Enhanced form handling with premium UX feedback
         document.getElementById('betaForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Add loading state with enhanced visual feedback
+            // Add loading state with premium visual feedback
             this.classList.add('form-loading');
             const button = this.querySelector('.btn-primary');
             const originalText = button.innerHTML;
@@ -1281,25 +2092,25 @@
                 data[key] = value;
             });
             
-            // Enhanced loading state with icon
+            // Premium loading state with icon animation
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Inscription en cours...';
             
             // Simulate API call with realistic timing
             setTimeout(() => {
                 this.classList.remove('form-loading');
                 
-                // Success animation sequence
+                // Premium success animation sequence
                 button.innerHTML = '✅ Inscription réussie !';
                 button.style.background = 'var(--gradient-success)';
                 button.style.transform = 'translateY(-2px) scale(1.02)';
                 
-                // Second success message
+                // Second success message with bounce
                 setTimeout(() => {
                     button.innerHTML = '🎉 Merci ! Vous recevrez votre accès prochainement.';
                     button.style.transform = 'translateY(0) scale(1)';
                 }, 1500);
                 
-                // Optional: redirect with better UX
+                // Redirect with premium UX timing
                 setTimeout(() => {
                     window.location.href = 'https://bapt252.github.io/THANKYOU/';
                 }, 3500);
@@ -1308,7 +2119,7 @@
             }, 2000);
         });
 
-        // Enhanced smooth scrolling with header offset
+        // Enhanced smooth scrolling with premium header offset calculation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1325,8 +2136,8 @@
             });
         });
 
-        // Enhanced interactive elements with premium effects
-        document.querySelectorAll('.concept-card, .phrase-content').forEach(card => {
+        // Premium interactive elements with advanced hover effects
+        document.querySelectorAll('.concept-card, .phrase-content, .enhanced-card, .dashboard-card, .advantages-list, .stats-list, .faq-item, .cta-box').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-12px) scale(1.02)';
             });
@@ -1336,23 +2147,43 @@
             });
         });
 
-        // Initialize observers for all animated elements
-        document.querySelectorAll('.concept-card, .phrase-content').forEach(el => {
+        // Enhanced process step animations with premium sequencing
+        const processObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const steps = entry.target.querySelectorAll('.process-step');
+                    steps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.style.opacity = '1';
+                            step.style.transform = 'translateY(0) scale(1)';
+                        }, index * 200); // Premium sequential timing
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const processFlow = document.querySelector('.process-flow');
+        if (processFlow) {
+            processObserver.observe(processFlow);
+        }
+
+        // Initialize observers for all premium animated elements
+        document.querySelectorAll('.concept-card, .phrase-content, .enhanced-card, .dashboard-card, .advantages-list, .stats-list, .faq-item').forEach(el => {
             observer.observe(el);
         });
 
-        // Parallax effect for hero section
+        // Premium parallax effect for hero section
         window.addEventListener('scroll', () => {
             if (window.scrollY < window.innerHeight) {
                 const scrolled = window.scrollY;
-                const parallax = document.querySelector('.hero::before');
-                if (parallax) {
-                    document.documentElement.style.setProperty('--hero-scroll', `${scrolled * 0.5}px`);
+                const heroParticles = document.querySelector('.hero-particles');
+                if (heroParticles) {
+                    heroParticles.style.transform = `translateY(${scrolled * 0.3}px)`;
                 }
             }
         });
 
-        // Add loading state management with better performance
+        // Enhanced loading state management with premium performance
         let loadingComplete = false;
         
         window.addEventListener('load', () => {
@@ -1362,7 +2193,7 @@
             }
         });
 
-        // Enhanced keyboard navigation
+        // Premium keyboard navigation support
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Tab') {
                 document.body.classList.add('keyboard-navigation');
@@ -1372,6 +2203,12 @@
         document.addEventListener('click', () => {
             document.body.classList.remove('keyboard-navigation');
         });
+
+        // Premium reduced motion support
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.documentElement.style.setProperty('--transition', 'none');
+            document.documentElement.style.setProperty('--transition-bounce', 'none');
+        }
     </script>
 </body>
 </html>
