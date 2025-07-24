@@ -58,7 +58,7 @@
             --font-weight-extrabold: 800;
             --font-weight-black: 900;
             
-            /* Corporate Theme variables - Version éclaircie */
+            /* Theme variables - Version éclaircie */
             --bg-primary: #ffffff;
             --bg-secondary: #fefefe;
             --bg-tertiary: #f9fafb;
@@ -67,17 +67,6 @@
             --text-muted: #94a3b8;
             --border-color: rgba(16, 102, 128, 0.04);
             --border-light: rgba(16, 102, 128, 0.02);
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --border-light: rgba(255, 255, 255, 0.04);
         }
 
         * {
@@ -193,39 +182,11 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             background: var(--bg-primary);
-            transition: background-color 0.3s ease, color 0.3s ease;
             font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
         }
 
         body.loading {
             overflow: hidden;
-        }
-
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 1001;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-light);
-            border-color: var(--accent);
-        }
-
-        .theme-toggle i {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            transition: var(--transition);
         }
 
         /* Floating Navigation */
@@ -714,7 +675,6 @@
             padding: 120px 0;
             position: relative;
             background: var(--bg-primary);
-            transition: background-color 0.3s ease;
         }
 
         .section-title {
@@ -1222,11 +1182,6 @@
         }
 
         @media (max-width: 768px) {
-            .theme-toggle {
-                top: 16px;
-                right: 16px;
-            }
-
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1332,11 +1287,6 @@
             </div>
             <div class="preloader-text">Chargement...</div>
         </div>
-    </div>
-
-    <!-- Dark Mode Toggle -->
-    <div class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon" id="themeIcon"></i>
     </div>
 
     <!-- Floating Navigation -->
@@ -1769,7 +1719,6 @@
         // Complete TenexApp Class with all premium features
         class TenexApp {
             constructor() {
-                this.currentTheme = localStorage.getItem('theme') || 'light';
                 this.sections = ['hero', 'concept', 'how-it-works', 'matching', 'dashboard', 'advantages', 'faq'];
                 this.currentSection = 0;
                 this.countersAnimated = false;
@@ -1779,14 +1728,12 @@
 
             init() {
                 this.setupPreloader();
-                this.setupThemeToggle();
                 this.setupScrollIndicator();
                 this.setupFloatingNav();
                 this.setupFormProgress();
                 this.setupFAB();
                 this.setupIntersectionObserver();
                 this.setupKeyboardNavigation();
-                this.applyTheme(this.currentTheme);
             }
 
             setupPreloader() {
@@ -1803,32 +1750,6 @@
                         }, 500);
                     }, 1500);
                 });
-            }
-
-            setupThemeToggle() {
-                const toggle = document.getElementById('themeToggle');
-                const icon = document.getElementById('themeIcon');
-                
-                toggle.addEventListener('click', () => {
-                    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-                    this.applyTheme(this.currentTheme);
-                    localStorage.setItem('theme', this.currentTheme);
-                    
-                    // Icon animation
-                    icon.style.transform = 'rotate(180deg)';
-                    setTimeout(() => {
-                        icon.style.transform = 'rotate(0deg)';
-                        icon.className = this.currentTheme === 'dark' 
-                            ? 'fas fa-sun' 
-                            : 'fas fa-moon';
-                    }, 150);
-                });
-            }
-
-            applyTheme(theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-                const icon = document.getElementById('themeIcon');
-                icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
             }
 
             setupScrollIndicator() {
