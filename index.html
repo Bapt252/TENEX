@@ -516,20 +516,21 @@
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 40px;
             margin-top: 80px;
         }
 
         .dashboard-card {
             background: white;
-            padding: 40px 35px;
-            border-radius: 20px;
+            padding: 45px 40px;
+            border-radius: 25px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(16, 102, 128, 0.1);
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
 
         .dashboard-card::before {
@@ -556,48 +557,78 @@
 
         .dashboard-header {
             display: flex;
-            align-items: center;
-            margin-bottom: 20px;
+            align-items: flex-start;
+            margin-bottom: 25px;
         }
 
         .dashboard-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(45deg, #106680, #0A3E5D);
-            border-radius: 15px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 20px;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(16, 102, 128, 0.3);
         }
 
         .dashboard-title {
             flex: 1;
+            min-width: 0;
         }
 
         .dashboard-title h3 {
             color: #106680;
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            font-weight: 800;
+            line-height: 1.2;
         }
 
         .dashboard-badge {
             background: linear-gradient(45deg, #ff6b35, #f7931e);
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-left: 10px;
+            padding: 6px 14px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 5px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
         }
 
         .dashboard-card p {
             color: #666;
-            line-height: 1.6;
-            font-size: 1rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin: 0;
+        }
+
+        .dashboard-highlight {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border-left: 4px solid #009EC4;
+        }
+
+        .dashboard-highlight h4 {
+            color: #106680;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .dashboard-highlight p {
+            font-size: 0.95rem;
+            margin: 0;
+            color: #555;
         }
 
         /* Stats */
@@ -829,6 +860,21 @@
 
             .ai-features {
                 grid-template-columns: 1fr;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .dashboard-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
             }
         }
 
@@ -1192,8 +1238,8 @@
     <!-- Dashboard Features -->
     <section class="dashboard-features">
         <div class="container">
-            <h2 class="section-title">Dashboard entreprise</h2>
-            <p class="section-subtitle">Gérez votre recrutement avec une interface intuitive et complète</p>
+            <h2 class="section-title">Dashboard Entreprise</h2>
+            <p class="section-subtitle">Gérez votre recrutement avec une suite d'outils intégrée et pilotée par l'IA</p>
             
             <div class="dashboard-grid">
                 <div class="dashboard-card fade-in">
@@ -1203,10 +1249,14 @@
                         </div>
                         <div class="dashboard-title">
                             <h3>Créer un poste</h3>
-                            <span class="dashboard-badge">Nouveau</span>
+                            <span class="dashboard-badge">IA Intégrée</span>
                         </div>
                     </div>
-                    <p>Publiez une nouvelle offre d'emploi et recevez des candidatures ciblées grâce à notre IA</p>
+                    <p>Publiez une nouvelle offre d'emploi structurée et sur mesure. Recevez instantanément des candidatures ciblées grâce à notre IA et notre algorithme de matching avancé.</p>
+                    <div class="dashboard-highlight">
+                        <h4><i class="fas fa-magic"></i> Matching automatique</h4>
+                        <p>L'IA analyse votre offre et propose immédiatement les meilleurs profils correspondants</p>
+                    </div>
                 </div>
                 
                 <div class="dashboard-card fade-in">
@@ -1216,10 +1266,14 @@
                         </div>
                         <div class="dashboard-title">
                             <h3>Mes sélections</h3>
-                            <span class="dashboard-badge">5 nouveaux</span>
+                            <span class="dashboard-badge">Matching IA</span>
                         </div>
                     </div>
-                    <p>Consultez et gérez vos candidats présélectionnés qui correspondent parfaitement à vos critères</p>
+                    <p>Consultez et gérez vos candidats présélectionnés qui correspondent parfaitement à vos critères. Interface intuitive pour prioriser et suivre vos meilleurs prospects.</p>
+                    <div class="dashboard-highlight">
+                        <h4><i class="fas fa-chart-line"></i> Score de compatibilité</h4>
+                        <p>Chaque candidat est noté selon vos critères spécifiques et son potentiel d'engagement</p>
+                    </div>
                 </div>
                 
                 <div class="dashboard-card fade-in">
@@ -1229,10 +1283,14 @@
                         </div>
                         <div class="dashboard-title">
                             <h3>Candidats</h3>
-                            <span class="dashboard-badge">12 nouveaux</span>
+                            <span class="dashboard-badge">Analyse IA</span>
                         </div>
                     </div>
-                    <p>Explorez les profils des candidats correspondant à vos offres avec analyse des compétences</p>
+                    <p>Explorez les profils des candidats correspondant à vos offres avec une analyse détaillée des compétences, expériences et compatibilité culturelle.</p>
+                    <div class="dashboard-highlight">
+                        <h4><i class="fas fa-brain"></i> Analyse comportementale</h4>
+                        <p>IA analyse les motivations, aspirations et contexte professionnel de chaque candidat</p>
+                    </div>
                 </div>
                 
                 <div class="dashboard-card fade-in">
@@ -1242,10 +1300,14 @@
                         </div>
                         <div class="dashboard-title">
                             <h3>Planning</h3>
-                            <span class="dashboard-badge">2 aujourd'hui</span>
+                            <span class="dashboard-badge">Temps réel</span>
                         </div>
                     </div>
-                    <p>Organisez vos entretiens et suivez votre calendrier de recrutement en temps réel</p>
+                    <p>Organisez vos entretiens et suivez votre calendrier de recrutement en temps réel. Synchronisation automatique avec vos outils d'agenda existants.</p>
+                    <div class="dashboard-highlight">
+                        <h4><i class="fas fa-sync"></i> Intégration calendrier</h4>
+                        <p>Planification automatique et notifications pour optimiser votre processus de recrutement</p>
+                    </div>
                 </div>
                 
                 <div class="dashboard-card fade-in">
@@ -1255,10 +1317,14 @@
                         </div>
                         <div class="dashboard-title">
                             <h3>Messagerie</h3>
-                            <span class="dashboard-badge">3 non lus</span>
+                            <span class="dashboard-badge">2 en 1</span>
                         </div>
                     </div>
-                    <p>Communiquez avec les candidats et votre équipe de recrutement de manière centralisée</p>
+                    <p>Communication centralisée avec deux espaces dédiés : messagerie interne pour votre équipe de recrutement et messagerie candidat pour une communication directe et professionnelle.</p>
+                    <div class="dashboard-highlight">
+                        <h4><i class="fas fa-layer-group"></i> Double interface</h4>
+                        <p>Équipe recrutement | Communication candidats - Tout centralisé dans un même outil</p>
+                    </div>
                 </div>
                 
                 <div class="dashboard-card fade-in">
@@ -1268,9 +1334,14 @@
                         </div>
                         <div class="dashboard-title">
                             <h3>Organisation</h3>
+                            <span class="dashboard-badge">Workflow</span>
                         </div>
                     </div>
-                    <p>Gérez la structure de votre entreprise, les permissions et les workflows de recrutement</p>
+                    <p>Gérez la structure de votre entreprise, définissez les permissions d'accès et configurez vos workflows de recrutement personnalisés selon vos processus internes.</p>
+                    <div class="dashboard-highlight">
+                        <h4><i class="fas fa-cogs"></i> Processus sur mesure</h4>
+                        <p>Configurez vos étapes de recrutement et automatisez vos workflows selon vos besoins</p>
+                    </div>
                 </div>
             </div>
         </div>
