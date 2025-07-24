@@ -38,14 +38,16 @@
             --secondary: #0A3E5D;
             --accent: #009EC4;
             --gradient-primary: linear-gradient(135deg, #106680 0%, #0A3E5D 50%, #009EC4 100%);
-            --gradient-cta: linear-gradient(45deg, #ff6b35, #f7931e, #ff8c42);
-            --gradient-success: linear-gradient(45deg, #10b981, #059669);
-            --shadow-light: 0 4px 20px rgba(16, 102, 128, 0.08);
-            --shadow-medium: 0 8px 40px rgba(16, 102, 128, 0.12);
-            --shadow-heavy: 0 20px 60px rgba(16, 102, 128, 0.15);
-            --shadow-premium: 0 32px 80px rgba(16, 102, 128, 0.2);
-            --border-radius: 20px;
-            --border-radius-large: 32px;
+            --gradient-subtle: linear-gradient(135deg, rgba(16, 102, 128, 0.05) 0%, rgba(10, 62, 93, 0.08) 100%);
+            --gradient-cta: linear-gradient(135deg, #106680 0%, #009EC4 100%);
+            --gradient-success: linear-gradient(45deg, #059669, #10b981);
+            --shadow-subtle: 0 2px 12px rgba(16, 102, 128, 0.04);
+            --shadow-light: 0 4px 20px rgba(16, 102, 128, 0.06);
+            --shadow-medium: 0 8px 32px rgba(16, 102, 128, 0.08);
+            --shadow-heavy: 0 16px 48px rgba(16, 102, 128, 0.12);
+            --shadow-premium: 0 24px 64px rgba(16, 102, 128, 0.15);
+            --border-radius: 12px;
+            --border-radius-large: 24px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             --font-weight-light: 300;
@@ -56,20 +58,26 @@
             --font-weight-extrabold: 800;
             --font-weight-black: 900;
             
-            /* Theme variables */
+            /* Corporate Theme variables */
             --bg-primary: #fafbfc;
             --bg-secondary: #ffffff;
-            --text-primary: #333333;
-            --text-secondary: #6b7280;
-            --border-color: rgba(16, 102, 128, 0.08);
+            --bg-tertiary: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border-color: rgba(16, 102, 128, 0.06);
+            --border-light: rgba(16, 102, 128, 0.04);
         }
 
         [data-theme="dark"] {
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
             --text-primary: #f8fafc;
             --text-secondary: #cbd5e1;
-            --border-color: rgba(255, 255, 255, 0.1);
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-light: rgba(255, 255, 255, 0.04);
         }
 
         * {
@@ -109,15 +117,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
             font-size: 2.5rem;
             font-weight: var(--font-weight-black);
+            letter-spacing: -0.02em;
         }
 
         .preloader-logo .logo-icon {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
+            width: 56px;
+            height: 56px;
+            margin-right: 16px;
             position: relative;
             display: flex;
             align-items: center;
@@ -126,55 +135,55 @@
 
         .preloader-logo .diamond {
             position: absolute;
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             background: white;
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 2px;
             transform: rotate(45deg);
-            animation: preloader-pulse 1.5s ease-in-out infinite;
+            animation: preloader-pulse 2s ease-in-out infinite;
         }
 
         .preloader-logo .diamond:nth-child(1) { 
-            top: 4px; 
+            top: 6px; 
             left: 50%; 
             transform: translateX(-50%) rotate(45deg);
             animation-delay: 0s;
         }
         .preloader-logo .diamond:nth-child(2) { 
-            right: 4px; 
+            right: 6px; 
             top: 50%; 
             transform: translateY(-50%) rotate(45deg);
-            animation-delay: 0.2s;
+            animation-delay: 0.15s;
         }
         .preloader-logo .diamond:nth-child(3) { 
-            bottom: 4px; 
+            bottom: 6px; 
             left: 50%; 
             transform: translateX(-50%) rotate(45deg);
-            animation-delay: 0.4s;
+            animation-delay: 0.3s;
         }
         .preloader-logo .diamond:nth-child(4) { 
-            left: 4px; 
+            left: 6px; 
             top: 50%; 
             transform: translateY(-50%) rotate(45deg);
-            animation-delay: 0.6s;
+            animation-delay: 0.45s;
         }
 
         @keyframes preloader-pulse {
-            0%, 100% { transform: translateX(-50%) rotate(45deg) scale(1); opacity: 1; }
-            50% { transform: translateX(-50%) rotate(45deg) scale(1.3); opacity: 0.7; }
+            0%, 100% { opacity: 1; transform: translateX(-50%) rotate(45deg) scale(1); }
+            50% { opacity: 0.6; transform: translateX(-50%) rotate(45deg) scale(1.1); }
         }
 
         .preloader-text {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: var(--font-weight-medium);
             opacity: 0.9;
-            animation: fade-in-out 2s ease-in-out infinite;
+            animation: fade-pulse 3s ease-in-out infinite;
         }
 
-        @keyframes fade-in-out {
+        @keyframes fade-pulse {
             0%, 100% { opacity: 0.9; }
-            50% { opacity: 0.5; }
+            50% { opacity: 0.6; }
         }
 
         body {
@@ -185,6 +194,7 @@
             scroll-behavior: smooth;
             background: var(--bg-primary);
             transition: background-color 0.3s ease, color 0.3s ease;
+            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
         }
 
         body.loading {
@@ -194,26 +204,27 @@
         /* Dark Mode Toggle */
         .theme-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            right: 24px;
             z-index: 1001;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
-            border-radius: 50px;
+            border-radius: 12px;
             padding: 12px;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: var(--shadow-light);
+            box-shadow: var(--shadow-subtle);
         }
 
         .theme-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-medium);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-light);
+            border-color: var(--accent);
         }
 
         .theme-toggle i {
-            font-size: 1.2rem;
-            color: var(--text-primary);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
             transition: var(--transition);
         }
 
@@ -221,12 +232,12 @@
         .floating-nav {
             position: fixed;
             top: 50%;
-            right: 30px;
+            right: 32px;
             transform: translateY(-50%);
             z-index: 999;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
             opacity: 0;
             transition: var(--transition);
         }
@@ -236,10 +247,10 @@
         }
 
         .nav-dot {
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: rgba(16, 102, 128, 0.3);
+            background: var(--border-color);
             cursor: pointer;
             transition: var(--transition);
             position: relative;
@@ -247,12 +258,12 @@
 
         .nav-dot.active {
             background: var(--primary);
-            transform: scale(1.3);
+            transform: scale(1.5);
         }
 
         .nav-dot:hover {
             background: var(--accent);
-            transform: scale(1.2);
+            transform: scale(1.3);
         }
 
         .nav-dot::before {
@@ -264,14 +275,15 @@
             background: var(--bg-secondary);
             color: var(--text-primary);
             padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
             font-weight: var(--font-weight-medium);
             white-space: nowrap;
             opacity: 0;
             pointer-events: none;
             transition: var(--transition);
             box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
         }
 
         .nav-dot:hover::before {
@@ -281,35 +293,29 @@
         /* Floating Action Button */
         .fab {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 64px;
-            height: 64px;
+            bottom: 32px;
+            right: 32px;
+            width: 56px;
+            height: 56px;
             background: var(--gradient-cta);
-            border-radius: 50%;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 998;
             box-shadow: var(--shadow-heavy);
-            transition: var(--transition-bounce);
-            animation: fab-pulse 3s ease-in-out infinite;
+            transition: var(--transition);
         }
 
         .fab:hover {
-            transform: scale(1.1);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-premium);
         }
 
         .fab i {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: white;
-        }
-
-        @keyframes fab-pulse {
-            0%, 100% { box-shadow: var(--shadow-heavy); }
-            50% { box-shadow: 0 32px 80px rgba(255, 107, 53, 0.4); }
         }
 
         /* Hero Section */
@@ -321,7 +327,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 40px;
+            padding: 80px 0;
         }
 
         .hero::before {
@@ -331,75 +337,38 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-grid)" /></svg>');
-            opacity: 0.6;
-            animation: grid-move 20s linear infinite;
-        }
-
-        @keyframes grid-move {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(20px, 20px); }
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-grid)" /></svg>');
+            opacity: 1;
         }
 
         .hero::after {
             content: '';
             position: absolute;
-            top: 15%;
-            right: -15%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0, 158, 196, 0.12) 0%, transparent 70%);
+            top: 20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 158, 196, 0.08) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float-hero 8s ease-in-out infinite;
+            animation: float-gentle 12s ease-in-out infinite;
         }
 
-        @keyframes float-hero {
-            0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-            50% { transform: translateY(-30px) rotate(5deg) scale(1.05); }
-        }
-
-        .hero-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float-particle 15s linear infinite;
-        }
-
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 30%; animation-delay: 2s; }
-        .particle:nth-child(3) { left: 50%; animation-delay: 4s; }
-        .particle:nth-child(4) { left: 70%; animation-delay: 6s; }
-        .particle:nth-child(5) { left: 90%; animation-delay: 8s; }
-
-        @keyframes float-particle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.02); }
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
             position: relative;
             z-index: 2;
         }
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 80px;
             align-items: center;
         }
@@ -413,38 +382,39 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            margin-bottom: 40px;
-            font-size: 3rem;
+            margin-bottom: 48px;
+            font-size: 2.75rem;
             font-weight: var(--font-weight-black);
             color: white;
             transition: var(--transition);
             animation: slideInLeft 0.8s ease-out;
+            letter-spacing: -0.02em;
         }
 
         .hero-logo:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
-        /* Logo officiel Tenex - 4 losanges en croix avec couleurs bleu-vert */
+        /* Logo officiel Tenex - 4 losanges en croix */
         .hero-logo-icon {
-            width: 70px;
-            height: 70px;
+            width: 64px;
+            height: 64px;
             margin-right: 20px;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition-bounce);
+            transition: var(--transition);
         }
 
         .hero-logo:hover .hero-logo-icon {
-            transform: rotate(5deg) scale(1.05);
+            transform: rotate(2deg) scale(1.02);
         }
 
         .hero-diamond {
             position: absolute;
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             background: white;
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 2px;
@@ -454,131 +424,107 @@
 
         /* Positionnement en croix parfaite */
         .hero-diamond:nth-child(1) { 
-            top: 8px; 
+            top: 10px; 
             left: 50%; 
             transform: translateX(-50%) rotate(45deg);
         }
         .hero-diamond:nth-child(2) { 
-            right: 8px; 
+            right: 10px; 
             top: 50%; 
             transform: translateY(-50%) rotate(45deg);
         }
         .hero-diamond:nth-child(3) { 
-            bottom: 8px; 
+            bottom: 10px; 
             left: 50%; 
             transform: translateX(-50%) rotate(45deg);
         }
         .hero-diamond:nth-child(4) { 
-            left: 8px; 
+            left: 10px; 
             top: 50%; 
             transform: translateY(-50%) rotate(45deg);
         }
 
         .hero-logo:hover .hero-diamond {
             background: var(--accent);
-            animation: pulse-diamond 0.6s ease;
-            border-color: rgba(255, 255, 255, 1);
-            box-shadow: 0 0 15px rgba(0, 158, 196, 0.4);
-        }
-
-        @keyframes pulse-diamond {
-            0%, 100% { 
-                transform: translateX(-50%) rotate(45deg) scale(1); 
-            }
-            50% { 
-                transform: translateX(-50%) rotate(45deg) scale(1.2); 
-            }
+            box-shadow: 0 0 12px rgba(0, 158, 196, 0.3);
         }
 
         .beta-badge {
-            background: var(--gradient-cta);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             color: white;
             padding: 12px 24px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: var(--font-weight-bold);
+            border-radius: 24px;
+            font-size: 0.875rem;
+            font-weight: var(--font-weight-semibold);
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 32px;
+            gap: 8px;
+            margin-bottom: 40px;
             text-transform: none;
-            letter-spacing: 0.5px;
-            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
-            animation: pulse-glow 3s infinite;
-            position: relative;
-            overflow: hidden;
+            letter-spacing: 0.01em;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
         }
 
-        .beta-badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: shine 3s infinite;
+        .beta-badge:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
         }
 
-        @keyframes shine {
-            0% { left: -100%; }
-            50% { left: 100%; }
-            100% { left: 100%; }
+        .beta-badge .badge-icon {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
         }
 
-        @keyframes pulse-glow {
-            0%, 100% { 
-                transform: scale(1); 
-                box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
-            }
-            50% { 
-                transform: scale(1.02); 
-                box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
-            }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
         }
 
         .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: var(--font-weight-black);
-            margin-bottom: 28px;
+            margin-bottom: 32px;
             line-height: 1.1;
-            background: linear-gradient(45deg, #ffffff, #e8f5f8, #ffffff, #f0f9ff);
-            background-size: 300% 300%;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 50%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: slideInLeft 1s ease-out 0.2s both, gradient-shift 4s ease-in-out infinite;
-        }
-
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            animation: slideInLeft 1s ease-out 0.2s both;
         }
 
         .hero-text .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
-            opacity: 0.95;
+            font-size: 1.25rem;
+            margin-bottom: 48px;
+            opacity: 0.9;
             font-weight: var(--font-weight-normal);
             animation: slideInLeft 1.2s ease-out 0.4s both;
             line-height: 1.6;
+            letter-spacing: -0.01em;
         }
 
         .hero-bullets {
-            margin-bottom: 48px;
+            margin-bottom: 56px;
             animation: slideInLeft 1.4s ease-out 0.6s both;
         }
 
         .hero-bullets li {
             list-style: none;
-            font-size: 1.15rem;
-            margin-bottom: 16px;
+            font-size: 1.125rem;
+            margin-bottom: 20px;
             position: relative;
             padding-left: 32px;
             opacity: 0;
             animation: fadeInUp 0.6s ease forwards;
             animation-delay: calc(var(--i) * 0.1s + 1s);
-            font-weight: var(--font-weight-medium);
+            font-weight: var(--font-weight-normal);
+            line-height: 1.6;
         }
 
         .hero-bullets li:nth-child(1) { --i: 1; }
@@ -586,28 +532,25 @@
         .hero-bullets li:nth-child(3) { --i: 3; }
 
         .hero-bullets li::before {
-            content: '🎯';
+            content: '';
             position: absolute;
             left: 0;
-            top: 0;
-            font-size: 1.2rem;
-            animation: bounce-icon 2s ease-in-out infinite;
-            animation-delay: calc(var(--i) * 0.3s);
-        }
-
-        @keyframes bounce-icon {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(5deg); }
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.8;
         }
 
         /* Premium CTA Section */
         .cta-section {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(32px);
             -webkit-backdrop-filter: blur(32px);
             border-radius: var(--border-radius-large);
             padding: 48px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             box-shadow: var(--shadow-premium);
             animation: slideInRight 1s ease-out 0.8s both;
             transition: var(--transition);
@@ -622,44 +565,45 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
             pointer-events: none;
         }
 
         .cta-section:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.25);
+            transform: translateY(-4px);
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.2);
         }
 
         .cta-section h2 {
-            font-size: 2.3rem;
-            margin-bottom: 24px;
+            font-size: 2rem;
+            margin-bottom: 16px;
             text-align: center;
-            font-weight: var(--font-weight-black);
+            font-weight: var(--font-weight-bold);
             position: relative;
             z-index: 1;
+            letter-spacing: -0.01em;
         }
 
         .cta-section > p {
             margin-bottom: 40px;
-            opacity: 0.95;
-            font-size: 1.1rem;
+            opacity: 0.9;
+            font-size: 1rem;
             text-align: center;
             position: relative;
             z-index: 1;
-            font-weight: var(--font-weight-medium);
+            font-weight: var(--font-weight-normal);
         }
 
         .form-progress {
             display: flex;
             justify-content: center;
             margin-bottom: 32px;
-            gap: 8px;
+            gap: 6px;
         }
 
         .progress-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             transition: var(--transition);
@@ -667,7 +611,7 @@
 
         .progress-dot.active {
             background: white;
-            transform: scale(1.3);
+            transform: scale(1.4);
         }
 
         .form-group {
@@ -678,22 +622,23 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 10px;
-            font-weight: var(--font-weight-semibold);
-            font-size: 0.95rem;
+            margin-bottom: 8px;
+            font-weight: var(--font-weight-medium);
+            font-size: 0.875rem;
             color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.01em;
         }
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 18px 24px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.95);
-            transition: var(--transition-bounce);
-            color: #333;
-            font-weight: var(--font-weight-medium);
+            transition: var(--transition);
+            color: var(--text-primary);
+            font-weight: var(--font-weight-normal);
             font-family: 'Inter', sans-serif;
         }
 
@@ -701,32 +646,32 @@
             outline: none;
             background: white;
             border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 158, 196, 0.25);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(0, 158, 196, 0.15);
         }
 
         .form-group input::placeholder {
-            color: rgba(51, 51, 51, 0.6);
+            color: var(--text-muted);
             font-weight: var(--font-weight-normal);
         }
 
         .btn-primary {
             background: var(--gradient-cta);
             color: white;
-            padding: 20px 48px;
+            padding: 18px 32px;
             border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: var(--font-weight-bold);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: var(--font-weight-semibold);
             cursor: pointer;
-            transition: var(--transition-bounce);
+            transition: var(--transition);
             width: 100%;
             margin-top: 32px;
             text-transform: none;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.01em;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            box-shadow: var(--shadow-medium);
             font-family: 'Inter', sans-serif;
         }
 
@@ -737,7 +682,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.6s ease;
         }
 
@@ -746,22 +691,22 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.4);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
         }
 
         .btn-primary:active {
-            transform: translateY(-2px) scale(0.98);
+            transform: translateY(0px);
         }
 
         .micro-assurance {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
             margin-top: 20px;
             text-align: center;
             position: relative;
             z-index: 1;
-            font-weight: var(--font-weight-medium);
+            font-weight: var(--font-weight-normal);
         }
 
         /* Enhanced sections styling */
@@ -774,103 +719,94 @@
 
         .section-title {
             text-align: center;
-            font-size: clamp(2.5rem, 4vw, 3.8rem);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             margin-bottom: 24px;
-            color: var(--primary);
-            font-weight: var(--font-weight-black);
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-primary);
+            font-weight: var(--font-weight-bold);
             position: relative;
-            animation: gradient-shift 6s ease-in-out infinite;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1.125rem;
             color: var(--text-secondary);
             margin-bottom: 80px;
-            max-width: 800px;
+            max-width: 720px;
             margin-left: auto;
             margin-right: auto;
             font-weight: var(--font-weight-normal);
-            line-height: 1.7;
+            line-height: 1.6;
+            letter-spacing: -0.01em;
         }
 
         /* Stats Section */
         .stats-section {
-            background: var(--gradient-primary);
-            color: white;
+            background: var(--bg-secondary);
             padding: 80px 0;
-            margin: 120px 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 48px;
             text-align: center;
         }
 
         .stat-item {
-            padding: 20px;
+            padding: 32px 24px;
             transition: var(--transition);
+            border-radius: var(--border-radius);
         }
 
         .stat-item:hover {
-            transform: translateY(-8px);
+            transform: translateY(-4px);
+            background: var(--gradient-subtle);
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: var(--font-weight-black);
-            margin-bottom: 8px;
-            background: linear-gradient(45deg, #ffffff, #e8f5f8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 12px;
+            color: var(--primary);
+            letter-spacing: -0.02em;
         }
 
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: var(--font-weight-medium);
-            opacity: 0.9;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         /* Tenex Phrase */
         .tenex-phrase {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+            background: var(--bg-tertiary);
             text-align: center;
             position: relative;
-        }
-
-        .tenex-phrase::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(16,102,128,0.05)" /></pattern></defs><rect width="100" height="100" fill="url(%23dots)" /></svg>');
-            opacity: 0.6;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .phrase-content {
-            background: var(--gradient-primary);
-            color: white;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             padding: 48px;
             border-radius: var(--border-radius-large);
-            font-size: 1.4rem;
-            font-weight: var(--font-weight-semibold);
-            line-height: 1.7;
-            max-width: 950px;
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-medium);
+            line-height: 1.6;
+            max-width: 880px;
             margin: 0 auto;
-            box-shadow: var(--shadow-premium);
+            box-shadow: var(--shadow-light);
             position: relative;
             overflow: hidden;
             transition: var(--transition);
+            border: 1px solid var(--border-color);
+            letter-spacing: -0.01em;
         }
 
         .phrase-content::before {
@@ -880,12 +816,18 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+            background: var(--gradient-subtle);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .phrase-content:hover::before {
+            opacity: 1;
         }
 
         .phrase-content:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 40px 100px rgba(16, 102, 128, 0.3);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
         }
 
         /* Enhanced Cards System */
@@ -899,10 +841,10 @@
         .enhanced-card {
             background: var(--bg-secondary);
             padding: 40px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-light);
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-subtle);
             border: 1px solid var(--border-color);
-            transition: var(--transition-bounce);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -913,8 +855,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
+            height: 3px;
+            background: var(--gradient-cta);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -924,33 +866,46 @@
         }
 
         .enhanced-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: var(--shadow-premium);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
         }
 
         .enhanced-card h4 {
-            font-size: 1.3rem;
-            font-weight: var(--font-weight-bold);
-            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-semibold);
+            color: var(--text-primary);
             margin-bottom: 16px;
             display: flex;
             align-items: center;
             gap: 12px;
+            letter-spacing: -0.01em;
         }
 
         .enhanced-card p {
             color: var(--text-secondary);
             line-height: 1.6;
-            font-weight: var(--font-weight-medium);
+            font-weight: var(--font-weight-normal);
+        }
+
+        .card-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-subtle);
+            border-radius: 6px;
+            color: var(--primary);
+            font-size: 0.875rem;
         }
 
         /* Comment ça marche - Visual Process */
         .process-visual {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin: 80px 0;
-            gap: 20px;
+            gap: 32px;
             position: relative;
         }
 
@@ -960,7 +915,7 @@
             position: relative;
             opacity: 0;
             animation: fadeInUp 0.8s ease forwards;
-            animation-delay: calc(var(--step) * 0.2s);
+            animation-delay: calc(var(--step) * 0.15s);
         }
 
         .process-step:nth-child(1) { --step: 0; }
@@ -969,131 +924,92 @@
         .process-step:nth-child(4) { --step: 3; }
 
         .step-shape {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             margin: 0 auto 24px;
             position: relative;
-            transition: var(--transition-bounce);
+            transition: var(--transition);
+            background: var(--gradient-cta);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-light);
         }
 
         .process-step:hover .step-shape {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .step-circle {
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
+            transform: translateY(-4px);
             box-shadow: var(--shadow-medium);
         }
 
-        .step-hexagon {
-            background: var(--accent);
-            width: 100%;
-            height: 100%;
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .step-diamond {
-            background: var(--primary);
-            width: 85px;
-            height: 85px;
-            transform: rotate(45deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 17.5px auto;
-            font-size: 2.5rem;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .step-diamond span {
-            transform: rotate(-45deg);
-        }
-
-        .step-triangle {
-            width: 0;
-            height: 0;
-            border-left: 60px solid transparent;
-            border-right: 60px solid transparent;
-            border-bottom: 104px solid var(--secondary);
-            position: relative;
-            margin: 8px auto;
-            box-shadow: var(--shadow-medium);
-        }
-
-        .step-triangle::after {
-            content: attr(data-icon);
-            position: absolute;
-            bottom: -80px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2.5rem;
+        .step-icon {
+            font-size: 1.5rem;
             color: white;
         }
 
-        .step-title {
-            font-size: 1.2rem;
+        .step-number {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
             font-weight: var(--font-weight-bold);
-            color: var(--primary);
+        }
+
+        .step-title {
+            font-size: 1.125rem;
+            font-weight: var(--font-weight-semibold);
+            color: var(--text-primary);
             margin-bottom: 12px;
+            letter-spacing: -0.01em;
         }
 
         .step-description {
-            font-size: 0.95rem;
+            font-size: 0.875rem;
             color: var(--text-secondary);
             line-height: 1.5;
-            font-weight: var(--font-weight-medium);
+            font-weight: var(--font-weight-normal);
         }
 
         .process-connector {
             position: absolute;
-            top: 50%;
+            top: 40px;
             left: 0;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent 10%, var(--accent) 20%, var(--primary) 50%, var(--accent) 80%, transparent 90%);
+            height: 1px;
+            background: linear-gradient(90deg, transparent 10%, var(--border-color) 20%, var(--border-color) 80%, transparent 90%);
             z-index: -1;
             opacity: 0;
-            animation: drawLine 2s ease 1s forwards;
+            animation: fadeIn 1s ease 1s forwards;
         }
 
-        @keyframes drawLine {
-            0% { 
-                opacity: 0; 
-                transform: scaleX(0); 
-            }
-            100% { 
-                opacity: 1; 
-                transform: scaleX(1); 
-            }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         /* Dashboard Features Grid */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
+            gap: 24px;
             margin-top: 80px;
         }
 
         .dashboard-feature {
             background: var(--bg-secondary);
             padding: 32px;
-            border-radius: 20px;
+            border-radius: var(--border-radius-large);
             border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-light);
-            transition: var(--transition-bounce);
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -1104,8 +1020,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: var(--gradient-primary);
+            height: 2px;
+            background: var(--gradient-cta);
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -1115,54 +1031,55 @@
         }
 
         .dashboard-feature:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-premium);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
         }
 
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
-            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-subtle);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            color: white;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow-light);
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
         }
 
         .feature-title {
-            font-size: 1.3rem;
-            font-weight: var(--font-weight-bold);
-            color: var(--primary);
-            margin-bottom: 16px;
+            font-size: 1.125rem;
+            font-weight: var(--font-weight-semibold);
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
         }
 
         .feature-description {
             color: var(--text-secondary);
             line-height: 1.6;
-            font-weight: var(--font-weight-medium);
-            margin-bottom: 20px;
+            font-weight: var(--font-weight-normal);
+            font-size: 0.875rem;
         }
 
         /* Avantages Section */
         .advantages-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
+            gap: 24px;
             margin-top: 80px;
         }
 
         .advantage-card {
             background: var(--bg-secondary);
-            padding: 36px;
-            border-radius: 20px;
+            padding: 32px;
+            border-radius: var(--border-radius-large);
             text-align: center;
             border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-light);
-            transition: var(--transition-bounce);
+            box-shadow: var(--shadow-subtle);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -1174,7 +1091,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(16, 102, 128, 0.02) 0%, transparent 50%);
+            background: var(--gradient-subtle);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -1184,43 +1101,57 @@
         }
 
         .advantage-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-premium);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
         }
 
         .advantage-icon {
-            font-size: 3rem;
-            margin-bottom: 24px;
-            display: block;
-            animation: bounce-icon 2s ease-in-out infinite;
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-cta);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.25rem;
+            position: relative;
+            z-index: 1;
         }
 
         .advantage-title {
-            font-size: 1.4rem;
-            font-weight: var(--font-weight-bold);
-            color: var(--primary);
-            margin-bottom: 16px;
+            font-size: 1.125rem;
+            font-weight: var(--font-weight-semibold);
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.01em;
         }
 
         .advantage-description {
             color: var(--text-secondary);
             line-height: 1.6;
-            font-weight: var(--font-weight-medium);
+            font-weight: var(--font-weight-normal);
+            font-size: 0.875rem;
+            position: relative;
+            z-index: 1;
         }
 
         .scroll-indicator {
             position: fixed;
             top: 0;
             left: 0;
-            height: 4px;
-            background: var(--gradient-primary);
+            height: 3px;
+            background: var(--gradient-cta);
             z-index: 1000;
             transition: width 0.3s ease;
         }
 
         /* Loading states */
         .form-loading .btn-primary {
-            background: #9ca3af;
+            background: var(--text-muted);
             cursor: not-allowed;
             position: relative;
         }
@@ -1228,8 +1159,8 @@
         .form-loading .btn-primary::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             border: 2px solid transparent;
             border-top: 2px solid white;
             border-radius: 50%;
@@ -1240,22 +1171,17 @@
         }
 
         @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-60px); }
+            from { opacity: 0; transform: translateX(-40px); }
             to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(60px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInFromRight {
-            from { opacity: 0; transform: translateX(30px); }
+            from { opacity: 0; transform: translateX(40px); }
             to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -1271,7 +1197,7 @@
             }
             
             .container {
-                padding: 0 20px;
+                padding: 0 24px;
             }
             
             .hero-content {
@@ -1279,7 +1205,7 @@
             }
             
             .cta-section {
-                padding: 40px 32px;
+                padding: 40px;
             }
 
             .process-visual {
@@ -1294,8 +1220,8 @@
 
         @media (max-width: 768px) {
             .theme-toggle {
-                top: 10px;
-                right: 10px;
+                top: 16px;
+                right: 16px;
             }
 
             .hero-content {
@@ -1305,7 +1231,7 @@
             }
             
             .cta-section {
-                padding: 32px 24px;
+                padding: 32px;
             }
 
             .card-grid, .dashboard-grid, .advantages-grid {
@@ -1313,23 +1239,31 @@
             }
 
             .step-shape {
-                width: 100px;
-                height: 100px;
+                width: 64px;
+                height: 64px;
             }
 
             .hero-logo {
                 justify-content: center;
-                font-size: 2.5rem;
+                font-size: 2.25rem;
             }
 
             .hero-logo-icon {
-                width: 60px;
-                height: 60px;
+                width: 56px;
+                height: 56px;
             }
 
             .hero-diamond {
-                width: 14px;
-                height: 14px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .container {
+                padding: 0 20px;
             }
         }
 
@@ -1339,31 +1273,31 @@
             }
 
             .hero {
-                padding-top: 20px;
+                padding: 60px 0;
             }
 
             .cta-section {
-                padding: 24px 20px;
-                border-radius: 24px;
-            }
-
-            .step-shape {
-                width: 80px;
-                height: 80px;
+                padding: 24px;
+                border-radius: 20px;
             }
 
             .hero-logo {
                 font-size: 2rem;
+                margin-bottom: 32px;
             }
 
             .hero-logo-icon {
-                width: 50px;
-                height: 50px;
+                width: 48px;
+                height: 48px;
             }
 
             .hero-diamond {
-                width: 12px;
-                height: 12px;
+                width: 10px;
+                height: 10px;
+            }
+
+            .section {
+                padding: 60px 0;
             }
         }
 
@@ -1393,7 +1327,7 @@
                 </div>
                 Tenex
             </div>
-            <div class="preloader-text">Chargement de l'expérience premium...</div>
+            <div class="preloader-text">Chargement...</div>
         </div>
     </div>
 
@@ -1406,30 +1340,22 @@
     <nav class="floating-nav" id="floatingNav">
         <div class="nav-dot" data-section="Accueil" data-target="hero"></div>
         <div class="nav-dot" data-section="Concept" data-target="concept"></div>
-        <div class="nav-dot" data-section="Comment ça marche" data-target="how-it-works"></div>
+        <div class="nav-dot" data-section="Processus" data-target="how-it-works"></div>
         <div class="nav-dot" data-section="Matching" data-target="matching"></div>
         <div class="nav-dot" data-section="Dashboard" data-target="dashboard"></div>
         <div class="nav-dot" data-section="Avantages" data-target="advantages"></div>
-        <div class="nav-dot" data-section="FAQ" data-target="faq"></div>
+        <div class="nav-dot" data-section="Contact" data-target="faq"></div>
     </nav>
 
     <!-- Floating Action Button -->
     <div class="fab" id="fab">
-        <i class="fas fa-rocket"></i>
+        <i class="fas fa-arrow-up"></i>
     </div>
 
     <div class="scroll-indicator" id="scrollIndicator"></div>
 
     <!-- Enhanced Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -1445,20 +1371,21 @@
                     </div>
                     
                     <div class="beta-badge">
-                        <span>🎉</span>
+                        <div class="badge-icon"></div>
                         Bêta gratuite – Places limitées
                     </div>
                     <h1>Révolutionnez votre recrutement</h1>
-                    <p class="subtitle">Le jobboard intelligent qui connecte automatiquement les meilleures opportunités aux meilleurs profils</p>
+                    <p class="subtitle">La plateforme intelligente qui connecte automatiquement les meilleures opportunités aux meilleurs profils grâce à notre système de 10 connexions stratégiques.</p>
                     
                     <ul class="hero-bullets">
-                        <li>Tenex combine CVthèque intelligente et matching précis : accès illimité aux profils inactifs, 10 connexions actives simultanées pour maximiser votre réactivité, le tout avec une IA qui comprend vos vrais besoins.</li>
-                        <li>Soyez parmi les premiers à tester Tenex gratuitement et révolutionnez vos recrutements dès aujourd'hui</li>
+                        <li>Accès illimité aux profils inactifs pour une exploration complète de votre marché de talents</li>
+                        <li>Maximum 10 connexions actives simultanées pour garantir un suivi personnalisé et efficace</li>
+                        <li>Intelligence artificielle avancée qui comprend vos besoins réels et optimise chaque match</li>
                     </ul>
                 </div>
                 
                 <div class="cta-section">
-                    <h2>🎯 Rejoignez les beta-testeurs</h2>
+                    <h2>Rejoignez les beta-testeurs</h2>
                     <p>Testez gratuitement la première plateforme qui révolutionne le recrutement</p>
                     
                     <!-- Form Progress Indicator -->
@@ -1502,7 +1429,7 @@
                             <label for="role">Votre fonction</label>
                             <select id="role" name="role" required>
                                 <option value="">Sélectionnez votre fonction</option>
-                                <option value="rh">RH / Recrutement</option>
+                                <option value="rh">Ressources Humaines / Recrutement</option>
                                 <option value="direction">Direction générale</option>
                                 <option value="manager">Manager opérationnel</option>
                                 <option value="other">Autre</option>
@@ -1521,10 +1448,10 @@
                         </div>
                         
                         <button type="submit" class="btn-primary">
-                            👉 Je veux tester Tenex gratuitement
+                            Accéder à la bêta gratuitement
                         </button>
                         
-                        <div class="micro-assurance">🔒 Vos données sont sécurisées – Pas de spam</div>
+                        <div class="micro-assurance">Données sécurisées – Sans engagement – Pas de spam</div>
                     </form>
                 </div>
             </div>
@@ -1537,19 +1464,19 @@
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number" data-count="10">0</div>
-                    <div class="stat-label">Connexions actives max pour booster la réactivité</div>
+                    <div class="stat-label">Connexions actives maximales pour un suivi optimal</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-count="∞">0</div>
-                    <div class="stat-label">Accès illimité aux profils inactifs</div>
+                    <div class="stat-label">Profils consultables sans limitation</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-count="3">0</div>
-                    <div class="stat-label">Processus personnalisables selon vos méthodes</div>
+                    <div class="stat-label">Fois plus rapide qu'un processus traditionnel</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number" data-count="100">0</div>
-                    <div class="stat-label">Fonctions supports spécialisées</div>
+                    <div class="stat-number" data-count="95">0</div>
+                    <div class="stat-label">% de précision dans le matching candidat-poste</div>
                 </div>
             </div>
         </div>
@@ -1559,7 +1486,7 @@
     <section class="section tenex-phrase">
         <div class="container">
             <div class="phrase-content">
-                <strong>Jobboard nouvelle génération :</strong> vous consultez librement tous les profils et vous activez seulement 10 candidats à la fois, choisis par vos soins parmi nos recommandations classées.
+                <strong>Plateforme nouvelle génération :</strong> consultez librement tous les profils et activez seulement 10 candidats à la fois, choisis par vos soins parmi nos recommandations intelligentes.
             </div>
         </div>
     </section>
@@ -1567,52 +1494,52 @@
     <!-- ACTIFS vs INACTIFS -->
     <section class="section" id="concept">
         <div class="container">
-            <h2 class="section-title">Une approche révolutionnaire qui résout enfin les vrais problèmes du recrutement moderne</h2>
-            <p class="section-subtitle">Comprenez la différence entre consultation libre et process de recrutement actif</p>
+            <h2 class="section-title">Une approche révolutionnaire du recrutement moderne</h2>
+            <p class="section-subtitle">Comprenez la différence entre consultation libre et processus de recrutement actif</p>
             
             <div class="card-grid">
                 <div class="enhanced-card">
-                    <h4>📋 PROFILS INACTIFS</h4>
-                    <p style="color: var(--text-secondary); margin-bottom: 20px; font-weight: var(--font-weight-semibold);">Hors process, accès libre</p>
+                    <h4><span class="card-icon"><i class="fas fa-eye"></i></span>Profils Inactifs</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; font-weight: var(--font-weight-medium);">Hors processus, accès libre</p>
                     <ul style="list-style: none; margin: 0;">
                         <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
-                            Notre IA analyse la sémantique, les motivations réelles et le contexte professionnel pour proposer les 10 meilleurs matchs des deux côtés.
+                            <span style="position: absolute; left: 0; color: var(--accent); top: 6px;">•</span>
+                            Intelligence artificielle qui analyse les motivations réelles et le contexte professionnel
                         </li>
                         <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
-                            Prise en compte du mode de transport, des temps de trajet réels via Google Maps. Fini les candidatures impossibles géographiquement.
+                            <span style="position: absolute; left: 0; color: var(--accent); top: 6px;">•</span>
+                            Géolocalisation précise avec temps de trajet réels selon le mode de transport
                         </li>
                         <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
-                            Analyse des disponibilités réelles, préavis, fin de contrats pour matcher au bon moment. Plus de perte de temps.
+                            <span style="position: absolute; left: 0; color: var(--accent); top: 6px;">•</span>
+                            Analyse des disponibilités, préavis et fin de contrats pour un timing optimal
                         </li>
                         <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
-                            Accès illimité aux profils inactifs + 10 connexions actives simultanées pour maximiser votre réactivité et efficacité.
+                            <span style="position: absolute; left: 0; color: var(--accent); top: 6px;">•</span>
+                            Consultation illimitée sans coût par clic ni verrouillage
                         </li>
                     </ul>
                 </div>
                 
                 <div class="enhanced-card">
-                    <h4>⚡ PROFILS ACTIFS</h4>
-                    <p style="color: var(--accent); margin-bottom: 20px; font-weight: var(--font-weight-semibold);">En process de recrutement</p>
+                    <h4><span class="card-icon"><i class="fas fa-bolt"></i></span>Profils Actifs</h4>
+                    <p style="color: var(--accent); margin-bottom: 20px; font-weight: var(--font-weight-medium);">En processus de recrutement</p>
                     <ul style="list-style: none; margin: 0;">
                         <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
-                            Limite de 10 connexions simultanées pour booster l'engagement. Les candidatures avancent ou sont libérées pour d'autres.
+                            <span style="position: absolute; left: 0; color: var(--accent); top: 6px;">•</span>
+                            Limite de 10 connexions simultanées pour maximiser l'engagement mutuel
                         </li>
                         <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
-                            Parsing automatique des fiches de poste, matching sémantique avancé et scoring automatique des candidats selon vos critères.
+                            <span style="position: absolute; left: 0; color: var(--accent); top: 6px;">•</span>
+                            Parsing automatique des fiches de poste et scoring intelligent des candidats
                         </li>
                         <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
-                            Tableau de suivi intégré, messagerie, planning, décisions
+                            <span style="position: absolute; left: 0; color: var(--accent); top: 6px;">•</span>
+                            Tableau de bord intégré avec messagerie et planning centralisé
                         </li>
                         <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--accent);">•</span>
-                            <strong>Chaque décision libère une place</strong> pour un nouveau profil
+                            <span style="position: absolute; left: 0; color: var(--accent); top: 6px;">•</span>
+                            Chaque décision libère immédiatement une place pour un nouveau profil
                         </li>
                     </ul>
                 </div>
@@ -1623,7 +1550,7 @@
     <!-- Comment ça marche - Visual Process -->
     <section class="section" id="how-it-works">
         <div class="container">
-            <h2 class="section-title">Un processus personnalisable que vous définissez selon vos besoins spécifiques</h2>
+            <h2 class="section-title">Un processus personnalisable selon vos besoins</h2>
             <p class="section-subtitle">Découvrez comment Tenex transforme votre façon de recruter en 4 étapes simples</p>
             
             <div class="process-visual">
@@ -1631,40 +1558,38 @@
                 
                 <div class="process-step">
                     <div class="step-shape">
-                        <div class="step-circle">
-                            <span>📋</span>
-                        </div>
+                        <i class="fas fa-plus step-icon"></i>
+                        <div class="step-number">1</div>
                     </div>
-                    <h3 class="step-title">Créez, organisez et activez les étapes selon vos méthodes de recrutement</h3>
-                    <p class="step-description">Validation CV • Pré-qualification téléphonique • Entretien visio • Tests techniques • Entretien présentiel • Décision finale</p>
+                    <h3 class="step-title">Créez votre processus</h3>
+                    <p class="step-description">Organisez et activez les étapes selon vos méthodes de recrutement spécifiques</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-shape">
-                        <div class="step-hexagon">
-                            <span>🎯</span>
-                        </div>
+                        <i class="fas fa-search step-icon"></i>
+                        <div class="step-number">2</div>
                     </div>
-                    <h3 class="step-title">Notre algorithme identifie automatiquement les meilleurs profils</h3>
-                    <p class="step-description">IA avancée qui analyse compétences, motivations et contexte pour des matchs précis</p>
+                    <h3 class="step-title">Identification intelligente</h3>
+                    <p class="step-description">Notre algorithme identifie automatiquement les meilleurs profils selon vos critères</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-shape">
-                        <div class="step-diamond">
-                            <span>📊</span>
-                        </div>
+                        <i class="fas fa-chart-line step-icon"></i>
+                        <div class="step-number">3</div>
                     </div>
-                    <h3 class="step-title">Visualisez l'avancement de chaque candidat dans votre pipeline</h3>
-                    <p class="step-description">Tableau de bord intuitif avec suivi en temps réel des candidatures</p>
+                    <h3 class="step-title">Suivi en temps réel</h3>
+                    <p class="step-description">Visualisez l'avancement de chaque candidat dans votre pipeline personnalisé</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="step-shape">
-                        <div class="step-triangle" data-icon="✅"></div>
+                        <i class="fas fa-handshake step-icon"></i>
+                        <div class="step-number">4</div>
                     </div>
-                    <h3 class="step-title">Assignez les étapes, partagez les évaluations et commentaires</h3>
-                    <p class="step-description">Collaboration d'équipe facilitée pour des décisions éclairées</p>
+                    <h3 class="step-title">Collaboration d'équipe</h3>
+                    <p class="step-description">Partagez les évaluations et commentaires pour des décisions éclairées</p>
                 </div>
             </div>
         </div>
@@ -1673,33 +1598,33 @@
     <!-- Système de matching pondéré -->
     <section class="section" id="matching">
         <div class="container">
-            <h2 class="section-title">Finalisez vos recrutements avec une efficacité maximale</h2>
-            <p class="section-subtitle">Notre moteur ne se limite pas au CV. Il pondère des critères concrets pour rapprocher vos besoins et les aspirations des candidats.</p>
+            <h2 class="section-title">Matching intelligent et précis</h2>
+            <p class="section-subtitle">Notre moteur d'intelligence artificielle analyse des critères concrets pour optimiser chaque appariement candidat-poste</p>
             
             <div class="card-grid">
                 <div class="enhanced-card">
-                    <h4>🎯 Géolocalisation intelligente</h4>
-                    <p>Temps de trajet réel selon le mode de transport préféré du candidat</p>
+                    <h4><span class="card-icon"><i class="fas fa-map-marker-alt"></i></span>Géolocalisation avancée</h4>
+                    <p>Calcul des temps de trajet réels selon le mode de transport préféré et les horaires de pointe</p>
                 </div>
                 
                 <div class="enhanced-card">
-                    <h4>💼 Motivations & contexte</h4>
-                    <p>Rémunération, évolution, flexibilité, environnement de travail souhaité</p>
+                    <h4><span class="card-icon"><i class="fas fa-heart"></i></span>Motivations profondes</h4>
+                    <p>Analyse des aspirations professionnelles : rémunération, évolution, flexibilité et environnement</p>
                 </div>
                 
                 <div class="enhanced-card">
-                    <h4>🔧 Historique & outils</h4>
-                    <p>Taille d'équipe, logiciels maîtrisés, contexte international d'expérience</p>
+                    <h4><span class="card-icon"><i class="fas fa-tools"></i></span>Contexte technique</h4>
+                    <p>Évaluation de l'expérience : taille d'équipe, outils maîtrisés, contexte international</p>
                 </div>
                 
                 <div class="enhanced-card">
-                    <h4>⚖️ Pondération multi-critères</h4>
-                    <p>Type de contrat, disponibilité, préavis, priorités personnelles</p>
+                    <h4><span class="card-icon"><i class="fas fa-balance-scale"></i></span>Pondération multicritères</h4>
+                    <p>Optimisation selon le type de contrat, disponibilité, préavis et priorités personnelles</p>
                 </div>
             </div>
             
-            <div style="font-style: italic; color: var(--text-secondary); text-align: center; margin-top: 40px; padding: 24px; background: var(--bg-secondary); border-radius: 16px; font-weight: var(--font-weight-medium); border: 1px solid var(--border-color);">
-                <p><em>Le système de matching pondéré reste le cœur de notre approche. L'IA n'est qu'un composant d'optimisation.</em></p>
+            <div style="font-style: italic; color: var(--text-secondary); text-align: center; margin-top: 48px; padding: 24px; background: var(--bg-secondary); border-radius: var(--border-radius); font-weight: var(--font-weight-normal); border: 1px solid var(--border-color);">
+                <p>Le système de matching pondéré reste le cœur de notre approche. L'intelligence artificielle optimise et affine continuellement les résultats.</p>
             </div>
         </div>
     </section>
@@ -1707,56 +1632,56 @@
     <!-- Dashboard Entreprise -->
     <section class="section" id="dashboard">
         <div class="container">
-            <h2 class="section-title">Toutes les fonctionnalités dont vous avez besoin, centralisées dans une interface intuitive et moderne</h2>
-            <p class="section-subtitle">Un tableau de bord complet qui simplifie votre processus de recrutement de A à Z</p>
+            <h2 class="section-title">Interface centralisée et intuitive</h2>
+            <p class="section-subtitle">Un tableau de bord complet qui simplifie et accélère votre processus de recrutement</p>
             
             <div class="dashboard-grid">
                 <div class="dashboard-feature">
                     <div class="feature-icon">
                         <i class="fas fa-plus"></i>
                     </div>
-                    <h3 class="feature-title">Créer un poste</h3>
-                    <p class="feature-description">Postes ouverts, recrutements en cours, taux de conversion, délais moyens - tous vos KPIs sur un seul écran.</p>
+                    <h3 class="feature-title">Création de postes</h3>
+                    <p class="feature-description">Importez vos fiches existantes, notre IA structure automatiquement tous les critères et KPIs essentiels.</p>
                 </div>
                 
                 <div class="dashboard-feature">
                     <div class="feature-icon">
                         <i class="fas fa-star"></i>
                     </div>
-                    <h3 class="feature-title">Mes sélections</h3>
-                    <p class="feature-description">Importez vos fiches de poste existantes, notre IA les parse et structure automatiquement tous les critères.</p>
+                    <h3 class="feature-title">Sélections personnalisées</h3>
+                    <p class="feature-description">Gérez vos candidats favoris et suivez leur progression dans votre pipeline personnalisé.</p>
                 </div>
                 
                 <div class="dashboard-feature">
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="feature-title">Candidats</h3>
-                    <p class="feature-description">Créez votre pipeline sur-mesure : ajoutez, supprimez, réorganisez les étapes et assignez-les à vos équipes.</p>
+                    <h3 class="feature-title">Gestion des candidats</h3>
+                    <p class="feature-description">Scoring automatique et personnalisé basé sur vos critères spécifiques et historique de recrutement.</p>
                 </div>
                 
                 <div class="dashboard-feature">
                     <div class="feature-icon">
                         <i class="fas fa-calendar"></i>
                     </div>
-                    <h3 class="feature-title">Planning</h3>
-                    <p class="feature-description">Chaque candidat reçoit un score de matching personnalisé basé sur vos critères spécifiques.</p>
+                    <h3 class="feature-title">Planning intégré</h3>
+                    <p class="feature-description">Synchronisation avec vos calendriers pour optimiser la planification des entretiens.</p>
                 </div>
                 
                 <div class="dashboard-feature">
                     <div class="feature-icon">
                         <i class="fas fa-comments"></i>
                     </div>
-                    <h3 class="feature-title">Messagerie</h3>
-                    <p class="feature-description">Ajoutez vos collaborateurs, définissez les rôles et permissions, organisez vos processus de recrutement.</p>
+                    <h3 class="feature-title">Messagerie centralisée</h3>
+                    <p class="feature-description">Communication directe avec les candidats et partage d'informations avec votre équipe.</p>
                 </div>
                 
                 <div class="dashboard-feature">
                     <div class="feature-icon">
                         <i class="fas fa-cog"></i>
                     </div>
-                    <h3 class="feature-title">Organisation</h3>
-                    <p class="feature-description">Posez vos questions, faites des recommandations ou signalez un problème directement depuis la plateforme.</p>
+                    <h3 class="feature-title">Administration avancée</h3>
+                    <p class="feature-description">Gestion des droits utilisateurs, workflows personnalisés et intégrations avec vos outils.</p>
                 </div>
             </div>
         </div>
@@ -1766,43 +1691,55 @@
     <section class="section" id="advantages">
         <div class="container">
             <h2 class="section-title">Pourquoi choisir Tenex ?</h2>
-            <p class="section-subtitle">Les avantages qui font la différence pour votre recrutement</p>
+            <p class="section-subtitle">Les avantages concrets qui transforment votre approche du recrutement</p>
             
             <div class="advantages-grid">
                 <div class="advantage-card">
-                    <span class="advantage-icon">⚡</span>
-                    <h3 class="advantage-title">Réactivité maximale</h3>
+                    <div class="advantage-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="advantage-title">Efficacité maximale</h3>
                     <p class="advantage-description">Système de 10 connexions actives qui garantit un suivi personnalisé et une réactivité optimale</p>
                 </div>
                 
                 <div class="advantage-card">
-                    <span class="advantage-icon">🎯</span>
-                    <h3 class="advantage-title">Matching précis</h3>
-                    <p class="advantage-description">IA avancée qui comprend vos besoins réels et propose les candidats les plus pertinents</p>
+                    <div class="advantage-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="advantage-title">Précision avancée</h3>
+                    <p class="advantage-description">Intelligence artificielle qui comprend vos besoins réels et propose les candidats les plus pertinents</p>
                 </div>
                 
                 <div class="advantage-card">
-                    <span class="advantage-icon">💰</span>
-                    <h3 class="advantage-title">Plus d'économies</h3>
-                    <p class="advantage-description">Fini les coûts par clic et les abonnements excessifs. Consultation illimitée incluse</p>
+                    <div class="advantage-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3 class="advantage-title">Optimisation budgétaire</h3>
+                    <p class="advantage-description">Suppression des coûts par clic et des abonnements excessifs. Consultation illimitée incluse</p>
                 </div>
                 
                 <div class="advantage-card">
-                    <span class="advantage-icon">📊</span>
-                    <h3 class="advantage-title">Analytics poussés</h3>
-                    <p class="advantage-description">Tableaux de bord détaillés pour optimiser vos processus de recrutement</p>
+                    <div class="advantage-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="advantage-title">Analytics détaillés</h3>
+                    <p class="advantage-description">Tableaux de bord complets pour optimiser et mesurer vos processus de recrutement</p>
                 </div>
                 
                 <div class="advantage-card">
-                    <span class="advantage-icon">🤝</span>
-                    <h3 class="advantage-title">Collaboration d'équipe</h3>
-                    <p class="advantage-description">Outils collaboratifs intégrés pour impliquer toute votre équipe dans le processus</p>
+                    <div class="advantage-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="advantage-title">Collaboration fluide</h3>
+                    <p class="advantage-description">Outils collaboratifs intégrés pour impliquer efficacement toute votre équipe</p>
                 </div>
                 
                 <div class="advantage-card">
-                    <span class="advantage-icon">🔒</span>
-                    <h3 class="advantage-title">Sécurité & RGPD</h3>
-                    <p class="advantage-description">Protection maximale des données et conformité totale aux réglementations</p>
+                    <div class="advantage-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="advantage-title">Sécurité & Conformité</h3>
+                    <p class="advantage-description">Protection maximale des données et conformité totale aux réglementations RGPD</p>
                 </div>
             </div>
         </div>
@@ -1811,15 +1748,15 @@
     <!-- Final CTA -->
     <section class="section" id="faq" style="text-align: center;">
         <div class="container">
-            <div style="background: var(--bg-secondary); padding: 80px 60px; border-radius: var(--border-radius-large); box-shadow: var(--shadow-premium); max-width: 800px; margin: 0 auto; border: 1px solid var(--border-color); position: relative; overflow: hidden; transition: var(--transition);">
-                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(16, 102, 128, 0.02) 0%, transparent 50%);"></div>
-                <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 2.8rem; font-weight: var(--font-weight-black); position: relative; z-index: 1;">Le recrutement en 10 connexions stratégiques</h2>
-                <p style="margin-bottom: 40px; font-size: 1.25rem; color: var(--text-secondary); line-height: 1.6; font-weight: var(--font-weight-medium); position: relative; z-index: 1;">Rejoignez dès maintenant notre programme de beta-test exclusif et découvrez comment Tenex peut transformer votre façon de recruter.</p>
-                <button class="btn-primary" style="max-width: 450px; margin: 0 auto; position: relative; z-index: 1;" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
-                    👉 Je veux tester Tenex gratuitement
+            <div style="background: var(--bg-secondary); padding: 80px 60px; border-radius: var(--border-radius-large); box-shadow: var(--shadow-medium); max-width: 800px; margin: 0 auto; border: 1px solid var(--border-color); position: relative; overflow: hidden; transition: var(--transition);">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--gradient-subtle); opacity: 0; transition: opacity 0.3s ease;"></div>
+                <h2 style="color: var(--text-primary); margin-bottom: 24px; font-size: 2.5rem; font-weight: var(--font-weight-bold); position: relative; z-index: 1; letter-spacing: -0.01em;">Le recrutement en 10 connexions stratégiques</h2>
+                <p style="margin-bottom: 40px; font-size: 1.125rem; color: var(--text-secondary); line-height: 1.6; font-weight: var(--font-weight-normal); position: relative; z-index: 1;">Rejoignez notre programme de bêta-test exclusif et découvrez comment Tenex peut transformer votre approche du recrutement.</p>
+                <button class="btn-primary" style="max-width: 400px; margin: 0 auto; position: relative; z-index: 1;" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
+                    Accéder à la bêta gratuitement
                 </button>
-                <p style="margin-top: 25px; font-size: 0.95rem; opacity: 0.7; font-weight: var(--font-weight-medium); position: relative; z-index: 1; color: var(--text-secondary);">
-                    🔒 Vos données sont sécurisées – Pas de spam
+                <p style="margin-top: 24px; font-size: 0.875rem; opacity: 0.7; font-weight: var(--font-weight-normal); position: relative; z-index: 1; color: var(--text-secondary);">
+                    Données sécurisées – Sans engagement – Pas de spam
                 </p>
             </div>
         </div>
@@ -1861,7 +1798,7 @@
                         setTimeout(() => {
                             this.setupFloatingNavVisibility();
                         }, 500);
-                    }, 1800);
+                    }, 1500);
                 });
             }
 
@@ -1875,7 +1812,7 @@
                     localStorage.setItem('theme', this.currentTheme);
                     
                     // Icon animation
-                    icon.style.transform = 'rotate(360deg)';
+                    icon.style.transform = 'rotate(180deg)';
                     setTimeout(() => {
                         icon.style.transform = 'rotate(0deg)';
                         icon.className = this.currentTheme === 'dark' 
@@ -1986,18 +1923,18 @@
                     data[key] = value;
                 });
                 
-                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Inscription en cours...';
+                button.innerHTML = 'Inscription en cours...';
                 
                 setTimeout(() => {
                     form.classList.remove('form-loading');
                     
-                    button.innerHTML = '✅ Inscription réussie !';
+                    button.innerHTML = 'Inscription réussie !';
                     button.style.background = 'var(--gradient-success)';
-                    button.style.transform = 'translateY(-2px) scale(1.02)';
+                    button.style.transform = 'translateY(-2px)';
                     
                     setTimeout(() => {
-                        button.innerHTML = '🎉 Merci ! Vous recevrez votre accès prochainement.';
-                        button.style.transform = 'translateY(0) scale(1)';
+                        button.innerHTML = 'Merci ! Vous recevrez votre accès prochainement.';
+                        button.style.transform = 'translateY(0)';
                     }, 1500);
                     
                     setTimeout(() => {
@@ -2012,12 +1949,14 @@
                 const fab = document.getElementById('fab');
                 
                 fab.addEventListener('click', () => {
-                    const betaForm = document.getElementById('betaForm');
-                    betaForm.scrollIntoView({ behavior: 'smooth' });
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                     
-                    fab.style.transform = 'scale(0.8)';
+                    fab.style.transform = 'translateY(-2px) scale(0.95)';
                     setTimeout(() => {
-                        fab.style.transform = 'scale(1)';
+                        fab.style.transform = 'translateY(-2px) scale(1)';
                     }, 150);
                 });
             }
@@ -2060,7 +1999,7 @@
                     
                     const targetNum = parseInt(target);
                     let current = 0;
-                    const increment = targetNum / 50;
+                    const increment = targetNum / 40;
                     
                     const updateCounter = () => {
                         if (current < targetNum) {
