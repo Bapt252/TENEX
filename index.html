@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tenex - Révolutionnez votre recrutement</title>
+    <title>Tenex - Le recrutement en 10 connexions stratégiques</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -29,23 +29,6 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            50% { transform: translateY(-10px) translateX(5px); }
         }
 
         .container {
@@ -76,19 +59,30 @@
         }
 
         .hero-text .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 35px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             opacity: 0.95;
-            font-weight: 400;
+            font-weight: 600;
             animation: slideInLeft 1.2s ease-out;
+            color: #009EC4;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-text .slogan {
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            font-weight: 400;
+            animation: slideInLeft 1.4s ease-out;
+            font-style: italic;
         }
 
         .hero-text p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 45px;
             opacity: 0.9;
             line-height: 1.7;
-            animation: slideInLeft 1.4s ease-out;
+            animation: slideInLeft 1.6s ease-out;
         }
 
         .cta-section {
@@ -193,12 +187,111 @@
             transform: translateY(-2px);
         }
 
-        /* Features Section */
-        .features {
+        /* Concept Explanation Section */
+        .concept-section {
             padding: 120px 0;
-            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
         }
 
+        .concept-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .concept-diagram {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .profiles-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .profile-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .inactive-group {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border: 2px solid #e9ecef;
+        }
+
+        .active-group {
+            background: linear-gradient(135deg, #106680, #0A3E5D);
+            color: white;
+            border: 2px solid #009EC4;
+        }
+
+        .profile-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .inactive-icon {
+            background: #dee2e6;
+            color: #6c757d;
+        }
+
+        .active-icon {
+            background: #009EC4;
+            color: white;
+        }
+
+        .profile-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .concept-text {
+            padding: 0 20px;
+        }
+
+        .concept-text h3 {
+            font-size: 2.2rem;
+            color: #106680;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .concept-text .highlight-box {
+            background: linear-gradient(135deg, #106680, #0A3E5D);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(16,102,128,0.3);
+        }
+
+        .concept-text .highlight-box h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* Sections communes */
         .section-title {
             text-align: center;
             font-size: 3rem;
@@ -220,6 +313,73 @@
             margin-left: auto;
             margin-right: auto;
             font-weight: 400;
+        }
+
+        /* How it works */
+        .how-it-works {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #106680, #0A3E5D);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(16, 102, 128, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            transform: scale(1.1);
+        }
+
+        .step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #106680;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
         }
 
         .features-grid {
@@ -296,65 +456,10 @@
             font-size: 1.05rem;
         }
 
-        /* How it works */
-        .how-it-works {
+        /* Dashboard Features */
+        .dashboard-features {
             padding: 120px 0;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-            margin-top: 80px;
-            position: relative;
-        }
-
-        .step {
-            text-align: center;
-            position: relative;
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .step:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .step-number {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(45deg, #106680, #0A3E5D);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 1.6rem;
-            font-weight: bold;
-            box-shadow: 0 10px 25px rgba(16, 102, 128, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .step:hover .step-number {
-            transform: scale(1.1);
-        }
-
-        .step h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #106680;
-            font-weight: 700;
-        }
-
-        .step p {
-            color: #666;
-            line-height: 1.6;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
         }
 
         /* Stats */
@@ -364,17 +469,6 @@
             padding: 100px 0;
             position: relative;
             overflow: hidden;
-        }
-
-        .stats::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            animation: float 15s ease-in-out infinite reverse;
         }
 
         .stats-grid {
@@ -588,6 +682,11 @@
             .section-title {
                 font-size: 2.2rem;
             }
+
+            .concept-visual {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
         }
 
         .beta-badge {
@@ -620,6 +719,58 @@
             z-index: 1000;
             transition: width 0.3s ease;
         }
+
+        /* Visual flow diagram */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #106680;
+            font-weight: bold;
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .flow-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #106680, #0A3E5D);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(16, 102, 128, 0.3);
+        }
+
+        .flow-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #106680;
+        }
     </style>
 </head>
 <body>
@@ -640,9 +791,10 @@
                         Tenex
                     </div>
                     <div class="beta-badge">🚀 Bientôt disponible</div>
+                    <p class="subtitle">Tenex, le recrutement en 10 connexions stratégiques</p>
                     <h1>Révolutionnez votre recrutement</h1>
-                    <p class="subtitle">Le jobboard intelligent qui connecte automatiquement les meilleures opportunités aux meilleurs profils</p>
-                    <p>Tenex combine CVthèque intelligente et matching précis : accès illimité aux profils inactifs, 10 connexions actives simultanées pour maximiser votre réactivité, le tout avec une IA qui comprend vos vrais besoins.</p>
+                    <p class="slogan">Accès illimité aux profils inactifs + 10 connexions actives simultanées pour maximiser votre réactivité</p>
+                    <p>Tenex combine CVthèque intelligente et matching précis avec une IA qui comprend vos vrais besoins. Fini les candidatures sans suite : engagez vraiment les candidats avec notre système innovant.</p>
                 </div>
                 
                 <div class="cta-section">
@@ -706,105 +858,59 @@
         </div>
     </section>
 
-    <!-- Dashboard Features -->
-    <section style="padding: 120px 0; background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);">
+    <!-- Concept Explanation Section -->
+    <section class="concept-section">
         <div class="container">
-            <h2 class="section-title">Un dashboard pensé pour les entreprises</h2>
-            <p class="section-subtitle">Toutes les fonctionnalités dont vous avez besoin, centralisées dans une interface intuitive et moderne</p>
+            <h2 class="section-title">Le concept révolutionnaire</h2>
+            <p class="section-subtitle">Comprenez en un coup d'œil comment Tenex transforme le recrutement avec son système Inactif/Actif</p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 80px;">
-                <div class="feature-card">
-                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-tachometer-alt"></i></div>
-                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Statistiques en temps réel</h3>
-                    <p style="color: #666; line-height: 1.6;">Postes ouverts, recrutements en cours, taux de conversion, délais moyens - tous vos KPIs sur un seul écran.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-plus-circle"></i></div>
-                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Création assistée par IA</h3>
-                    <p style="color: #666; line-height: 1.6;">Importez vos fiches de poste existantes, notre IA les parse et structure automatiquement tous les critères.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-flow-chart"></i></div>
-                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Processus modulable</h3>
-                    <p style="color: #666; line-height: 1.6;">Créez votre pipeline sur-mesure : ajoutez, supprimez, réorganisez les étapes et assignez-les à vos équipes.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-star"></i></div>
-                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Scoring automatique</h3>
-                    <p style="color: #666; line-height: 1.6;">Chaque candidat reçoit un score de matching personnalisé basé sur vos critères spécifiques.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-users"></i></div>
-                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Gestion d'équipe</h3>
-                    <p style="color: #666; line-height: 1.6;">Ajoutez vos collaborateurs, définissez les rôles et permissions, organisez vos processus de recrutement.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-headset"></i></div>
-                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Support intégré</h3>
-                    <p style="color: #666; line-height: 1.6;">Posez vos questions, faites des recommandations ou signalez un problème directement depuis la plateforme.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Pourquoi Tenex change tout ?</h2>
-            <p class="section-subtitle">Une approche révolutionnaire qui résout enfin les vrais problèmes du recrutement moderne</p>
-            
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
+            <div class="concept-visual">
+                <div class="concept-diagram">
+                    <div class="profiles-container">
+                        <div class="profile-group inactive-group">
+                            <div class="profile-icon inactive-icon">∞</div>
+                            <div class="profile-info">
+                                <h4>Profils INACTIFS</h4>
+                                <p>Accès illimité • Pas dans un processus de recrutement</p>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; font-size: 2rem; color: #106680; font-weight: bold;">↓</div>
+                        
+                        <div class="profile-group active-group">
+                            <div class="profile-icon active-icon">10</div>
+                            <div class="profile-info">
+                                <h4>Profils ACTIFS</h4>
+                                <p>Maximum 10 • En processus de recrutement</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3>Matching Intelligent</h3>
-                    <p>Notre IA analyse la sémantique, les motivations réelles et le contexte professionnel pour proposer les 10 meilleurs matchs des deux côtés.</p>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                <div class="concept-text">
+                    <h3>Comment ça marche ?</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 25px; line-height: 1.6;">
+                        Tenex révolutionne le recrutement en créant une vraie dynamique d'engagement entre candidats et recruteurs.
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <h4><i class="fas fa-infinity"></i> Profils INACTIFS</h4>
+                        <p>Consultez autant de CV que vous voulez parmi tous les candidats disponibles sur la plateforme. Ils ne sont engagés dans aucun processus de recrutement.</p>
                     </div>
-                    <h3>Géolocalisation Précise</h3>
-                    <p>Prise en compte du mode de transport, des temps de trajet réels via Google Maps. Fini les candidatures impossibles géographiquement.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
+                    
+                    <div class="highlight-box">
+                        <h4><i class="fas fa-users"></i> 10 Connexions ACTIVES</h4>
+                        <p>Dès qu'un candidat accepte votre proposition, il devient "ACTIF" et compte dans votre limite de 10. Cela garantit un engagement mutuel et une progression rapide.</p>
                     </div>
-                    <h3>Timing Parfait</h3>
-                    <p>Analyse des disponibilités réelles, préavis, fin de contrats pour matcher au bon moment. Plus de perte de temps.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-database"></i>
+                    
+                    <div style="background: #f8f9fa; padding: 25px; border-radius: 15px; margin-top: 25px;">
+                        <p style="font-weight: 600; color: #106680; margin-bottom: 10px;">
+                            <i class="fas fa-lightbulb"></i> Le secret : L'engagement mutuel
+                        </p>
+                        <p style="font-size: 1rem; line-height: 1.6;">
+                            Quand vous atteignez 10 candidats actifs, les recrutements avancent ! Plus d'accès aux inactifs tant qu'un candidat n'est pas recruté, recalé ou ne retire sa candidature.
+                        </p>
                     </div>
-                    <h3>CVthèque Intelligente</h3>
-                    <p>Accès illimité aux profils inactifs + 10 connexions actives simultanées pour maximiser votre réactivité et efficacité.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-lightning-bolt"></i>
-                    </div>
-                    <h3>Réactivité Maximale</h3>
-                    <p>Limite de 10 connexions simultanées pour booster l'engagement. Les candidatures avancent ou sont libérées pour d'autres.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>IA Intégrée</h3>
-                    <p>Parsing automatique des fiches de poste, matching sémantique avancé et scoring automatique des candidats selon vos critères.</p>
                 </div>
             </div>
         </div>
@@ -816,6 +922,25 @@
             <h2 class="section-title">Comment ça marche ?</h2>
             <p class="section-subtitle">Un processus personnalisable que vous définissez selon vos besoins spécifiques</p>
             
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fas fa-search"></i></div>
+                    <div class="flow-text">Parcourez les profils inactifs</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="flow-text">Connectez-vous (max 10 actifs)</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fas fa-tasks"></i></div>
+                    <div class="flow-text">Suivez votre pipeline</div>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="flow-text">Recrutez efficacement</div>
+                </div>
+            </div>
+            
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -825,22 +950,22 @@
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>IA trouve les matchs parfaits</h3>
-                    <p>Notre algorithme identifie automatiquement les meilleurs profils</p>
+                    <p>Notre algorithme identifie automatiquement les meilleurs profils parmi les inactifs</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Suivez via Kanban</h3>
-                    <p>Visualisez l'avancement de chaque candidat dans votre pipeline</p>
+                    <h3>Connectez stratégiquement</h3>
+                    <p>Choisissez vos 10 connexions actives avec soin pour maximiser vos chances</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>Collaborez en équipe</h3>
-                    <p>Assignez les étapes, partagez les évaluations et commentaires</p>
+                    <h3>Suivez via Kanban</h3>
+                    <p>Visualisez l'avancement de chaque candidat actif dans votre pipeline</p>
                 </div>
                 <div class="step">
                     <div class="step-number">5</div>
-                    <h3>Recrutez plus vite</h3>
-                    <p>Finalisez vos recrutements avec une efficacité maximale</p>
+                    <h3>Libérez les places</h3>
+                    <p>Recrutez, recalez ou annulez pour libérer des places et accéder aux nouveaux profils</p>
                 </div>
             </div>
             
@@ -857,21 +982,125 @@
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Pourquoi Tenex change tout ?</h2>
+            <p class="section-subtitle">Une approche révolutionnaire qui résout enfin les vrais problèmes du recrutement moderne</p>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Accès illimité aux inactifs</h3>
+                    <p>Consultez autant de CV que vous voulez parmi tous les candidats disponibles. Pas de limite, pas de frustration.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>10 connexions stratégiques</h3>
+                    <p>Limite intelligente qui booste l'engagement mutuel. Les candidatures avancent vraiment ou se libèrent pour d'autres.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Matching Intelligent</h3>
+                    <p>Notre IA analyse la sémantique, les motivations réelles et le contexte professionnel pour proposer les meilleurs matchs.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Timing Parfait</h3>
+                    <p>Analyse des disponibilités réelles, préavis, fin de contrats pour matcher au bon moment. Plus de perte de temps.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Géolocalisation Précise</h3>
+                    <p>Prise en compte du mode de transport, des temps de trajet réels via Google Maps. Fini les candidatures impossibles.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightning-bolt"></i>
+                    </div>
+                    <h3>Engagement Maximal</h3>
+                    <p>Le système 10 connexions actives garantit que chaque candidature est prise au sérieux des deux côtés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Features -->
+    <section class="dashboard-features">
+        <div class="container">
+            <h2 class="section-title">Un dashboard pensé pour les entreprises</h2>
+            <p class="section-subtitle">Toutes les fonctionnalités dont vous avez besoin, centralisées dans une interface intuitive et moderne</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 80px;">
+                <div class="feature-card">
+                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Statistiques en temps réel</h3>
+                    <p style="color: #666; line-height: 1.6;">Profils inactifs consultés, connexions actives, taux de conversion, délais moyens - tous vos KPIs sur un seul écran.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-plus-circle"></i></div>
+                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Création assistée par IA</h3>
+                    <p style="color: #666; line-height: 1.6;">Importez vos fiches de poste existantes, notre IA les parse et structure automatiquement tous les critères.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-flow-chart"></i></div>
+                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Pipeline de candidats actifs</h3>
+                    <p style="color: #666; line-height: 1.6;">Visualisez vos 10 connexions actives dans un Kanban interactif. Suivez chaque étape en temps réel.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-star"></i></div>
+                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Scoring automatique</h3>
+                    <p style="color: #666; line-height: 1.6;">Chaque profil inactif reçoit un score de matching personnalisé basé sur vos critères spécifiques.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-users"></i></div>
+                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Gestion d'équipe</h3>
+                    <p style="color: #666; line-height: 1.6;">Partagez vos connexions actives avec votre équipe, définissez les rôles et permissions par étape.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div style="color: #106680; font-size: 2.5rem; margin-bottom: 20px;"><i class="fas fa-chart-line"></i></div>
+                    <h3 style="color: #106680; margin-bottom: 15px; font-size: 1.5rem;">Analytics avancés</h3>
+                    <p style="color: #666; line-height: 1.6;">Ratio inactifs/actifs, temps de conversion, taux de réussite par étape - optimisez votre stratégie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Stats -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h3>10</h3>
-                    <p>Connexions actives max pour booster la réactivité</p>
-                </div>
-                <div class="stat-item">
                     <h3>∞</h3>
                     <p>Accès illimité aux profils inactifs</p>
                 </div>
                 <div class="stat-item">
+                    <h3>10</h3>
+                    <p>Connexions actives simultanées maximum</p>
+                </div>
+                <div class="stat-item">
                     <h3>100%</h3>
-                    <p>Processus personnalisables selon vos méthodes</p>
+                    <p>Engagement mutuel garanti</p>
                 </div>
                 <div class="stat-item">
                     <h3>IDF</h3>
@@ -886,7 +1115,7 @@
         <div class="container">
             <div class="cta-box">
                 <h2 style="color: #106680; margin-bottom: 25px; font-size: 2.5rem; font-weight: 800;">Prêt à révolutionner vos recrutements ?</h2>
-                <p style="margin-bottom: 40px; font-size: 1.2rem; color: #666; line-height: 1.6;">Rejoignez dès maintenant notre programme de beta-test exclusif et découvrez comment Tenex peut transformer votre façon de recruter.</p>
+                <p style="margin-bottom: 40px; font-size: 1.2rem; color: #666; line-height: 1.6;">Rejoignez dès maintenant notre programme de beta-test exclusif et découvrez comment Tenex peut transformer votre façon de recruter avec ses 10 connexions stratégiques.</p>
                 <button class="btn-primary" style="max-width: 400px;" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
                     <i class="fas fa-arrow-up"></i> Je m'inscris maintenant
                 </button>
@@ -986,6 +1215,33 @@
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
+
+        // Animate concept diagram on scroll
+        const conceptObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const profiles = entry.target.querySelectorAll('.profile-group');
+                    profiles.forEach((profile, index) => {
+                        setTimeout(() => {
+                            profile.style.transform = 'translateX(0)';
+                            profile.style.opacity = '1';
+                        }, index * 300);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const conceptDiagram = document.querySelector('.concept-diagram');
+        if (conceptDiagram) {
+            // Initialize hidden state
+            conceptDiagram.querySelectorAll('.profile-group').forEach(profile => {
+                profile.style.transform = 'translateX(-50px)';
+                profile.style.opacity = '0';
+                profile.style.transition = 'all 0.6s ease';
+            });
+            
+            conceptObserver.observe(conceptDiagram);
+        }
     </script>
 </body>
 </html>
