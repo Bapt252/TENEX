@@ -481,6 +481,8 @@
         .hero-bullets li:nth-child(1) { --i: 1; }
         .hero-bullets li:nth-child(2) { --i: 2; }
         .hero-bullets li:nth-child(3) { --i: 3; }
+        .hero-bullets li:nth-child(4) { --i: 4; }
+        .hero-bullets li:nth-child(5) { --i: 5; }
 
         .hero-bullets li::before {
             content: '';
@@ -881,6 +883,7 @@
         .process-step:nth-child(2) { --step: 1; }
         .process-step:nth-child(3) { --step: 2; }
         .process-step:nth-child(4) { --step: 3; }
+        .process-step:nth-child(5) { --step: 4; }
 
         .step-shape {
             width: 64px;
@@ -1154,6 +1157,20 @@
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
+        /* Centered ponderation card */
+        .matching-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .matching-grid .enhanced-card:nth-child(4) {
+            grid-column: 1 / -1;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .floating-nav, .fab {
@@ -1199,8 +1216,13 @@
                 padding: var(--spacing-md);
             }
 
-            .card-grid, .dashboard-grid, .advantages-grid {
+            .card-grid, .dashboard-grid, .advantages-grid, .matching-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .matching-grid .enhanced-card:nth-child(4) {
+                grid-column: 1;
+                max-width: none;
             }
 
             .step-shape {
@@ -1299,8 +1321,8 @@
     <!-- Professional Navigation -->
     <nav class="floating-nav" id="floatingNav">
         <div class="nav-dot" data-section="Accueil" data-target="hero"></div>
-        <div class="nav-dot" data-section="Concept" data-target="concept"></div>
         <div class="nav-dot" data-section="Processus" data-target="how-it-works"></div>
+        <div class="nav-dot" data-section="Concept" data-target="concept"></div>
         <div class="nav-dot" data-section="Matching" data-target="matching"></div>
         <div class="nav-dot" data-section="Dashboard" data-target="dashboard"></div>
         <div class="nav-dot" data-section="Avantages" data-target="advantages"></div>
@@ -1333,13 +1355,15 @@
                         <div class="badge-icon"></div>
                         Version bêta – Accès privilégié
                     </div>
-                    <h1>Révolutionnez votre recrutement</h1>
-                    <p class="subtitle">La plateforme intelligente qui connecte automatiquement les meilleures opportunités aux meilleurs profils grâce à notre système de 10 connexions stratégiques.</p>
+                    <h1>Plateforme intelligente qui connecte vos opportunités aux meilleurs profils</h1>
+                    <p class="subtitle">Révolutionnez votre recrutement grâce à notre technologie propriétaire qui allie algorithme avancé et IA pour un matching parfait entre vos offres et les talents inactifs du marché.</p>
                     
                     <ul class="hero-bullets">
-                        <li>Accès illimité aux profils inactifs pour une exploration complète de votre marché de talents</li>
-                        <li>Maximum 10 connexions actives simultanées pour garantir un suivi personnalisé et efficace</li>
-                        <li>Intelligence artificielle avancée qui comprend vos besoins réels et optimise chaque match</li>
+                        <li>Technologie propriétaire et algorithme exclusif pour une différenciation unique sur le marché</li>
+                        <li>Intelligence artificielle avancée combinée à notre moteur de matching propriétaire</li>
+                        <li>95% de précision dans le matching candidat-poste grâce à notre technologie exclusive</li>
+                        <li>Maximum 10 connexions actives simultanées pour garantir un suivi personnalisé optimal</li>
+                        <li>Accès illimité aux profils inactifs pour une exploration complète de votre marché</li>
                     </ul>
                 </div>
                 
@@ -1421,20 +1445,28 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
+                    <div class="stat-number" data-count="3">0</div>
+                    <div class="stat-label">Fois plus rapide qu'un processus traditionnel</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="80">0</div>
+                    <div class="stat-label">% d'économies sur vos coûts de recrutement annuels</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-label">% technologie propriétaire - unique sur le marché</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="95">0</div>
+                    <div class="stat-label">% de précision dans le matching candidat-poste</div>
+                </div>
+                <div class="stat-item">
                     <div class="stat-number" data-count="10">0</div>
                     <div class="stat-label">Connexions actives maximales pour un suivi optimal</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-count="∞">0</div>
                     <div class="stat-label">Profils consultables sans limitation</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="3">0</div>
-                    <div class="stat-label">Fois plus rapide qu'un processus traditionnel</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="95">0</div>
-                    <div class="stat-label">% de précision dans le matching candidat-poste</div>
                 </div>
             </div>
         </div>
@@ -1444,72 +1476,16 @@
     <section class="section tenex-phrase">
         <div class="container">
             <div class="phrase-content">
-                <strong>Plateforme nouvelle génération :</strong> consultez librement tous les profils et activez seulement 10 candidats à la fois, choisis par vos soins parmi nos recommandations intelligentes.
+                <strong>Plateforme nouvelle génération :</strong> consultez librement tous les profils et activez 10 candidats à la fois maximum, choisis par vos soins parmi nos recommandations intelligentes basées sur notre algorithme propriétaire.
             </div>
         </div>
     </section>
 
-    <!-- Professional Concept Section -->
-    <section class="section" id="concept">
-        <div class="container">
-            <h2 class="section-title">Une approche révolutionnaire du recrutement moderne</h2>
-            <p class="section-subtitle">Comprenez la différence entre consultation libre et processus de recrutement actif</p>
-            
-            <div class="card-grid">
-                <div class="enhanced-card">
-                    <h4><span class="card-icon"><i class="fas fa-eye"></i></span>Profils Inactifs</h4>
-                    <p style="color: var(--text-muted); margin-bottom: 20px; font-weight: var(--font-weight-medium);">Hors processus, accès libre</p>
-                    <ul style="list-style: none; margin: 0;">
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            Intelligence artificielle qui analyse les motivations réelles et le contexte professionnel
-                        </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            Géolocalisation précise avec temps de trajet réels selon le mode de transport
-                        </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            Analyse des disponibilités, préavis et fin de contrats pour un timing optimal
-                        </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            Consultation illimitée sans coût par clic ni verrouillage
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="enhanced-card">
-                    <h4><span class="card-icon"><i class="fas fa-bolt"></i></span>Profils Actifs</h4>
-                    <p style="color: var(--primary-light); margin-bottom: 20px; font-weight: var(--font-weight-medium);">En processus de recrutement</p>
-                    <ul style="list-style: none; margin: 0;">
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            Limite de 10 connexions simultanées pour maximiser l'engagement mutuel
-                        </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            Parsing automatique des fiches de poste et scoring intelligent des candidats
-                        </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            Tableau de bord intégré avec messagerie et planning centralisé
-                        </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            Chaque décision libère immédiatement une place pour un nouveau profil
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Process Section -->
+    <!-- Professional Process Section - MOVED UP -->
     <section class="section" id="how-it-works">
         <div class="container">
             <h2 class="section-title">Un processus personnalisable selon vos besoins</h2>
-            <p class="section-subtitle">Découvrez comment Tenex transforme votre façon de recruter en 4 étapes simples</p>
+            <p class="section-subtitle">Découvrez comment Tenex transforme votre façon de recruter en 5 étapes simples et claires</p>
             
             <div class="process-visual">
                 <div class="process-connector"></div>
@@ -1529,7 +1505,7 @@
                         <div class="step-number">2</div>
                     </div>
                     <h3 class="step-title">Identification intelligente</h3>
-                    <p class="step-description">Notre algorithme identifie automatiquement les meilleurs profils selon vos critères</p>
+                    <p class="step-description">Notre algorithme propriétaire identifie automatiquement les meilleurs profils selon vos critères</p>
                 </div>
                 
                 <div class="process-step">
@@ -1547,7 +1523,72 @@
                         <div class="step-number">4</div>
                     </div>
                     <h3 class="step-title">Collaboration d'équipe</h3>
-                    <p class="step-description">Partagez les évaluations et commentaires pour des décisions éclairées</p>
+                    <p class="step-description">Assignez les étapes, partagez les évaluations et commentaires pour des décisions éclairées</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-shape">
+                        <i class="fas fa-trophy step-icon"></i>
+                        <div class="step-number">5</div>
+                    </div>
+                    <h3 class="step-title">Ça y est, vous avez recruté !</h3>
+                    <p class="step-description">Finalisez vos recrutements avec une efficacité maximale et mesurez vos performances</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Concept Section -->
+    <section class="section" id="concept">
+        <div class="container">
+            <h2 class="section-title">Une approche révolutionnaire du recrutement moderne</h2>
+            <p class="section-subtitle">Notre technologie propriétaire révolutionne la façon de connecter les opportunités aux talents</p>
+            
+            <div class="card-grid">
+                <div class="enhanced-card">
+                    <h4><span class="card-icon"><i class="fas fa-eye"></i></span>Profils Inactifs</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; font-weight: var(--font-weight-medium);">Hors processus, accès libre</p>
+                    <ul style="list-style: none; margin: 0;">
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
+                            Technologie propriétaire unique qui analyse les motivations réelles et le contexte professionnel
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
+                            Algorithme exclusif de géolocalisation avec temps de trajet réels selon le mode de transport
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
+                            IA propriétaire pour l'analyse des disponibilités, préavis et fin de contrats
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
+                            Consultation illimitée sans coût par clic grâce à notre technologie différenciante
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="enhanced-card">
+                    <h4><span class="card-icon"><i class="fas fa-bolt"></i></span>Profils Actifs</h4>
+                    <p style="color: var(--primary-light); margin-bottom: 20px; font-weight: var(--font-weight-medium);">En processus de recrutement</p>
+                    <ul style="list-style: none; margin: 0;">
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
+                            Limite de 10 connexions simultanées optimisée par notre algorithme propriétaire
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
+                            Parsing automatique exclusif des fiches de poste et scoring intelligent propriétaire
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
+                            Technologie propriétaire d'intégration : messagerie et planning centralisé
+                        </li>
+                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
+                            Algorithme intelligent qui libère immédiatement une place pour un nouveau profil
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1557,9 +1598,9 @@
     <section class="section" id="matching">
         <div class="container">
             <h2 class="section-title">Matching intelligent et précis</h2>
-            <p class="section-subtitle">Notre moteur d'intelligence artificielle analyse des critères concrets pour optimiser chaque appariement candidat-poste</p>
+            <p class="section-subtitle">Notre technologie propriétaire combinant IA et algorithme exclusif analyse des critères concrets pour optimiser chaque appariement candidat-poste</p>
             
-            <div class="card-grid">
+            <div class="matching-grid">
                 <div class="enhanced-card">
                     <h4><span class="card-icon"><i class="fas fa-map-marker-alt"></i></span>Géolocalisation avancée</h4>
                     <p>Calcul des temps de trajet réels selon le mode de transport préféré et les horaires de pointe</p>
@@ -1575,14 +1616,14 @@
                     <p>Évaluation de l'expérience : taille d'équipe, outils maîtrisés, contexte international</p>
                 </div>
                 
-                <div class="enhanced-card">
+                <div class="enhanced-card" style="text-align: center;">
                     <h4><span class="card-icon"><i class="fas fa-balance-scale"></i></span>Pondération multicritères</h4>
-                    <p>Optimisation selon le type de contrat, disponibilité, préavis et priorités personnelles</p>
+                    <p>Optimisation selon le type de contrat, disponibilité, préavis et priorités personnelles grâce à notre technologie propriétaire exclusive</p>
                 </div>
             </div>
             
             <div style="font-style: italic; color: var(--text-secondary); text-align: center; margin-top: 48px; padding: 24px; background: var(--bg-secondary); border-radius: var(--border-radius); font-weight: var(--font-weight-normal); border: 1px solid var(--border-light);">
-                <p>Le système de matching pondéré reste le cœur de notre approche. L'intelligence artificielle optimise et affine continuellement les résultats.</p>
+                <p>Notre système de matching pondéré reste le cœur de notre approche différenciante. Notre IA propriétaire et notre algorithme exclusif optimisent et affinent continuellement les résultats pour une précision inégalée sur le marché.</p>
             </div>
         </div>
     </section>
@@ -1591,7 +1632,7 @@
     <section class="section" id="dashboard">
         <div class="container">
             <h2 class="section-title">Interface centralisée et intuitive</h2>
-            <p class="section-subtitle">Un tableau de bord complet qui simplifie et accélère votre processus de recrutement</p>
+            <p class="section-subtitle">Un tableau de bord complet alimenté par notre technologie propriétaire qui simplifie et accélère votre processus de recrutement</p>
             
             <div class="dashboard-grid">
                 <div class="dashboard-feature">
@@ -1599,7 +1640,7 @@
                         <i class="fas fa-plus"></i>
                     </div>
                     <h3 class="feature-title">Création de postes</h3>
-                    <p class="feature-description">Importez vos fiches existantes, notre IA structure automatiquement tous les critères et KPIs essentiels.</p>
+                    <p class="feature-description">Importez vos fiches existantes, notre IA propriétaire structure automatiquement tous les critères et KPIs essentiels.</p>
                 </div>
                 
                 <div class="dashboard-feature">
@@ -1607,7 +1648,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <h3 class="feature-title">Sélections personnalisées</h3>
-                    <p class="feature-description">Gérez vos candidats favoris et suivez leur progression dans votre pipeline personnalisé.</p>
+                    <p class="feature-description">Gérez vos candidats favoris et suivez leur progression dans votre pipeline personnalisé powered by notre technologie exclusive.</p>
                 </div>
                 
                 <div class="dashboard-feature">
@@ -1615,7 +1656,7 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <h3 class="feature-title">Gestion des candidats</h3>
-                    <p class="feature-description">Scoring automatique et personnalisé basé sur vos critères spécifiques et historique de recrutement.</p>
+                    <p class="feature-description">Scoring automatique et personnalisé basé sur vos critères spécifiques et notre algorithme propriétaire d'apprentissage.</p>
                 </div>
                 
                 <div class="dashboard-feature">
@@ -1623,7 +1664,7 @@
                         <i class="fas fa-calendar"></i>
                     </div>
                     <h3 class="feature-title">Planning intégré</h3>
-                    <p class="feature-description">Synchronisation avec vos calendriers pour optimiser la planification des entretiens.</p>
+                    <p class="feature-description">Synchronisation avec vos calendriers optimisée par notre technologie propriétaire pour la planification des entretiens.</p>
                 </div>
                 
                 <div class="dashboard-feature">
@@ -1631,7 +1672,7 @@
                         <i class="fas fa-comments"></i>
                     </div>
                     <h3 class="feature-title">Messagerie centralisée</h3>
-                    <p class="feature-description">Communication directe avec les candidats et partage d'informations avec votre équipe.</p>
+                    <p class="feature-description">Communication directe avec les candidats et partage d'informations avec votre équipe via notre système propriétaire sécurisé.</p>
                 </div>
                 
                 <div class="dashboard-feature">
@@ -1639,7 +1680,7 @@
                         <i class="fas fa-cog"></i>
                     </div>
                     <h3 class="feature-title">Administration avancée</h3>
-                    <p class="feature-description">Gestion des droits utilisateurs, workflows personnalisés et intégrations avec vos outils.</p>
+                    <p class="feature-description">Gestion des droits utilisateurs, workflows personnalisés et intégrations avec vos outils via notre API propriétaire.</p>
                 </div>
             </div>
         </div>
@@ -1649,55 +1690,55 @@
     <section class="section" id="advantages">
         <div class="container">
             <h2 class="section-title">Pourquoi choisir Tenex ?</h2>
-            <p class="section-subtitle">Les avantages concrets qui transforment votre approche du recrutement</p>
+            <p class="section-subtitle">Les avantages concrets de notre technologie propriétaire qui transforme votre approche du recrutement</p>
             
             <div class="advantages-grid">
                 <div class="advantage-card">
                     <div class="advantage-icon">
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
-                    <h3 class="advantage-title">Efficacité maximale</h3>
-                    <p class="advantage-description">Système de 10 connexions actives qui garantit un suivi personnalisé et une réactivité optimale</p>
-                </div>
-                
-                <div class="advantage-card">
-                    <div class="advantage-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3 class="advantage-title">Précision avancée</h3>
-                    <p class="advantage-description">Intelligence artificielle qui comprend vos besoins réels et propose les candidats les plus pertinents</p>
+                    <h3 class="advantage-title">3x plus rapide</h3>
+                    <p class="advantage-description">Système de 10 connexions actives optimisé par notre algorithme propriétaire qui garantit un suivi personnalisé</p>
                 </div>
                 
                 <div class="advantage-card">
                     <div class="advantage-icon">
                         <i class="fas fa-piggy-bank"></i>
                     </div>
-                    <h3 class="advantage-title">Optimisation budgétaire</h3>
-                    <p class="advantage-description">Suppression des coûts par clic et des abonnements excessifs. Consultation illimitée incluse</p>
+                    <h3 class="advantage-title">80% d'économies</h3>
+                    <p class="advantage-description">Réduction drastique de vos coûts de recrutement annuels grâce à notre technologie propriétaire révolutionnaire</p>
                 </div>
                 
                 <div class="advantage-card">
                     <div class="advantage-icon">
-                        <i class="fas fa-chart-bar"></i>
+                        <i class="fas fa-microchip"></i>
                     </div>
-                    <h3 class="advantage-title">Analytics détaillés</h3>
-                    <p class="advantage-description">Tableaux de bord complets pour optimiser et mesurer vos processus de recrutement</p>
+                    <h3 class="advantage-title">Technologie propriétaire</h3>
+                    <p class="advantage-description">Algorithme exclusif et IA propriétaire - la seule solution 100% unique sur le marché du recrutement</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="advantage-title">95% de précision</h3>
+                    <p class="advantage-description">Matching ultra-précis grâce à notre algorithme propriétaire qui comprend vos besoins réels</p>
                 </div>
                 
                 <div class="advantage-card">
                     <div class="advantage-icon">
                         <i class="fas fa-users-cog"></i>
                     </div>
-                    <h3 class="advantage-title">Collaboration fluide</h3>
-                    <p class="advantage-description">Outils collaboratifs intégrés pour impliquer efficacement toute votre équipe</p>
+                    <h3 class="advantage-title">10 connexions actives max</h3>
+                    <p class="advantage-description">Limitation intelligente optimisée par notre technologie pour booster l'engagement et la réactivité</p>
                 </div>
                 
                 <div class="advantage-card">
                     <div class="advantage-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-infinity"></i>
                     </div>
-                    <h3 class="advantage-title">Sécurité & Conformité</h3>
-                    <p class="advantage-description">Protection maximale des données et conformité totale aux réglementations RGPD</p>
+                    <h3 class="advantage-title">Profils illimités</h3>
+                    <p class="advantage-description">Accès illimité aux profils inactifs grâce à notre technologie propriétaire révolutionnaire</p>
                 </div>
             </div>
         </div>
@@ -1709,7 +1750,7 @@
             <div style="background: var(--bg-secondary); padding: 64px 48px; border-radius: var(--border-radius-large); box-shadow: var(--shadow-light); max-width: 720px; margin: 0 auto; border: 1px solid var(--border-light); position: relative; overflow: hidden; transition: var(--transition-smooth);">
                 <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--gradient-subtle); opacity: 0; transition: opacity 0.3s ease;"></div>
                 <h2 style="color: var(--text-primary); margin-bottom: 16px; font-size: 2.25rem; font-weight: var(--font-weight-semibold); font-family: var(--font-family-heading); position: relative; z-index: 1; letter-spacing: -0.02em;">Le recrutement en 10 connexions stratégiques</h2>
-                <p style="margin-bottom: 32px; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6; font-weight: var(--font-weight-normal); position: relative; z-index: 1;">Rejoignez notre programme de bêta-test exclusif et découvrez comment Tenex peut transformer votre approche du recrutement.</p>
+                <p style="margin-bottom: 32px; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6; font-weight: var(--font-weight-normal); position: relative; z-index: 1;">Rejoignez notre programme de bêta-test exclusif et découvrez comment notre technologie propriétaire peut transformer votre approche du recrutement.</p>
                 <button class="btn-primary" style="max-width: 320px; margin: 0 auto; position: relative; z-index: 1;" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
                     Demander l'accès bêta
                 </button>
@@ -1724,7 +1765,7 @@
         // Professional TenexApp Class
         class TenexApp {
             constructor() {
-                this.sections = ['hero', 'concept', 'how-it-works', 'matching', 'dashboard', 'advantages', 'faq'];
+                this.sections = ['hero', 'how-it-works', 'concept', 'matching', 'dashboard', 'advantages', 'faq'];
                 this.currentSection = 0;
                 this.countersAnimated = false;
                 
