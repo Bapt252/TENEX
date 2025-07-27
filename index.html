@@ -4,88 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tenex – Le recrutement en 10 connexions stratégiques</title>
-    <meta name="description" content="Jobboard nouvelle génération : sélectionnez vos 10 candidats parmi nos recommandations pondérées. Consultation illimitée, bêta gratuite, sans CB.">
-    <meta name="keywords" content="recrutement, jobboard, RH, candidats, matching, AI, intelligence artificielle">
-    <meta name="author" content="Tenex">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bapt252.github.io/TENEX/">
-    <meta property="og:title" content="Tenex – Le recrutement en 10 connexions stratégiques">
-    <meta property="og:description" content="Révolutionnez votre recrutement avec Tenex. Consultation illimitée des profils + 10 connexions actives pour un engagement maximal.">
-    <meta property="og:image" content="https://bapt252.github.io/TENEX/tenex-og-image.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://bapt252.github.io/TENEX/">
-    <meta property="twitter:title" content="Tenex – Le recrutement en 10 connexions stratégiques">
-    <meta property="twitter:description" content="Révolutionnez votre recrutement avec Tenex. Consultation illimitée des profils + 10 connexions actives pour un engagement maximal.">
-    <meta property="twitter:image" content="https://bapt252.github.io/TENEX/tenex-og-image.jpg">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="description" content="Plateforme de recrutement nouvelle génération avec un concept unique de 10 connexions stratégiques maximum.">
     
     <!-- Fonts & Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Corporate Color Palette - Professional Blue-Green */
             --primary: #106680;
             --primary-dark: #0A3E5D;
             --primary-light: #009EC4;
             --gradient-primary: linear-gradient(135deg, #106680 0%, #0A3E5D 50%, #009EC4 100%);
-            --gradient-subtle: linear-gradient(135deg, rgba(16, 102, 128, 0.04) 0%, rgba(10, 62, 93, 0.06) 100%);
             --gradient-cta: linear-gradient(135deg, #106680 0%, #009EC4 100%);
-            --gradient-success: linear-gradient(45deg, #059669, #10b981);
-            
-            /* Professional Shadows */
-            --shadow-subtle: 0 1px 3px rgba(16, 102, 128, 0.04);
-            --shadow-light: 0 4px 12px rgba(16, 102, 128, 0.05);
-            --shadow-medium: 0 8px 24px rgba(16, 102, 128, 0.08);
-            --shadow-heavy: 0 16px 32px rgba(16, 102, 128, 0.12);
-            --shadow-premium: 0 24px 48px rgba(16, 102, 128, 0.15);
-            
-            /* Corporate Layout */
+            --shadow-light: 0 4px 12px rgba(16, 102, 128, 0.1);
+            --shadow-medium: 0 8px 24px rgba(16, 102, 128, 0.15);
             --border-radius: 8px;
             --border-radius-large: 16px;
-            --spacing-xs: 8px;
             --spacing-sm: 16px;
             --spacing-md: 24px;
             --spacing-lg: 32px;
             --spacing-xl: 48px;
             --spacing-2xl: 64px;
-            --spacing-3xl: 96px;
-            
-            /* Professional Transitions */
-            --transition: all 0.2s ease;
-            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* Corporate Typography */
-            --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            --font-family-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            --font-weight-light: 300;
-            --font-weight-normal: 400;
-            --font-weight-medium: 500;
-            --font-weight-semibold: 600;
-            --font-weight-bold: 700;
-            
-            /* Professional Color Scheme */
+            --font-family-primary: 'Inter', sans-serif;
+            --font-family-heading: 'Poppins', sans-serif;
             --bg-primary: #ffffff;
             --bg-secondary: #fafbfc;
-            --bg-tertiary: #f1f5f7;
-            --bg-accent: #f8fafc;
             --text-primary: #1a202c;
             --text-secondary: #4a5568;
             --text-muted: #718096;
-            --text-light: #a0aec0;
-            --border-color: rgba(16, 102, 128, 0.08);
             --border-light: rgba(16, 102, 128, 0.04);
-            --divider: #e2e8f0;
         }
 
         * {
@@ -94,247 +43,27 @@
             box-sizing: border-box;
         }
 
-        /* Corporate Preloader */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 1;
-            visibility: visible;
-            transition: all 0.5s ease;
-        }
-
-        .preloader.loaded {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .preloader-content {
-            text-align: center;
-            color: white;
-        }
-
-        .preloader-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: var(--spacing-lg);
-            font-size: 2.25rem;
-            font-weight: var(--font-weight-bold);
-            font-family: var(--font-family-heading);
-            letter-spacing: -0.025em;
-        }
-
-        .preloader-logo .logo-icon {
-            width: 48px;
-            height: 48px;
-            margin-right: var(--spacing-sm);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .preloader-logo .diamond {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: white;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            border-radius: 2px;
-            transform: rotate(45deg);
-            animation: preloader-pulse 2s ease-in-out infinite;
-        }
-
-        .preloader-logo .diamond:nth-child(1) { 
-            top: 4px; 
-            left: 50%; 
-            transform: translateX(-50%) rotate(45deg);
-            animation-delay: 0s;
-        }
-        .preloader-logo .diamond:nth-child(2) { 
-            right: 4px; 
-            top: 50%; 
-            transform: translateY(-50%) rotate(45deg);
-            animation-delay: 0.15s;
-        }
-        .preloader-logo .diamond:nth-child(3) { 
-            bottom: 4px; 
-            left: 50%; 
-            transform: translateX(-50%) rotate(45deg);
-            animation-delay: 0.3s;
-        }
-        .preloader-logo .diamond:nth-child(4) { 
-            left: 4px; 
-            top: 50%; 
-            transform: translateY(-50%) rotate(45deg);
-            animation-delay: 0.45s;
-        }
-
-        @keyframes preloader-pulse {
-            0%, 100% { opacity: 1; transform: translateX(-50%) rotate(45deg) scale(1); }
-            50% { opacity: 0.7; transform: translateX(-50%) rotate(45deg) scale(1.1); }
-        }
-
-        .preloader-text {
-            font-size: 0.875rem;
-            font-weight: var(--font-weight-medium);
-            opacity: 0.9;
-            letter-spacing: 0.025em;
-        }
-
         body {
             font-family: var(--font-family-primary);
             line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-primary);
-            scroll-behavior: smooth;
-            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body.loading {
-            overflow: hidden;
-        }
-
-        /* Professional Navigation */
-        .floating-nav {
-            position: fixed;
-            top: 50%;
-            right: var(--spacing-lg);
-            transform: translateY(-50%);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xs);
-            opacity: 0;
-            transition: var(--transition-smooth);
-        }
-
-        .floating-nav.visible {
-            opacity: 1;
-        }
-
-        .nav-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--border-color);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-dot.active {
-            background: var(--primary);
-            transform: scale(1.4);
-        }
-
-        .nav-dot:hover {
-            background: var(--primary-light);
-            transform: scale(1.2);
-        }
-
-        .nav-dot::before {
-            content: attr(data-section);
-            position: absolute;
-            right: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--border-radius);
-            font-size: 0.75rem;
-            font-weight: var(--font-weight-medium);
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-            box-shadow: var(--shadow-light);
-            border: 1px solid var(--border-color);
-        }
-
-        .nav-dot:hover::before {
-            opacity: 1;
-        }
-
-        /* Professional FAB */
-        .fab {
-            position: fixed;
-            bottom: var(--spacing-lg);
-            right: var(--spacing-lg);
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-cta);
-            border-radius: var(--border-radius-large);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 998;
-            box-shadow: var(--shadow-medium);
-            transition: var(--transition-smooth);
-        }
-
-        .fab:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .fab i {
-            font-size: 1rem;
-            color: white;
-        }
-
-        /* Corporate Hero Section */
-        .hero {
-            background: var(--gradient-primary);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding: var(--spacing-3xl) 0;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-grid)" /></svg>');
-            opacity: 1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 15%;
-            right: -5%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 158, 196, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--spacing-md);
-            position: relative;
-            z-index: 2;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-xl) 0;
         }
 
         .hero-content {
@@ -344,22 +73,13 @@
             align-items: center;
         }
 
-        .hero-text {
-            animation: slideInLeft 0.8s ease-out;
-        }
-
-        /* Professional Logo */
         .hero-logo {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            margin-bottom: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
             font-size: 2.5rem;
-            font-weight: var(--font-weight-bold);
+            font-weight: 700;
             font-family: var(--font-family-heading);
-            color: white;
-            transition: var(--transition);
-            letter-spacing: -0.025em;
         }
 
         .hero-logo-icon {
@@ -370,7 +90,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
         }
 
         .hero-diamond {
@@ -378,110 +97,40 @@
             width: 12px;
             height: 12px;
             background: white;
-            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 2px;
             transform: rotate(45deg);
-            transition: var(--transition);
         }
 
-        .hero-diamond:nth-child(1) { 
-            top: 8px; 
-            left: 50%; 
-            transform: translateX(-50%) rotate(45deg);
-        }
-        .hero-diamond:nth-child(2) { 
-            right: 8px; 
-            top: 50%; 
-            transform: translateY(-50%) rotate(45deg);
-        }
-        .hero-diamond:nth-child(3) { 
-            bottom: 8px; 
-            left: 50%; 
-            transform: translateX(-50%) rotate(45deg);
-        }
-        .hero-diamond:nth-child(4) { 
-            left: 8px; 
-            top: 50%; 
-            transform: translateY(-50%) rotate(45deg);
-        }
+        .hero-diamond:nth-child(1) { top: 8px; left: 50%; transform: translateX(-50%) rotate(45deg); }
+        .hero-diamond:nth-child(2) { right: 8px; top: 50%; transform: translateY(-50%) rotate(45deg); }
+        .hero-diamond:nth-child(3) { bottom: 8px; left: 50%; transform: translateX(-50%) rotate(45deg); }
+        .hero-diamond:nth-child(4) { left: 8px; top: 50%; transform: translateY(-50%) rotate(45deg); }
 
-        .beta-badge {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            color: white;
-            padding: var(--spacing-sm) var(--spacing-md);
-            border-radius: 24px;
-            font-size: 0.875rem;
-            font-weight: var(--font-weight-medium);
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            margin-bottom: var(--spacing-lg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-        }
-
-        .beta-badge:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-1px);
-        }
-
-        .beta-badge .badge-icon {
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.2); }
-        }
-
-        .hero-text h1 {
+        .hero h1 {
             font-size: clamp(2.5rem, 4vw, 3.5rem);
-            font-weight: var(--font-weight-bold);
+            font-weight: 700;
             font-family: var(--font-family-heading);
             margin-bottom: var(--spacing-lg);
             line-height: 1.1;
-            letter-spacing: -0.025em;
-            animation: slideInLeft 1s ease-out 0.2s both;
         }
 
-        .hero-text .subtitle {
+        .hero .subtitle {
             font-size: 1.125rem;
             margin-bottom: var(--spacing-xl);
-            opacity: 0.92;
-            font-weight: var(--font-weight-normal);
-            animation: slideInLeft 1.2s ease-out 0.4s both;
+            opacity: 0.9;
             line-height: 1.6;
-            letter-spacing: -0.01em;
         }
 
         .hero-bullets {
             margin-bottom: var(--spacing-2xl);
-            animation: slideInLeft 1.4s ease-out 0.6s both;
         }
 
         .hero-bullets li {
             list-style: none;
-            font-size: 1rem;
             margin-bottom: var(--spacing-sm);
             position: relative;
             padding-left: var(--spacing-md);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
-            animation-delay: calc(var(--i) * 0.1s + 1s);
-            font-weight: var(--font-weight-normal);
-            line-height: 1.6;
         }
-
-        .hero-bullets li:nth-child(1) { --i: 1; }
-        .hero-bullets li:nth-child(2) { --i: 2; }
-        .hero-bullets li:nth-child(3) { --i: 3; }
-        .hero-bullets li:nth-child(4) { --i: 4; }
 
         .hero-bullets li::before {
             content: '';
@@ -494,117 +143,45 @@
             border-radius: 50%;
         }
 
-        /* Professional CTA Section */
+        /* CTA Section */
         .cta-section {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
             border-radius: var(--border-radius-large);
             padding: var(--spacing-xl);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: var(--shadow-premium);
-            animation: slideInRight 1s ease-out 0.8s both;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .cta-section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .cta-section h2 {
             font-size: 1.75rem;
             margin-bottom: var(--spacing-sm);
             text-align: center;
-            font-weight: var(--font-weight-semibold);
-            font-family: var(--font-family-heading);
-            position: relative;
-            z-index: 1;
-            letter-spacing: -0.015em;
+            font-weight: 600;
         }
 
         .cta-section > p {
             margin-bottom: var(--spacing-lg);
-            opacity: 0.9;
-            font-size: 0.975rem;
             text-align: center;
-            position: relative;
-            z-index: 1;
-            font-weight: var(--font-weight-normal);
-        }
-
-        .form-progress {
-            display: flex;
-            justify-content: center;
-            margin-bottom: var(--spacing-lg);
-            gap: 4px;
-        }
-
-        .progress-dot {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transition: var(--transition);
-        }
-
-        .progress-dot.active {
-            background: white;
-            transform: scale(1.5);
         }
 
         .form-group {
             margin-bottom: var(--spacing-sm);
-            position: relative;
-            z-index: 1;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: var(--spacing-xs);
-            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
             font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.9);
-            letter-spacing: 0.01em;
         }
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: var(--spacing-sm) var(--spacing-sm);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: var(--spacing-sm);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--border-radius);
-            font-size: 0.975rem;
-            background: rgba(255, 255, 255, 0.98);
-            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.95);
             color: var(--text-primary);
-            font-weight: var(--font-weight-normal);
-            font-family: var(--font-family-primary);
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            background: white;
-            border-color: var(--primary-light);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 158, 196, 0.1);
-        }
-
-        .form-group input::placeholder {
-            color: var(--text-muted);
-            font-weight: var(--font-weight-normal);
         }
 
         .btn-primary {
@@ -613,111 +190,345 @@
             padding: var(--spacing-sm) var(--spacing-lg);
             border: none;
             border-radius: var(--border-radius);
-            font-size: 0.975rem;
-            font-weight: var(--font-weight-medium);
+            font-weight: 500;
             cursor: pointer;
-            transition: var(--transition-smooth);
             width: 100%;
             margin-top: var(--spacing-md);
-            letter-spacing: 0.01em;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-light);
-            font-family: var(--font-family-primary);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
+            transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-medium);
         }
 
-        .btn-primary:active {
-            transform: translateY(0px);
-        }
-
-        .micro-assurance {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: var(--spacing-sm);
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            font-weight: var(--font-weight-normal);
-        }
-
-        /* Corporate Section Styling */
+        /* Sections */
         .section {
-            padding: var(--spacing-3xl) 0;
-            position: relative;
-            background: var(--bg-primary);
+            padding: var(--spacing-2xl) 0;
         }
 
         .section-title {
             text-align: center;
             font-size: clamp(2rem, 3.5vw, 2.75rem);
             margin-bottom: var(--spacing-sm);
-            color: var(--text-primary);
-            font-weight: var(--font-weight-semibold);
+            font-weight: 600;
             font-family: var(--font-family-heading);
-            position: relative;
-            letter-spacing: -0.025em;
-            line-height: 1.2;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-secondary);
             margin-bottom: var(--spacing-2xl);
             max-width: 640px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: var(--font-weight-normal);
-            line-height: 1.6;
-            letter-spacing: -0.01em;
         }
 
-        /* Professional Stats Section */
+        /* Stats Section */
         .stats-section {
-            background: var(--bg-tertiary);
+            background: var(--bg-secondary);
             padding: var(--spacing-2xl) 0;
-            border-top: 1px solid var(--divider);
-            border-bottom: 1px solid var(--divider);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: var(--spacing-xl);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
             text-align: center;
         }
 
         .stat-item {
-            padding: var(--spacing-lg) var(--spacing-md);
-            transition: var(--transition-smooth);
+            padding: var(--spacing-lg);
+            background: white;
             border-radius: var(--border-radius);
-            background: var(--bg-primary);
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-subtle);
+            box-shadow: var(--shadow-light);
         }
 
-        .stat-item:hover {
-            transform: translateY(-2px);
-            background: var(--bg-secondary);
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-large);
             box-shadow: var(--shadow-light);
-            border-color: var(--border
+            border: 1px solid var(--border-light);
+        }
+
+        .card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Tenex Signature Quote */
+        .tenex-signature {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-large);
+            margin: var(--spacing-xl) auto;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            max-width: 900px;
+        }
+
+        .tenex-signature-content {
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .tenex-signature strong {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            background: var(--bg-secondary);
+            padding: var(--spacing-2xl);
+            border-radius: var(--border-radius-large);
+            text-align: center;
+            margin: 0 auto;
+            max-width: 720px;
+        }
+
+        .cta-final h2 {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .cta-final p {
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-logo">
+                        <div class="hero-logo-icon">
+                            <div class="hero-diamond"></div>
+                            <div class="hero-diamond"></div>
+                            <div class="hero-diamond"></div>
+                            <div class="hero-diamond"></div>
+                        </div>
+                        Tenex
+                    </div>
+                    
+                    <h1>Plateforme intelligente qui connecte vos opportunités aux meilleurs profils</h1>
+                    <p class="subtitle">Révolutionnez votre recrutement grâce à notre technologie propriétaire qui allie algorithme avancé et IA pour un matching parfait entre vos offres et les talents du marché.</p>
+                    
+                    <ul class="hero-bullets">
+                        <li>Technologie propriétaire et algorithme exclusif pour une différenciation unique sur le marché</li>
+                        <li>Intelligence artificielle avancée combinée à notre moteur de matching propriétaire</li>
+                        <li>95% de précision dans le matching candidat-poste grâce à notre technologie exclusive</li>
+                        <li>Maximum 10 connexions actives simultanées pour garantir un suivi personnalisé optimal</li>
+                    </ul>
+                </div>
+                
+                <div class="cta-section">
+                    <h2>Accès privilégié bêta</h2>
+                    <p>Rejoignez les leaders du recrutement qui testent déjà notre plateforme</p>
+                    
+                    <form id="betaForm">
+                        <div class="form-group">
+                            <label for="fullname">Nom et prénom</label>
+                            <input type="text" id="fullname" name="fullname" placeholder="Votre nom complet" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email professionnel</label>
+                            <input type="email" id="email" name="email" placeholder="votre.email@entreprise.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Entreprise</label>
+                            <input type="text" id="company" name="company" placeholder="Nom de votre société" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="role">Fonction</label>
+                            <select id="role" name="role" required>
+                                <option value="">Sélectionnez votre fonction</option>
+                                <option value="rh">Ressources Humaines / Recrutement</option>
+                                <option value="direction">Direction générale</option>
+                                <option value="manager">Manager opérationnel</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">
+                            Demander l'accès bêta
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">Plus rapide qu'un processus traditionnel</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">80%</div>
+                    <div class="stat-label">D'économies sur vos coûts de recrutement</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Technologie propriétaire unique</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">De précision dans le matching</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Connexions actives maximum</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Profils consultables</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Notre approche unique : 10 connexions stratégiques</h2>
+            <p class="section-subtitle">Comprenez la différence entre exploration illimitée et processus d'engagement mutuel</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h4><i class="fas fa-users" style="color: var(--primary); margin-right: 8px;"></i>Profils actifs en processus</h4>
+                    <p><strong>Engagement mutuel et suivi personnalisé d'excellence</strong></p>
+                    <ul style="margin-top: 16px; list-style: none;">
+                        <li style="margin-bottom: 8px;">• <strong>10 connexions simultanées maximum</strong> côté entreprise et candidat</li>
+                        <li style="margin-bottom: 8px;">• <strong>Double validation obligatoire</strong> pour activer le processus</li>
+                        <li style="margin-bottom: 8px;">• <strong>Suivi personnalisé premium</strong> pour chaque profil actif</li>
+                        <li style="margin-bottom: 8px;">• <strong>Rotation intelligente automatique</strong> en cas de désistement</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4><i class="fas fa-search" style="color: var(--primary); margin-right: 8px;"></i>Base de profils pour exploration</h4>
+                    <p><strong>Exploration et sourcing illimités</strong></p>
+                    <ul style="margin-top: 16px; list-style: none;">
+                        <li style="margin-bottom: 8px;">• <strong>Accès illimité</strong> à notre base de données complète</li>
+                        <li style="margin-bottom: 8px;">• <strong>Consultation libre</strong> : parcourez sans limitation</li>
+                        <li style="margin-bottom: 8px;">• <strong>Technologie propriétaire</strong> d'analyse des motivations</li>
+                        <li style="margin-bottom: 8px;">• <strong>Sourcing stratégique</strong> : retour possible vers cette base</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final avec phrase signature -->
+    <section class="section" style="text-align: center;">
+        <div class="container">
+            <!-- Phrase signature Tenex -->
+            <div class="tenex-signature">
+                <div class="tenex-signature-content">
+                    <i class="fas fa-quote-left" style="margin-right: 8px; opacity: 0.8;"></i>
+                    <strong>Tenex</strong>, c'est la rapidité d'un cabinet, la précision d'un matching intelligent, et une approche 100 % fluide, sans perte de temps, avec une compréhension complète du <strong>contexte humain et professionnel</strong>.
+                </div>
+            </div>
+
+            <div class="cta-final">
+                <h2>Pourquoi choisir Tenex ?</h2>
+                <p>Rejoignez notre programme de bêta-test exclusif et découvrez comment notre technologie propriétaire peut transformer votre approche du recrutement.</p>
+                <button class="btn-primary" style="max-width: 320px; margin: 0 auto;" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
+                    Demander l'accès bêta
+                </button>
+                <p style="margin-top: 16px; font-size: 0.8rem; color: var(--text-muted);">
+                    Données sécurisées • Sans engagement • Conformité RGPD
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('betaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const button = this.querySelector('.btn-primary');
+            button.innerHTML = 'Demande en cours...';
+            button.style.background = '#059669';
+            
+            setTimeout(() => {
+                button.innerHTML = 'Demande envoyée !';
+                setTimeout(() => {
+                    window.location.href = 'https://bapt252.github.io/THANKYOU/';
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
