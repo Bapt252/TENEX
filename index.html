@@ -1093,6 +1093,60 @@
             margin: 0 auto;
         }
 
+        /* Enhanced active profiles styling */
+        .active-profiles-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .active-profiles-item {
+            margin-bottom: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            background: var(--bg-accent);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-light);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .active-profiles-item:hover {
+            background: var(--bg-secondary);
+            transform: translateX(2px);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .active-profiles-item::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(0, 158, 196, 0.2);
+        }
+
+        .active-profiles-item strong {
+            color: var(--primary);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .active-profiles-item .item-content {
+            padding-left: var(--spacing-md);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .active-profiles-item .item-detail {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 2px;
+            font-style: italic;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .floating-nav, .fab {
@@ -1477,24 +1531,39 @@
             
             <div class="card-grid">
                 <div class="enhanced-card">
-                    <h4><span class="card-icon"><i class="fas fa-users"></i></span>profils actifs en processus</h4>
-                    <p style="color: var(--primary-light); margin-bottom: 20px; font-weight: var(--font-weight-medium); font-style: italic;">engagement mutuel et suivi personnalisé</p>
-                    <ul style="list-style: none; margin: 0;">
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            <strong>10 connexions max</strong> côté entreprise et côté candidat pour éviter l'éparpillement
+                    <h4><span class="card-icon"><i class="fas fa-users"></i></span>Profils actifs en processus</h4>
+                    <p style="color: var(--primary-light); margin-bottom: 24px; font-weight: var(--font-weight-semibold); font-style: italic; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">Engagement mutuel et suivi personnalisé d'excellence</p>
+                    
+                    <ul class="active-profiles-list">
+                        <li class="active-profiles-item">
+                            <div class="item-content">
+                                <strong>10 connexions simultanées maximum</strong> côté entreprise et côté candidat
+                                <div class="item-detail">Évite l'éparpillement et garantit un engagement de qualité des deux côtés</div>
+                            </div>
                         </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            <strong>engagement mutuel</strong> : candidats qui ont validé le poste + que vous avez choisis
+                        <li class="active-profiles-item">
+                            <div class="item-content">
+                                <strong>Double validation obligatoire</strong> pour activer le processus
+                                <div class="item-detail">Candidats ayant validé le poste + sélectionnés par vos soins = engagement réciproque</div>
+                            </div>
                         </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            <strong>suivi personnalisé</strong> : chaque profil actif bénéficie d'une attention optimale
+                        <li class="active-profiles-item">
+                            <div class="item-content">
+                                <strong>Suivi personnalisé premium</strong> pour chaque profil actif
+                                <div class="item-detail">Attention optimale garantie grâce à la limitation volontaire des connexions</div>
+                            </div>
                         </li>
-                        <li style="margin-bottom: 12px; padding-left: 20px; position: relative;">
-                            <span style="position: absolute; left: 0; color: var(--primary-light); top: 6px;">•</span>
-                            <strong>rotation intelligente</strong> : en cas de désistement, retour automatique vers la base illimitée
+                        <li class="active-profiles-item">
+                            <div class="item-content">
+                                <strong>Rotation intelligente automatique</strong> en cas de désistement
+                                <div class="item-detail">Retour immédiat vers la base illimitée pour réactiver un nouveau candidat</div>
+                            </div>
+                        </li>
+                        <li class="active-profiles-item">
+                            <div class="item-content">
+                                <strong>Exclusivité temporaire garantie</strong> pendant le processus
+                                <div class="item-detail">Candidats dédiés à votre offre, non dispersés sur d'autres opportunités</div>
+                            </div>
                         </li>
                     </ul>
                 </div>
