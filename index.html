@@ -275,6 +275,92 @@
             color: var(--text-secondary);
         }
 
+        /* Phrase d'accroche Tenex */
+        .tagline-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--spacing-2xl) 0;
+            text-align: center;
+        }
+
+        .tagline-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tagline-title {
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            font-family: var(--font-family-heading);
+        }
+
+        .tagline-description {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 32px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+            z-index: 1;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .process-number {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-cta);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto var(--spacing-md);
+            position: relative;
+            z-index: 2;
+            box-shadow: var(--shadow-light);
+        }
+
+        .process-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .process-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         /* Cards */
         .card-grid {
             display: grid;
@@ -305,6 +391,60 @@
         }
 
         .card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Matching Intelligence Section */
+        .matching-section {
+            background: var(--bg-secondary);
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .matching-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .matching-card {
+            background: white;
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-large);
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .matching-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .matching-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-cta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            color: white;
+            font-size: 2rem;
+            box-shadow: var(--shadow-light);
+        }
+
+        .matching-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .matching-description {
             color: var(--text-secondary);
             line-height: 1.6;
         }
@@ -558,12 +698,20 @@
                 text-align: center;
             }
             
-            .card-grid, .dashboard-features {
+            .card-grid, .dashboard-features, .matching-grid {
                 grid-template-columns: 1fr;
             }
             
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step::after {
+                display: none;
             }
 
             .feature-card {
@@ -682,6 +830,58 @@
         </div>
     </section>
 
+    <!-- Phrase d'accroche Tenex -->
+    <section class="tagline-section">
+        <div class="container">
+            <div class="tagline-content">
+                <h2 class="tagline-title">Le recrutement nouvelle génération</h2>
+                <p class="tagline-description">
+                    Avec Tenex, transformez votre approche du recrutement grâce à une technologie propriétaire qui combine l'efficacité d'un cabinet de recrutement, la précision d'un algorithme intelligent et une approche 100% fluide qui respecte le contexte humain et professionnel de chaque candidat.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Comment fonctionne Tenex</h2>
+            <p class="section-subtitle">Un processus en 5 étapes pour un recrutement optimisé</p>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3 class="process-title">Définition du besoin</h3>
+                    <p class="process-description">Notre IA analyse votre fiche de poste et optimise automatiquement les critères de recherche</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3 class="process-title">Matching intelligent</h3>
+                    <p class="process-description">Notre algorithme propriétaire identifie les profils les plus pertinents dans notre base de données</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3 class="process-title">Sélection sur-mesure</h3>
+                    <p class="process-description">Nous vous présentons jusqu'à 10 profils actifs maximum pour garantir un suivi personnalisé</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h3 class="process-title">Mise en relation</h3>
+                    <p class="process-description">Coordination des échanges et accompagnement tout au long du processus de recrutement</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <h3 class="process-title">Suivi post-embauche</h3>
+                    <p class="process-description">Accompagnement de l'intégration et optimisation continue de notre algorithme</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Concept Section -->
     <section class="section">
         <div class="container">
@@ -709,6 +909,48 @@
                         <li style="margin-bottom: 8px;">• <strong>Technologie propriétaire</strong> d'analyse des motivations</li>
                         <li style="margin-bottom: 8px;">• <strong>Sourcing stratégique</strong> : retour possible vers cette base</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Matching Intelligence Section -->
+    <section class="matching-section">
+        <div class="container">
+            <h2 class="section-title">Matching intelligent basé sur notre technologie propriétaire</h2>
+            <p class="section-subtitle">Un algorithme exclusif qui analyse plus de 200 critères pour vous proposer les candidats parfaits</p>
+            
+            <div class="matching-grid">
+                <div class="matching-card">
+                    <div class="matching-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="matching-title">Intelligence Artificielle Avancée</h3>
+                    <p class="matching-description">Notre IA propriétaire analyse les compétences, motivations et trajectoires professionnelles pour identifier les talents parfaitement alignés avec vos besoins.</p>
+                </div>
+                
+                <div class="matching-card">
+                    <div class="matching-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="matching-title">Scoring Prédictif</h3>
+                    <p class="matching-description">Algorithme propriétaire qui calcule un score de compatibilité en temps réel basé sur plus de 200 critères techniques et humains.</p>
+                </div>
+                
+                <div class="matching-card">
+                    <div class="matching-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="matching-title">Apprentissage Continu</h3>
+                    <p class="matching-description">Notre technologie s'améliore en permanence grâce au feedback de chaque recrutement réussi pour affiner ses recommandations.</p>
+                </div>
+                
+                <div class="matching-card">
+                    <div class="matching-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="matching-title">Confidentialité Garantie</h3>
+                    <p class="matching-description">Processus sécurisé avec anonymisation des données et respect total de la confidentialité des candidats et entreprises.</p>
                 </div>
             </div>
         </div>
