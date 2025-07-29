@@ -629,13 +629,27 @@
             font-size: 0.7rem;
         }
 
-        /* Tenex Signature Quote */
+        /* Section CTA finale avec titre + citation */
+        .final-cta-section {
+            background: var(--bg-secondary);
+            padding: var(--spacing-2xl) 0;
+            text-align: center;
+        }
+
+        .final-cta-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-lg);
+            font-family: var(--font-family-heading);
+        }
+
         .tenex-signature {
             background: var(--gradient-primary);
             color: white;
             padding: var(--spacing-xl);
             border-radius: var(--border-radius-large);
-            margin: var(--spacing-xl) auto;
+            margin: 0 auto var(--spacing-xl);
             text-align: center;
             box-shadow: var(--shadow-medium);
             max-width: 900px;
@@ -653,24 +667,12 @@
             letter-spacing: 0.1em;
         }
 
-        /* CTA Final */
-        .cta-final {
-            background: var(--bg-secondary);
-            padding: var(--spacing-2xl);
-            border-radius: var(--border-radius-large);
-            text-align: center;
+        .final-cta-content {
+            max-width: 600px;
             margin: 0 auto;
-            max-width: 720px;
         }
 
-        .cta-final h2 {
-            color: var(--text-primary);
-            margin-bottom: var(--spacing-md);
-            font-size: 2rem;
-            font-weight: 600;
-        }
-
-        .cta-final p {
+        .final-cta-content p {
             margin-bottom: var(--spacing-lg);
             color: var(--text-secondary);
         }
@@ -1136,12 +1138,22 @@
         </div>
     </section>
 
-    <!-- CTA Final avec ordre inversé -->
-    <section class="section" style="text-align: center;">
+    <!-- Section finale : titre + citation + CTA -->
+    <section class="final-cta-section">
         <div class="container">
             <!-- D'ABORD le titre "Pourquoi choisir Tenex ?" -->
-            <div class="cta-final">
-                <h2>Pourquoi choisir Tenex ?</h2>
+            <h2 class="final-cta-title">Pourquoi choisir Tenex ?</h2>
+            
+            <!-- DIRECTEMENT APRÈS : la citation dans l'encadré bleu -->
+            <div class="tenex-signature">
+                <div class="tenex-signature-content">
+                    <i class="fas fa-quote-left" style="margin-right: 8px; opacity: 0.8;"></i>
+                    <strong>Tenex</strong>, c'est la rapidité d'un cabinet, la précision d'un matching intelligent, et une approche 100 % fluide, sans perte de temps, avec une compréhension complète du <strong>contexte humain et professionnel</strong>.
+                </div>
+            </div>
+
+            <!-- ENSUITE le contenu CTA -->
+            <div class="final-cta-content">
                 <p>Rejoignez notre programme de bêta-test exclusif et découvrez comment notre technologie propriétaire peut transformer votre approche du recrutement.</p>
                 <button class="btn-primary" style="max-width: 320px; margin: 0 auto;" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
                     Demander l'accès bêta
@@ -1149,14 +1161,6 @@
                 <p style="margin-top: 16px; font-size: 0.8rem; color: var(--text-muted);">
                     Données sécurisées • Sans engagement • Conformité RGPD
                 </p>
-            </div>
-
-            <!-- ENSUITE la phrase signature Tenex -->
-            <div class="tenex-signature">
-                <div class="tenex-signature-content">
-                    <i class="fas fa-quote-left" style="margin-right: 8px; opacity: 0.8;"></i>
-                    <strong>Tenex</strong>, c'est la rapidité d'un cabinet, la précision d'un matching intelligent, et une approche 100 % fluide, sans perte de temps, avec une compréhension complète du <strong>contexte humain et professionnel</strong>.
-                </div>
             </div>
         </div>
     </section>
