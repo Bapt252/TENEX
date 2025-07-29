@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
     <title>Tenex – Le recrutement en 10 connexions stratégiques</title>
     <meta name="description" content="Plateforme de recrutement nouvelle génération avec un concept unique de 10 connexions stratégiques maximum.">
     
@@ -171,6 +172,12 @@
 
         .form-group {
             margin-bottom: var(--spacing-sm);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-sm);
         }
 
         .form-group label {
@@ -717,6 +724,10 @@
             .feature-card {
                 min-width: unset;
             }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -757,36 +768,56 @@
                     <h2>Accès privilégié bêta</h2>
                     <p>Rejoignez les leaders du recrutement qui testent déjà notre plateforme</p>
                     
-                    <form id="betaForm">
-                        <div class="form-group">
-                            <label for="fullname">Nom et prénom</label>
-                            <input type="text" id="fullname" name="fullname" placeholder="Votre nom complet" required>
+                    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D0900000DZleo" method="POST" id="betaForm">
+                        <!-- Champs cachés Salesforce -->
+                        <input type="hidden" name="oid" value="00D0900000DZleo">
+                        <input type="hidden" name="retURL" value="https://bapt252.github.io/THANKYOU/">
+                        
+                        <!-- Champs de débogage (décommenter si nécessaire) -->
+                        <!-- <input type="hidden" name="debug" value="1"> -->
+                        <!-- <input type="hidden" name="debugEmail" value="b@bcomhr.fr"> -->
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first_name">Prénom</label>
+                                <input type="text" id="first_name" name="first_name" maxlength="40" placeholder="Votre prénom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Nom</label>
+                                <input type="text" id="last_name" name="last_name" maxlength="80" placeholder="Votre nom" required>
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email professionnel</label>
-                            <input type="email" id="email" name="email" placeholder="votre.email@entreprise.com" required>
+                            <input type="email" id="email" name="email" maxlength="80" placeholder="votre.email@entreprise.com" required>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" required>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input type="tel" id="phone" name="phone" maxlength="40" placeholder="06 12 34 56 78">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Entreprise</label>
+                                <input type="text" id="company" name="company" maxlength="40" placeholder="Nom de votre société" required>
+                            </div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="company">Entreprise</label>
-                            <input type="text" id="company" name="company" placeholder="Nom de votre société" required>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="title">Fonction</label>
+                                <input type="text" id="title" name="title" maxlength="40" placeholder="ex: Responsable RH">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">Ville</label>
+                                <input type="text" id="city" name="city" maxlength="40" placeholder="ex: Paris">
+                            </div>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="role">Fonction</label>
-                            <select id="role" name="role" required>
-                                <option value="">Sélectionnez votre fonction</option>
-                                <option value="rh">Ressources Humaines / Recrutement</option>
-                                <option value="direction">Direction générale</option>
-                                <option value="manager">Manager opérationnel</option>
-                                <option value="other">Autre</option>
-                            </select>
+                            <label for="employees">Nombre d'employés</label>
+                            <input type="text" id="employees" name="employees" placeholder="ex: 50-100">
                         </div>
                         
                         <button type="submit" class="btn-primary">
@@ -1129,20 +1160,35 @@
     </section>
 
     <script>
-        // Form handling
+        // Form handling - Salesforce integration
         document.getElementById('betaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Validation côté client avant envoi
+            const requiredFields = ['first_name', 'last_name', 'email', 'company'];
+            let isValid = true;
             
+            requiredFields.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value.trim()) {
+                    input.style.borderColor = '#e53e3e';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+                alert('Veuillez remplir tous les champs obligatoires (prénom, nom, email, entreprise)');
+                return;
+            }
+            
+            // Animation du bouton pendant l'envoi
             const button = this.querySelector('.btn-primary');
-            button.innerHTML = 'Demande en cours...';
+            button.innerHTML = 'Envoi en cours...';
             button.style.background = '#059669';
             
-            setTimeout(() => {
-                button.innerHTML = 'Demande envoyée !';
-                setTimeout(() => {
-                    window.location.href = 'https://bapt252.github.io/THANKYOU/';
-                }, 2000);
-            }, 1500);
+            // Le formulaire sera soumis automatiquement à Salesforce
+            // et redirigera vers la page THANKYOU
         });
 
         // Scroll animations
@@ -1168,6 +1214,17 @@
         const featureCards = document.querySelectorAll('.feature-card');
         featureCards.forEach((card, index) => {
             card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Validation en temps réel des champs
+        document.querySelectorAll('input[required]').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderColor = '#e53e3e';
+                } else {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                }
+            });
         });
     </script>
 </body>
