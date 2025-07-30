@@ -361,13 +361,6 @@
             box-shadow: var(--shadow-heavy);
         }
 
-        .stat-item:nth-child(1) .stat-number { color: #e74c3c; }
-        .stat-item:nth-child(2) .stat-number { color: #2ecc71; }
-        .stat-item:nth-child(3) .stat-number { color: var(--primary); }
-        .stat-item:nth-child(4) .stat-number { color: #9b59b6; }
-        .stat-item:nth-child(5) .stat-number { color: #f39c12; }
-        .stat-item:nth-child(6) .stat-number { color: #1abc9c; }
-
         .stat-number {
             font-size: clamp(2.5rem, 4vw, 3.25rem);
             font-weight: 800;
@@ -375,6 +368,7 @@
             font-family: var(--font-family-heading);
             line-height: 1;
             transition: all 0.3s ease;
+            color: var(--primary);
         }
 
         .stat-item:hover .stat-number {
