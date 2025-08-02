@@ -635,58 +635,82 @@
             line-height: 1.5;
         }
 
-        /* Dashboard Section */
+        /* Dashboard Section - Version Premium UX */
         .dashboard-section {
-            background: var(--bg-secondary);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             padding: var(--spacing-3xl) 0;
             position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(16, 102, 128, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 158, 196, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .dashboard-container {
+            position: relative;
+            z-index: 1;
         }
 
         .dashboard-header {
-            text-align: left;
-            margin-bottom: var(--spacing-xl);
-            border-left: 4px solid var(--primary);
-            padding-left: var(--spacing-md);
+            text-align: center;
+            margin-bottom: var(--spacing-3xl);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .dashboard-title {
-            font-size: 1.5rem;
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
             font-weight: 700;
             color: var(--text-primary);
             font-family: var(--font-family-heading);
+            margin-bottom: var(--spacing-md);
+            background: var(--gradient-cta);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: var(--spacing-xs);
         }
 
         .dashboard-subtitle {
-            font-size: 1rem;
+            font-size: 1.125rem;
             color: var(--text-secondary);
+            line-height: 1.6;
             font-weight: 400;
         }
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-            max-width: 1000px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: var(--spacing-xl);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .dashboard-module {
-            background: white;
-            border-radius: var(--border-radius-large);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
             padding: var(--spacing-xl);
-            box-shadow: var(--shadow-light);
-            border: 1px solid var(--border-light);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             cursor: pointer;
             overflow: hidden;
-        }
-
-        .dashboard-module:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-medium);
+            box-shadow: 
+                0 8px 32px rgba(16, 102, 128, 0.08),
+                0 4px 16px rgba(0, 158, 196, 0.04);
         }
 
         .dashboard-module::before {
@@ -695,11 +719,20 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 4px;
             background: var(--gradient-cta);
             transform: scaleX(0);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
             transform-origin: left;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .dashboard-module:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 
+                0 24px 48px rgba(16, 102, 128, 0.15),
+                0 16px 32px rgba(0, 158, 196, 0.1);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         .dashboard-module:hover::before {
@@ -708,79 +741,156 @@
 
         .module-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
-            margin-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
         }
 
         .module-icon {
-            width: 48px;
-            height: 48px;
+            width: 64px;
+            height: 64px;
             background: var(--gradient-cta);
-            border-radius: 12px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.25rem;
-            box-shadow: var(--shadow-light);
+            font-size: 1.5rem;
+            box-shadow: 
+                0 8px 16px rgba(16, 102, 128, 0.25),
+                0 4px 8px rgba(0, 158, 196, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dashboard-module:hover .module-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 
+                0 12px 24px rgba(16, 102, 128, 0.3),
+                0 8px 16px rgba(0, 158, 196, 0.2);
+        }
+
+        .dashboard-module:hover .module-icon::before {
+            opacity: 1;
         }
 
         .module-badge {
             background: var(--primary);
             color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            box-shadow: 0 4px 8px rgba(16, 102, 128, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .dashboard-module:hover .module-badge::before {
+            left: 100%;
         }
 
         .module-badge.nouveau {
-            background: var(--success);
+            background: linear-gradient(135deg, var(--success), #0ea472);
         }
 
         .module-badge.count {
-            background: var(--info);
+            background: linear-gradient(135deg, var(--info), #2563eb);
         }
 
         .module-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.375rem;
+            font-weight: 700;
             color: var(--text-primary);
             margin-bottom: var(--spacing-sm);
             font-family: var(--font-family-heading);
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .dashboard-module:hover .module-title {
+            color: var(--primary);
         }
 
         .module-description {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: var(--spacing-md);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 400;
         }
 
         .module-features {
             list-style: none;
             margin: 0;
             padding: 0;
+            space-y: var(--spacing-xs);
         }
 
         .module-features li {
             position: relative;
-            padding-left: var(--spacing-sm);
-            margin-bottom: var(--spacing-xs);
-            font-size: 0.85rem;
+            padding-left: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.5;
+            transition: all 0.3s ease;
         }
 
         .module-features li::before {
-            content: '•';
+            content: '✓';
             position: absolute;
             left: 0;
+            top: 0;
             color: var(--primary);
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.85rem;
+            width: 16px;
+            height: 16px;
+            background: rgba(16, 102, 128, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-module:hover .module-features li::before {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .dashboard-module:hover .module-features li {
+            color: var(--text-secondary);
+            transform: translateX(4px);
         }
 
         .module-features li:last-child {
@@ -882,8 +992,8 @@
             }
             
             .dashboard-grid {
-                grid-template-columns: repeat(2, 1fr);
-                max-width: 800px;
+                grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+                gap: var(--spacing-lg);
             }
         }
 
@@ -973,6 +1083,16 @@
             .dashboard-header {
                 text-align: center;
             }
+
+            .dashboard-module {
+                padding: var(--spacing-lg);
+            }
+
+            .module-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 1.25rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -995,6 +1115,11 @@
 
             .scroll-indicator {
                 bottom: 25px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
             }
         }
     </style>
@@ -1228,118 +1353,120 @@
     <!-- Dashboard Section -->
     <section class="dashboard-section">
         <div class="container">
-            <div class="dashboard-header">
-                <h2 class="dashboard-title">Gérer votre recrutement</h2>
-                <p class="dashboard-subtitle">Un tableau de bord complet qui simplifie et accélère votre processus de recrutement avec 6 modules essentiels</p>
-            </div>
-            
-            <div class="dashboard-grid">
-                <div class="dashboard-module animate-on-scroll">
-                    <div class="module-header">
-                        <div class="module-icon">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                        <div class="module-badge nouveau">Nouveau</div>
-                    </div>
-                    <h3 class="module-title">Créer un poste</h3>
-                    <p class="module-description">Publiez une nouvelle offre d'emploi et recevez des candidatures ciblées grâce à notre IA</p>
-                    <ul class="module-features">
-                        <li>Parsing intelligent des données du poste</li>
-                        <li>Contexte et culture d'entreprise</li>
-                        <li>Définition des interlocuteurs</li>
-                        <li>Configuration du workflow de recrutement</li>
-                        <li>Finalisation et activation de l'offre</li>
-                    </ul>
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <h2 class="dashboard-title">Gérer votre recrutement</h2>
+                    <p class="dashboard-subtitle">Un tableau de bord complet qui simplifie et accélère votre processus de recrutement avec 6 modules essentiels</p>
                 </div>
-
-                <div class="dashboard-module animate-on-scroll">
-                    <div class="module-header">
-                        <div class="module-icon">
-                            <i class="fas fa-star"></i>
+                
+                <div class="dashboard-grid">
+                    <div class="dashboard-module animate-on-scroll">
+                        <div class="module-header">
+                            <div class="module-icon">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="module-badge nouveau">Nouveau</div>
                         </div>
-                        <div class="module-badge count">5 nouveaux</div>
+                        <h3 class="module-title">Créer un poste</h3>
+                        <p class="module-description">Publiez une nouvelle offre d'emploi et recevez des candidatures ciblées grâce à notre IA</p>
+                        <ul class="module-features">
+                            <li>Parsing intelligent des données du poste</li>
+                            <li>Contexte et culture d'entreprise</li>
+                            <li>Définition des interlocuteurs</li>
+                            <li>Configuration du workflow de recrutement</li>
+                            <li>Finalisation et activation de l'offre</li>
+                        </ul>
                     </div>
-                    <h3 class="module-title">Mes sélections</h3>
-                    <p class="module-description">Consultez et gérez vos candidats présélectionnés qui correspondent parfaitement à vos critères</p>
-                    <ul class="module-features">
-                        <li>Nom, prénom et coordonnées complètes</li>
-                        <li>Ce que recherche réellement le candidat</li>
-                        <li>Temps de trajet exact porte-à-porte</li>
-                        <li>Disponibilité précise et préavis</li>
-                        <li>Rémunération actuelle et souhaitée</li>
-                    </ul>
-                </div>
 
-                <div class="dashboard-module animate-on-scroll">
-                    <div class="module-header">
-                        <div class="module-icon">
-                            <i class="fas fa-user"></i>
+                    <div class="dashboard-module animate-on-scroll">
+                        <div class="module-header">
+                            <div class="module-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="module-badge count">5 nouveaux</div>
                         </div>
-                        <div class="module-badge count">12 nouveaux</div>
+                        <h3 class="module-title">Mes sélections</h3>
+                        <p class="module-description">Consultez et gérez vos candidats présélectionnés qui correspondent parfaitement à vos critères</p>
+                        <ul class="module-features">
+                            <li>Nom, prénom et coordonnées complètes</li>
+                            <li>Ce que recherche réellement le candidat</li>
+                            <li>Temps de trajet exact porte-à-porte</li>
+                            <li>Disponibilité précise et préavis</li>
+                            <li>Rémunération actuelle et souhaitée</li>
+                        </ul>
                     </div>
-                    <h3 class="module-title">Candidats</h3>
-                    <p class="module-description">Explorez les profils des candidats correspondant à vos offres avec analyse des compétences</p>
-                    <ul class="module-features">
-                        <li>Position actuelle dans le processus</li>
-                        <li>Profil complet du candidat</li>
-                        <li>Où il en est dans le recrutement</li>
-                        <li>Ce qu'il souhaite vraiment</li>
-                        <li>Retours et notes de l'équipe</li>
-                    </ul>
-                </div>
 
-                <div class="dashboard-module animate-on-scroll">
-                    <div class="module-header">
-                        <div class="module-icon">
-                            <i class="fas fa-calendar"></i>
+                    <div class="dashboard-module animate-on-scroll">
+                        <div class="module-header">
+                            <div class="module-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="module-badge count">12 nouveaux</div>
                         </div>
-                        <div class="module-badge">2 aujourd'hui</div>
+                        <h3 class="module-title">Candidats</h3>
+                        <p class="module-description">Explorez les profils des candidats correspondant à vos offres avec analyse des compétences</p>
+                        <ul class="module-features">
+                            <li>Position actuelle dans le processus</li>
+                            <li>Profil complet du candidat</li>
+                            <li>Où il en est dans le recrutement</li>
+                            <li>Ce qu'il souhaite vraiment</li>
+                            <li>Retours et notes de l'équipe</li>
+                        </ul>
                     </div>
-                    <h3 class="module-title">Planning</h3>
-                    <p class="module-description">Organisez vos entretiens et suivez votre calendrier de recrutement en temps réel</p>
-                    <ul class="module-features">
-                        <li>Format KANBAN déterminé lors de la création du poste</li>
-                        <li>Visibilité sur chaque processus et candidat</li>
-                        <li>Nom, coordonnées et accès CV direct</li>
-                        <li>Ajout de membres de l'entreprise aux entretiens</li>
-                        <li>Gestion collaborative des étapes</li>
-                    </ul>
-                </div>
 
-                <div class="dashboard-module animate-on-scroll">
-                    <div class="module-header">
-                        <div class="module-icon">
-                            <i class="fas fa-comments"></i>
+                    <div class="dashboard-module animate-on-scroll">
+                        <div class="module-header">
+                            <div class="module-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="module-badge">2 aujourd'hui</div>
                         </div>
-                        <div class="module-badge count">3 non lus</div>
+                        <h3 class="module-title">Planning</h3>
+                        <p class="module-description">Organisez vos entretiens et suivez votre calendrier de recrutement en temps réel</p>
+                        <ul class="module-features">
+                            <li>Format KANBAN déterminé lors de la création du poste</li>
+                            <li>Visibilité sur chaque processus et candidat</li>
+                            <li>Nom, coordonnées et accès CV direct</li>
+                            <li>Ajout de membres de l'entreprise aux entretiens</li>
+                            <li>Gestion collaborative des étapes</li>
+                        </ul>
                     </div>
-                    <h3 class="module-title">Messagerie</h3>
-                    <p class="module-description">Communiquez avec les candidats et votre équipe de recrutement de manière centralisée</p>
-                    <ul class="module-features">
-                        <li>Communication avec les membres de l'entreprise</li>
-                        <li>Échanges directs avec les postulants</li>
-                        <li>Transmission d'informations complémentaires</li>
-                        <li>Partage de fiches de postes et documents</li>
-                        <li>Historique complet des conversations</li>
-                    </ul>
-                </div>
 
-                <div class="dashboard-module animate-on-scroll">
-                    <div class="module-header">
-                        <div class="module-icon">
-                            <i class="fas fa-cog"></i>
+                    <div class="dashboard-module animate-on-scroll">
+                        <div class="module-header">
+                            <div class="module-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="module-badge count">3 non lus</div>
                         </div>
-                        <div class="module-badge">Paramètres</div>
+                        <h3 class="module-title">Messagerie</h3>
+                        <p class="module-description">Communiquez avec les candidats et votre équipe de recrutement de manière centralisée</p>
+                        <ul class="module-features">
+                            <li>Communication avec les membres de l'entreprise</li>
+                            <li>Échanges directs avec les postulants</li>
+                            <li>Transmission d'informations complémentaires</li>
+                            <li>Partage de fiches de postes et documents</li>
+                            <li>Historique complet des conversations</li>
+                        </ul>
                     </div>
-                    <h3 class="module-title">Organisation</h3>
-                    <p class="module-description">Gérez la structure de votre entreprise, les permissions et les workflows de recrutement</p>
-                    <ul class="module-features">
-                        <li>Ajout de membres dans l'entreprise</li>
-                        <li>Définition précise des rôles et permissions</li>
-                        <li>Participation des DAF/Responsables au processus</li>
-                        <li>Visibilité contrôlée sur les candidatures</li>
-                        <li>Prise de main si besoin selon les permissions</li>
-                    </ul>
+
+                    <div class="dashboard-module animate-on-scroll">
+                        <div class="module-header">
+                            <div class="module-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="module-badge">Paramètres</div>
+                        </div>
+                        <h3 class="module-title">Organisation</h3>
+                        <p class="module-description">Gérez la structure de votre entreprise, les permissions et les workflows de recrutement</p>
+                        <ul class="module-features">
+                            <li>Ajout de membres dans l'entreprise</li>
+                            <li>Définition précise des rôles et permissions</li>
+                            <li>Participation des DAF/Responsables au processus</li>
+                            <li>Visibilité contrôlée sur les candidatures</li>
+                            <li>Prise de main si besoin selon les permissions</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1420,7 +1547,7 @@
         // Staggered animation for dashboard modules
         const dashboardModules = document.querySelectorAll('.dashboard-module');
         dashboardModules.forEach((module, index) => {
-            module.style.animationDelay = `${index * 0.1}s`;
+            module.style.animationDelay = `${index * 0.15}s`;
         });
 
         // Validation en temps réel des champs
