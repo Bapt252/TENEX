@@ -635,63 +635,6 @@
             line-height: 1.5;
         }
 
-        /* Matching Intelligence Section */
-        .matching-section {
-            background: var(--bg-secondary);
-            padding: var(--spacing-3xl) 0;
-        }
-
-        .matching-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-3xl);
-        }
-
-        .matching-card {
-            background: white;
-            padding: var(--spacing-xl);
-            border-radius: var(--border-radius-large);
-            box-shadow: var(--shadow-light);
-            border: 1px solid var(--border-light);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .matching-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .matching-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-cta);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--spacing-lg);
-            color: white;
-            font-size: 2rem;
-            box-shadow: var(--shadow-light);
-        }
-
-        .matching-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: var(--spacing-md);
-            color: var(--text-primary);
-            font-family: var(--font-family-heading);
-            line-height: 1.3;
-        }
-
-        .matching-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
         /* Enhanced Dashboard Features Grid */
         .dashboard-features {
             display: grid;
@@ -973,12 +916,11 @@
 
             .stats-section,
             .tagline-section,
-            .matching-section,
             .final-cta-section {
                 padding: var(--spacing-2xl) 0;
             }
             
-            .card-grid, .dashboard-features, .matching-grid {
+            .card-grid, .dashboard-features {
                 grid-template-columns: 1fr;
                 gap: var(--spacing-lg);
             }
@@ -1263,48 +1205,6 @@
                         <li>• <strong>Technologie propriétaire</strong> d'analyse des motivations</li>
                         <li>• <strong>Sourcing stratégique</strong> : retour possible vers cette base</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Matching Intelligence Section -->
-    <section class="matching-section">
-        <div class="container">
-            <h2 class="section-title">Matching intelligent basé sur notre technologie propriétaire</h2>
-            <p class="section-subtitle">Un algorithme exclusif qui analyse plus de 200 critères pour vous proposer les candidats parfaits</p>
-            
-            <div class="matching-grid">
-                <div class="matching-card">
-                    <div class="matching-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="matching-title">Intelligence Artificielle Avancée</h3>
-                    <p class="matching-description">Notre IA propriétaire analyse les compétences, motivations et trajectoires professionnelles pour identifier les talents parfaitement alignés avec vos besoins.</p>
-                </div>
-                
-                <div class="matching-card">
-                    <div class="matching-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="matching-title">Scoring Prédictif</h3>
-                    <p class="matching-description">Algorithme propriétaire qui calcule un score de compatibilité en temps réel basé sur plus de 200 critères techniques et humains.</p>
-                </div>
-                
-                <div class="matching-card">
-                    <div class="matching-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3 class="matching-title">Apprentissage Continu</h3>
-                    <p class="matching-description">Notre technologie s'améliore en permanence grâce au feedback de chaque recrutement réussi pour affiner ses recommandations.</p>
-                </div>
-                
-                <div class="matching-card">
-                    <div class="matching-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="matching-title">Confidentialité Garantie</h3>
-                    <p class="matching-description">Processus sécurisé avec anonymisation des données et respect total de la confidentialité des candidats et entreprises.</p>
                 </div>
             </div>
         </div>
