@@ -491,33 +491,290 @@
             }
         }
 
-        /* Tagline Section */
-        .tagline-section {
+        /* Revolution Section - Nouvelle section améliorée */
+        .revolution-section {
             background: var(--gradient-primary);
             color: white;
             padding: var(--spacing-3xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .revolution-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .revolution-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .revolution-header {
             text-align: center;
+            margin-bottom: var(--spacing-2xl);
         }
 
-        .tagline-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .tagline-title {
-            font-size: clamp(1.75rem, 3vw, 2.5rem);
-            font-weight: 600;
-            margin-bottom: var(--spacing-xl);
+        .revolution-title {
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            font-weight: 700;
             font-family: var(--font-family-heading);
+            margin-bottom: var(--spacing-md);
             line-height: 1.2;
         }
 
-        .tagline-description {
+        .revolution-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Innovation points */
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-2xl);
+        }
+
+        .innovation-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-large);
+            padding: var(--spacing-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .innovation-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .innovation-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .innovation-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-right: var(--spacing-md);
+        }
+
+        .innovation-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            font-family: var(--font-family-heading);
+        }
+
+        .innovation-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* Section technique */
+        .tech-section {
+            background: white;
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .tech-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tech-title {
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-heading);
+        }
+
+        .tech-description {
             font-size: 1.125rem;
-            opacity: 0.95;
-            line-height: 1.7;
-            text-align: justify;
-            margin-bottom: var(--spacing-lg);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        /* Technologies utilisées */
+        .tech-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .tech-feature {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-large);
+            transition: all 0.3s ease;
+        }
+
+        .tech-feature:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-light);
+        }
+
+        .tech-feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-cta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto var(--spacing-sm);
+        }
+
+        .tech-feature-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .tech-feature-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Différenciateurs */
+        .differentiators {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .diff-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .diff-title {
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-family-heading);
+        }
+
+        .diff-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: var(--border-radius-large);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-card.traditional {
+            border-left: 4px solid #e53e3e;
+        }
+
+        .comparison-card.tenex {
+            border-left: 4px solid var(--success);
+        }
+
+        .comparison-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .comparison-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            margin-right: var(--spacing-md);
+        }
+
+        .comparison-card.traditional .comparison-icon {
+            background: #e53e3e;
+        }
+
+        .comparison-card.tenex .comparison-icon {
+            background: var(--success);
+        }
+
+        .comparison-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: var(--font-family-heading);
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: var(--spacing-md);
+        }
+
+        .comparison-card.traditional .comparison-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        .comparison-card.tenex .comparison-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
         }
 
         /* Process Section */
@@ -995,6 +1252,20 @@
                 grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
                 gap: var(--spacing-lg);
             }
+
+            .innovation-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            
+            .tech-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
         }
 
         @media (max-width: 900px) {
@@ -1035,7 +1306,9 @@
             }
 
             .stats-section,
-            .tagline-section,
+            .revolution-section,
+            .tech-section,
+            .differentiators,
             .dashboard-section,
             .final-cta-section {
                 padding: var(--spacing-2xl) 0;
@@ -1063,10 +1336,6 @@
                 font-size: 2.25rem;
             }
 
-            .tagline-description {
-                text-align: left;
-            }
-
             .scroll-indicator {
                 bottom: 30px;
             }
@@ -1092,6 +1361,11 @@
                 width: 56px;
                 height: 56px;
                 font-size: 1.25rem;
+            }
+
+            .tech-features {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
             }
         }
 
@@ -1254,20 +1528,136 @@
         </div>
     </section>
 
-    <!-- Tagline Section -->
-    <section class="tagline-section">
+    <!-- Revolution Section - Nouvelle section améliorée -->
+    <section class="revolution-section">
         <div class="container">
-            <div class="tagline-content">
-                <h2 class="tagline-title">Le recrutement nouvelle génération</h2>
-                <p class="tagline-description">
-                    Tenex révolutionne la mise en relation entre entreprises et talents grâce à une approche intelligente et automatisée. Notre plateforme analyse en profondeur les besoins réels des entreprises et les motivations authentiques des candidats pour créer des matchs ultra-pertinents.
+            <div class="revolution-container">
+                <div class="revolution-header">
+                    <h2 class="revolution-title">Le recrutement nouvelle génération</h2>
+                    <p class="revolution-subtitle">
+                        Tenex révolutionne la mise en relation grâce à une technologie propriétaire qui comprend les vraies motivations humaines.
+                    </p>
+                </div>
+                
+                <div class="innovation-grid">
+                    <div class="innovation-card">
+                        <div class="innovation-header">
+                            <div class="innovation-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3 class="innovation-title">Intelligence Contextuelle</h3>
+                        </div>
+                        <p class="innovation-description">
+                            Notre IA ne se contente pas d'analyser les CV. Elle comprend le contexte professionnel, les motivations réelles et les aspirations de carrière de chaque candidat.
+                        </p>
+                    </div>
+                    
+                    <div class="innovation-card">
+                        <div class="innovation-header">
+                            <div class="innovation-icon">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <h3 class="innovation-title">Calculs Réels de Trajets</h3>
+                        </div>
+                        <p class="innovation-description">
+                            Fini les approximations ! Nous calculons les temps de trajet porte-à-porte en temps réel, en tenant compte des transports et des horaires réels.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section technique -->
+    <section class="tech-section">
+        <div class="container">
+            <div class="tech-content">
+                <h2 class="tech-title">Notre technologie propriétaire</h2>
+                <p class="tech-description">
+                    Nous analysons en profondeur les besoins réels des entreprises et les motivations authentiques des candidats pour créer des matchs ultra-pertinents.
                 </p>
-                <p class="tagline-description">
-                    Comment ça marche ? Notre IA évalue automatiquement les critères essentiels : type de contrat, localisation avec calculs de trajets réels, prétentions salariales, leviers de motivation, situation professionnelle et disponibilité. Vous recevez une shortlist de 10 profils parfaitement alignés sur vos besoins, tandis que les candidats découvrent 10 opportunités taillées sur-mesure.
+                
+                <div class="tech-features">
+                    <div class="tech-feature">
+                        <div class="tech-feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4 class="tech-feature-title">Géolocalisation</h4>
+                        <p class="tech-feature-desc">Trajets réels calculés</p>
+                    </div>
+                    
+                    <div class="tech-feature">
+                        <div class="tech-feature-icon">
+                            <i class="fas fa-euro-sign"></i>
+                        </div>
+                        <h4 class="tech-feature-title">Analyse Salariale</h4>
+                        <p class="tech-feature-desc">Prétentions vs réalité</p>
+                    </div>
+                    
+                    <div class="tech-feature">
+                        <div class="tech-feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="tech-feature-title">Motivations</h4>
+                        <p class="tech-feature-desc">Leviers authentiques</p>
+                    </div>
+                    
+                    <div class="tech-feature">
+                        <div class="tech-feature-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h4 class="tech-feature-title">Disponibilité</h4>
+                        <p class="tech-feature-desc">Timing et préavis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section comparaison -->
+    <section class="differentiators">
+        <div class="container">
+            <div class="diff-header">
+                <h2 class="diff-title">Pourquoi Tenex change tout</h2>
+                <p class="diff-subtitle">
+                    Comparaison entre l'approche traditionnelle et notre méthode révolutionnaire
                 </p>
-                <p class="tagline-description">
-                    Le système des "connexions actives" garantit un recrutement dynamique et efficace. Une fois les 10 connexions atteintes, il suffit de finaliser vos candidats sélectionnés (acceptation ou refus) pour libérer des emplacements et pouvoir sélectionner de nouveaux profils parmi votre base illimitée. Cette approche assure réactivité maximale, engagement des deux parties et clarté dans tous les échanges.
-                </p>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card traditional">
+                    <div class="comparison-header">
+                        <div class="comparison-icon">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <h3 class="comparison-title">Recrutement traditionnel</h3>
+                    </div>
+                    <ul class="comparison-list">
+                        <li>Recherche par mots-clés uniquement</li>
+                        <li>Aucune analyse des motivations</li>
+                        <li>Temps de trajet approximatif</li>
+                        <li>Processus long et coûteux</li>
+                        <li>Taux d'échec élevé</li>
+                        <li>Pas de suivi post-embauche</li>
+                    </ul>
+                </div>
+                
+                <div class="comparison-card tenex">
+                    <div class="comparison-header">
+                        <div class="comparison-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 class="comparison-title">Approche Tenex</h3>
+                    </div>
+                    <ul class="comparison-list">
+                        <li>Analyse contextuelle complète</li>
+                        <li>Compréhension des vraies motivations</li>
+                        <li>Calculs de trajets en temps réel</li>
+                        <li>Processus optimisé et efficace</li>
+                        <li>Matching ultra-précis</li>
+                        <li>Accompagnement jusqu'à l'intégration</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
