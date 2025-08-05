@@ -537,6 +537,7 @@
             grid-template-columns: repeat(2, 1fr);
             gap: var(--spacing-xl);
             margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-3xl);
         }
 
         .innovation-card {
@@ -583,34 +584,7 @@
             line-height: 1.5;
         }
 
-        /* Section technique */
-        .tech-section {
-            background: white;
-            padding: var(--spacing-3xl) 0;
-        }
-
-        .tech-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .tech-title {
-            font-size: clamp(1.75rem, 3vw, 2.25rem);
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: var(--spacing-md);
-            font-family: var(--font-family-heading);
-        }
-
-        .tech-description {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        /* Technologies utilisées */
+        /* Technologies features grid - maintenant dans la section revolution */
         .tech-features {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -620,21 +594,23 @@
 
         .tech-feature {
             text-align: center;
-            padding: var(--spacing-md);
-            background: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
             border-radius: var(--border-radius-large);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
 
         .tech-feature:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-light);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .tech-feature-icon {
             width: 60px;
             height: 60px;
-            background: var(--gradient-cta);
+            background: rgba(255, 255, 255, 0.25);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -642,18 +618,20 @@
             color: white;
             font-size: 1.5rem;
             margin: 0 auto var(--spacing-sm);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .tech-feature-title {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: var(--text-primary);
+            color: white;
             margin-bottom: var(--spacing-xs);
+            font-family: var(--font-family-heading);
         }
 
         .tech-feature-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.4;
         }
 
@@ -1299,7 +1277,6 @@
 
             .stats-section,
             .revolution-section,
-            .tech-section,
             .differentiators,
             .dashboard-section,
             .final-cta-section {
@@ -1387,6 +1364,11 @@
                 grid-template-columns: 1fr;
                 gap: var(--spacing-md);
             }
+
+            .tech-features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-sm);
+            }
         }
     </style>
 </head>
@@ -1407,7 +1389,7 @@
                     </div>
                     
                     <h1>La seule plateforme de recrutement qui connecte vos opportunités aux meilleurs profils</h1>
-                    <p class="subtitle">Révolutionnez votre recrutement grâce à notre technologie propriétaire qui allie algorithme avancé et IA pour un matching parfait entre vos offres et les talents du marché.</p>
+                    <p class="subtitle">Révolutionnez votre recrutement grâce à un algorithme avancé et une IA qui comprend les vraies motivations humaines pour un matching parfait entre vos offres et les talents du marché.</p>
                 </div>
                 
                 <div class="cta-section">
@@ -1519,14 +1501,14 @@
         </div>
     </section>
 
-    <!-- Revolution Section - Nouvelle section améliorée -->
+    <!-- Revolution Section - Section améliorée avec les 4 fonctionnalités intégrées -->
     <section class="revolution-section">
         <div class="container">
             <div class="revolution-container">
                 <div class="revolution-header">
                     <h2 class="revolution-title">Le recrutement nouvelle génération</h2>
                     <p class="revolution-subtitle">
-                        Tenex révolutionne la mise en relation grâce à une technologie propriétaire qui comprend les vraies motivations humaines.
+                        Tenex révolutionne la mise en relation grâce à une technologie qui comprend les vraies motivations humaines et analyse en profondeur les besoins réels des entreprises pour créer des matchs ultra-pertinents.
                     </p>
                 </div>
                 
@@ -1555,19 +1537,8 @@
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Section technique -->
-    <section class="tech-section">
-        <div class="container">
-            <div class="tech-content">
-                <h2 class="tech-title">Notre technologie propriétaire</h2>
-                <p class="tech-description">
-                    Nous analysons en profondeur les besoins réels des entreprises et les motivations authentiques des candidats pour créer des matchs ultra-pertinents.
-                </p>
-                
+                <!-- Intégration des 4 fonctionnalités clés -->
                 <div class="tech-features">
                     <div class="tech-feature">
                         <div class="tech-feature-icon">
@@ -1866,7 +1837,7 @@
             </div>
 
             <div class="final-cta-content">
-                <p>Rejoignez notre programme Early Access exclusif et découvrez comment notre technologie propriétaire peut transformer votre approche du recrutement.</p>
+                <p>Rejoignez notre programme Early Access exclusif et découvrez comment notre technologie peut transformer votre approche du recrutement.</p>
                 <button class="btn-primary" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
                     Demander l'Early Access
                 </button>
