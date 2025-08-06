@@ -483,7 +483,7 @@
             }
         }
 
-        /* Revolution Section - Nouvelle section améliorée */
+        /* Revolution Section - Section améliorée avec les 5 fonctionnalités homogènes */
         .revolution-section {
             background: var(--gradient-primary);
             color: white;
@@ -527,79 +527,30 @@
             font-size: 1.25rem;
             opacity: 0.9;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto var(--spacing-3xl);
             line-height: 1.6;
         }
 
-        /* Innovation points */
-        .innovation-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-2xl);
-            margin-bottom: var(--spacing-3xl);
-        }
-
-        .innovation-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: var(--border-radius-large);
-            padding: var(--spacing-xl);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .innovation-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .innovation-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .innovation-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-right: var(--spacing-md);
-        }
-
-        .innovation-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            font-family: var(--font-family-heading);
-        }
-
-        .innovation-description {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.5;
-        }
-
-        /* Technologies features grid - maintenant dans la section revolution */
+        /* Technologies features grid - maintenant 5 blocs homogènes */
         .tech-features {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: var(--spacing-lg);
             margin-top: var(--spacing-xl);
         }
 
         .tech-feature {
             text-align: center;
-            padding: var(--spacing-lg);
+            padding: var(--spacing-xl);
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border-radius: var(--border-radius-large);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .tech-feature:hover {
@@ -608,31 +559,32 @@
         }
 
         .tech-feature-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: rgba(255, 255, 255, 0.25);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-            margin: 0 auto var(--spacing-sm);
+            font-size: 1.75rem;
+            margin: 0 auto var(--spacing-md);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .tech-feature-title {
-            font-size: 1rem;
+            font-size: 1.125rem;
             font-weight: 600;
             color: white;
-            margin-bottom: var(--spacing-xs);
+            margin-bottom: var(--spacing-sm);
             font-family: var(--font-family-heading);
         }
 
         .tech-feature-desc {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.4;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+            flex-grow: 1;
         }
 
         /* Différenciateurs */
@@ -1222,14 +1174,10 @@
                 grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
                 gap: var(--spacing-lg);
             }
-
-            .innovation-grid {
-                grid-template-columns: 1fr;
-                gap: var(--spacing-lg);
-            }
             
             .tech-features {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--spacing-lg);
             }
             
             .comparison-grid {
@@ -1258,6 +1206,11 @@
             .process-step:nth-child(5) {
                 grid-column: 3;
                 grid-row: 2;
+            }
+
+            .tech-features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-md);
             }
         }
 
@@ -1366,7 +1319,7 @@
             }
 
             .tech-features {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: var(--spacing-sm);
             }
         }
@@ -1501,7 +1454,7 @@
         </div>
     </section>
 
-    <!-- Revolution Section - Section améliorée avec les 4 fonctionnalités intégrées -->
+    <!-- Revolution Section - Section améliorée avec 5 fonctionnalités homogènes -->
     <section class="revolution-section">
         <div class="container">
             <div class="revolution-container">
@@ -1511,41 +1464,23 @@
                         Tenex révolutionne la mise en relation grâce à une technologie qui comprend les vraies motivations humaines et analyse en profondeur les besoins réels des entreprises pour créer des matchs ultra-pertinents.
                     </p>
                 </div>
-                
-                <div class="innovation-grid">
-                    <div class="innovation-card">
-                        <div class="innovation-header">
-                            <div class="innovation-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h3 class="innovation-title">Intelligence Contextuelle</h3>
-                        </div>
-                        <p class="innovation-description">
-                            Notre IA ne se contente pas d'analyser les CV. Elle comprend le contexte professionnel, les motivations réelles et les aspirations de carrière de chaque candidat.
-                        </p>
-                    </div>
-                    
-                    <div class="innovation-card">
-                        <div class="innovation-header">
-                            <div class="innovation-icon">
-                                <i class="fas fa-route"></i>
-                            </div>
-                            <h3 class="innovation-title">Calculs Réels de Trajets</h3>
-                        </div>
-                        <p class="innovation-description">
-                            Fini les approximations ! Nous calculons les temps de trajet porte-à-porte en temps réel, en tenant compte des transports et des horaires réels.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Intégration des 4 fonctionnalités clés -->
+                <!-- 5 fonctionnalités homogènes -->
                 <div class="tech-features">
                     <div class="tech-feature">
                         <div class="tech-feature-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-brain"></i>
                         </div>
-                        <h4 class="tech-feature-title">Géolocalisation</h4>
-                        <p class="tech-feature-desc">Trajets réels calculés</p>
+                        <h4 class="tech-feature-title">Intelligence Contextuelle</h4>
+                        <p class="tech-feature-desc">Notre IA ne se contente pas d'analyser les CV. Elle comprend le contexte professionnel, les motivations réelles, les aspirations de carrière et les valeurs de chaque candidat pour un matching ultra-précis.</p>
+                    </div>
+                    
+                    <div class="tech-feature">
+                        <div class="tech-feature-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h4 class="tech-feature-title">Calculs Réels de Trajets</h4>
+                        <p class="tech-feature-desc">Fini les approximations ! Nous calculons les temps de trajet porte-à-porte en temps réel, en tenant compte des transports, des horaires et des conditions de circulation actuelles.</p>
                     </div>
                     
                     <div class="tech-feature">
@@ -1553,23 +1488,23 @@
                             <i class="fas fa-euro-sign"></i>
                         </div>
                         <h4 class="tech-feature-title">Analyse Salariale</h4>
-                        <p class="tech-feature-desc">Prétentions vs réalité</p>
+                        <p class="tech-feature-desc">Analyse approfondie des prétentions salariales face à la réalité du marché, avec prise en compte des avantages et de la rémunération globale.</p>
                     </div>
                     
                     <div class="tech-feature">
                         <div class="tech-feature-icon">
                             <i class="fas fa-heart"></i>
                         </div>
-                        <h4 class="tech-feature-title">Motivations</h4>
-                        <p class="tech-feature-desc">Leviers authentiques</p>
+                        <h4 class="tech-feature-title">Motivations Profondes</h4>
+                        <p class="tech-feature-desc">Compréhension des véritables leviers de motivation : évolution de carrière, équilibre vie professionnelle, missions, environnement de travail.</p>
                     </div>
                     
                     <div class="tech-feature">
                         <div class="tech-feature-icon">
                             <i class="fas fa-calendar-check"></i>
                         </div>
-                        <h4 class="tech-feature-title">Disponibilité</h4>
-                        <p class="tech-feature-desc">Timing et préavis</p>
+                        <h4 class="tech-feature-title">Disponibilité Réelle</h4>
+                        <p class="tech-feature-desc">Analyse précise du timing de disponibilité, des préavis contractuels et de la réelle volonté de changement des candidats.</p>
                     </div>
                 </div>
             </div>
