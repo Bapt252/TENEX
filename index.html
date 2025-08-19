@@ -304,6 +304,28 @@
             box-shadow: var(--shadow-medium);
         }
 
+        /* CTA supplémentaire dans sections */
+        .section-cta {
+            text-align: center;
+            margin-top: var(--spacing-2xl);
+            padding: var(--spacing-lg);
+            background: rgba(16, 102, 128, 0.05);
+            border-radius: var(--border-radius-large);
+            border: 1px solid rgba(16, 102, 128, 0.1);
+        }
+
+        .section-cta p {
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            font-weight: 500;
+        }
+
+        .section-cta .btn-primary {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
         /* Sections */
         .section {
             padding: var(--spacing-3xl) 0;
@@ -833,6 +855,24 @@
             margin-bottom: var(--spacing-xs);
             font-size: 0.95rem;
             line-height: 1.5;
+        }
+
+        /* Encadré explicatif */
+        .explanation-box {
+            background: rgba(16, 102, 128, 0.1);
+            border: 1px solid rgba(16, 102, 128, 0.2);
+            border-radius: var(--border-radius-large);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .explanation-box p {
+            font-style: italic;
+            color: var(--text-primary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
         }
 
         /* Dashboard Section - Version Premium UX */
@@ -1370,8 +1410,8 @@
                         Tenex
                     </div>
                     
-                    <h1>La première plateforme qui permet à tout le monde de recruter facilement et professionnellement</h1>
-                    <p class="subtitle">Tenex révolutionne le recrutement grâce à une technologie intelligente et contextuelle. Recrutez sans expertise RH préalable ou boostez votre productivité avec notre CVthèque entièrement préqualifiée.</p>
+                    <h1>Recrutez comme un expert RH... sans être expert RH</h1>
+                    <p class="subtitle">Tenex transforme votre recrutement grâce à une intelligence artificielle qui comprend vraiment les candidats. Trouvez les bons profils 3x plus vite, avec un système qui s'adapte à votre rythme.</p>
                 </div>
                 
                 <div class="cta-section">
@@ -1447,7 +1487,7 @@
         <div class="container">
             <div class="stats-container">
                 <div class="stats-header">
-                    <p class="stats-subtitle">Des objectifs ambitieux qui guident le développement de notre approche révolutionnaire du recrutement</p>
+                    <p class="stats-subtitle">Des résultats concrets qui changeront votre façon de recruter</p>
                 </div>
                 
                 <div class="stats-grid">
@@ -1479,6 +1519,13 @@
                         <div class="stat-label">Accès à la CVthèque préqualifiée</div>
                     </div>
                 </div>
+                
+                <div class="section-cta">
+                    <p>Prêt à optimiser votre recrutement ?</p>
+                    <button class="btn-primary" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
+                        Demander l'Early Access
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -1488,58 +1535,51 @@
         <div class="container">
             <div class="revolution-container">
                 <div class="revolution-header">
-                    <h2 class="revolution-title">Trois piliers fondamentaux</h2>
+                    <h2 class="revolution-title">Comment Tenex révolutionne votre recrutement</h2>
                     <p class="revolution-subtitle">
-                        Tenex repose sur une vision révolutionnaire : permettre à tout le monde de recruter facilement, efficacement et professionnellement, sans connaissance RH préalable.
+                        Fini les CV par centaines à trier. Fini les entretiens avec des candidats non motivés. Tenex vous donne accès uniquement aux profils qui correspondent vraiment.
                     </p>
                     <div class="unique-badge">
-                        🌟 Analyse contextuelle unique au monde
+                        🌟 La seule plateforme qui optimise automatiquement votre efficacité
                     </div>
                 </div>
 
                 <div class="piliers-grid">
                     <div class="pilier">
                         <div class="pilier-number">1</div>
-                        <h3 class="pilier-title">Simplicité grâce à l'IA</h3>
+                        <h3 class="pilier-title">Zéro expertise requise</h3>
                         <div class="pilier-desc">
-                            <strong>Recrutez sans expertise métier</strong> grâce à notre préqualification automatisée et matching avancé intégrant :
-                            <br><br>
-                            • Temps de trajet réels (géolocalisation)<br>
-                            • Fourchettes de rémunération<br>
-                            • Contexte de recherche (fin de contrat, mobilité)<br>
-                            • Préférences personnelles (valeurs, environnement)<br>
-                            • Leviers de motivation individuels
-                            <br><br>
-                            <strong>→ CVthèque entièrement préqualifiée, classée par pertinence et prête à l'emploi</strong>
+                            <strong>Recrutez comme un pro dès le premier jour</strong> grâce à notre intelligence artificielle qui fait le travail à votre place :<br><br>
+                            • Calculs de temps de trajet réels automatiques<br>
+                            • Analyse des vrais salaires et motivations<br>  
+                            • Compréhension du contexte de recherche de chaque candidat<br>
+                            • Détection des valeurs et préférences personnelles<br>
+                            • Identification des leviers de motivation individuels<br><br>
+                            <strong>→ Résultat : Une base de candidats 100% préqualifiés, classés par pertinence</strong>
                         </div>
                     </div>
                     
                     <div class="pilier">
                         <div class="pilier-number">2</div>
-                        <h3 class="pilier-title">10 connexions actives</h3>
+                        <h3 class="pilier-title">10 connexions actives = efficacité optimale</h3>
                         <div class="pilier-desc">
-                            <strong>Maximisez l'efficacité</strong> avec notre principe révolutionnaire :
-                            <br><br>
-                            Une connexion active = candidat préqualifié et engagé avec validation d'intérêt mutuelle.
-                            <br><br>
-                            <strong>Objectif :</strong> Se concentrer sur des profils motivés, disponibles et pertinents.
-                            <br><br>
-                            <strong>Accès non cloisonné :</strong> Exploration libre de la CVthèque tant que les 10 connexions ne sont pas atteintes.
+                            <strong>Notre système intelligent d'optimisation :</strong> qualité maximale, zéro surcharge.<br><br>
+                            Une connexion active = un candidat motivé, disponible et intéressé par votre poste, avec validation mutuelle.<br><br>
+                            <strong>Comment ça fonctionne :</strong> Explorez librement notre base préqualifiée complète. Engagez-vous avec jusqu'à 10 candidats stratégiques. Si l'un se retire (passage à 9), vous pouvez immédiatement en activer un nouveau.<br><br>
+                            <strong>L'avantage :</strong> Concentration maximale sur les profils les plus prometteurs, sans dispersion d'énergie.
                         </div>
                     </div>
                     
                     <div class="pilier">
                         <div class="pilier-number">3</div>
-                        <h3 class="pilier-title">Processus centralisé</h3>
+                        <h3 class="pilier-title">Tout centralisé en un seul endroit</h3>
                         <div class="pilier-desc">
-                            <strong>Dashboard complet</strong> pour gérer l'ensemble du parcours :
-                            <br><br>
-                            • Processus personnalisés en plusieurs étapes<br>
-                            • Fiches détaillées des profils les plus prometteurs<br>
-                            • Collaboration facilitée (ajout de membres)<br>
-                            • Suivi clair étape par étape
-                            <br><br>
-                            <strong>→ Moins de friction, plus de collaboration, recrutement plus rapide et structuré</strong>
+                            <strong>Un tableau de bord complet</strong> pour ne plus rien oublier :<br><br>
+                            • Processus personnalisés selon vos étapes<br>
+                            • Fiches détaillées des meilleurs candidats<br>
+                            • Collaboration simple avec votre équipe<br>
+                            • Suivi clair de chaque candidature<br><br>
+                            <strong>→ Résultat : Recrutement plus rapide, plus organisé, plus collaboratif</strong>
                         </div>
                     </div>
                 </div>
@@ -1551,9 +1591,9 @@
     <section class="differentiators">
         <div class="container">
             <div class="diff-header">
-                <h2 class="diff-title">Pourquoi Tenex change tout</h2>
+                <h2 class="diff-title">Tenex vs méthodes traditionnelles</h2>
                 <p class="diff-subtitle">
-                    Comparaison entre l'approche traditionnelle et notre méthode révolutionnaire
+                    Découvrez pourquoi nos clients ne reviennent jamais en arrière
                 </p>
             </div>
             
@@ -1592,44 +1632,51 @@
                     </ul>
                 </div>
             </div>
+            
+            <div class="section-cta">
+                <p>Découvrez l'approche qui change tout</p>
+                <button class="btn-primary" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
+                    Rejoindre la liste d'attente
+                </button>
+            </div>
         </div>
     </section>
 
     <!-- Process Section -->
     <section class="process-section">
         <div class="container">
-            <h2 class="section-title">Comment fonctionne Tenex</h2>
-            <p class="section-subtitle">Un processus en 5 étapes pour un recrutement optimisé, de la préqualification automatisée à l'intégration réussie</p>
+            <h2 class="section-title">Comment ça marche concrètement</h2>
+            <p class="section-subtitle">5 étapes simples pour transformer votre recrutement, de la création de votre offre à l'intégration réussie</p>
             
             <div class="process-grid">
                 <div class="process-step">
                     <div class="process-number">1</div>
-                    <h3 class="process-title">Parsing intelligent</h3>
-                    <p class="process-description">Notre IA parse et structure automatiquement votre fiche de poste avec tous les critères essentiels</p>
+                    <h3 class="process-title">Lecture automatique de vos offres</h3>
+                    <p class="process-description">Notre IA structure automatiquement votre fiche de poste avec tous les critères essentiels</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="process-number">2</div>
-                    <h3 class="process-title">Matching contextuel</h3>
-                    <p class="process-description">Algorithme propriétaire analysant motivations, trajets, salaire et contexte pour un matching ultra-précis</p>
+                    <h3 class="process-title">Recherche intelligente de candidats</h3>
+                    <p class="process-description">Algorithme unique analysant motivations, trajets, salaires et contexte pour un matching ultra-précis</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="process-number">3</div>
-                    <h3 class="process-title">CVthèque préqualifiée</h3>
-                    <p class="process-description">Accédez à une base entièrement préqualifiée + 10 connexions actives maximum avec engagement mutuel</p>
+                    <h3 class="process-title">Accès à la base préqualifiée</h3>
+                    <p class="process-description">Explorez une base entièrement vérifiée + engagez jusqu'à 10 connexions stratégiques</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="process-number">4</div>
-                    <h3 class="process-title">Suivi collaboratif</h3>
-                    <p class="process-description">Pipeline personnalisé, coordination des échanges et collaboration facilitée avec votre équipe</p>
+                    <h3 class="process-title">Suivi collaboratif simplifié</h3>
+                    <p class="process-description">Processus personnalisé et coordination facilitée avec votre équipe</p>
                 </div>
                 
                 <div class="process-step">
                     <div class="process-number">5</div>
-                    <h3 class="process-title">Intégration réussie</h3>
-                    <p class="process-description">Accompagnement jusqu'à l'intégration et optimisation continue de notre algorithme</p>
+                    <h3 class="process-title">Intégration garantie</h3>
+                    <p class="process-description">Accompagnement jusqu'à la signature et amélioration continue de nos résultats</p>
                 </div>
             </div>
         </div>
@@ -1638,37 +1685,48 @@
     <!-- Concept Section -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">10 connexions actives : maximum d'efficacité</h2>
-            <p class="section-subtitle">Découvrez la différence entre notre CVthèque illimitée et le processus d'engagement mutuel avec 10 connexions stratégiques</p>
+            <h2 class="section-title">Le système des 10 connexions actives : efficacité scientifiquement prouvée</h2>
+            <p class="section-subtitle">Découvrez pourquoi cette approche révolutionne la productivité en recrutement</p>
             
             <div class="card-grid">
                 <div class="card">
                     <h4>
                         <i class="fas fa-users" style="color: var(--primary); margin-right: 12px;"></i>
-                        10 connexions actives stratégiques
+                        10 connexions actives optimales
                     </h4>
-                    <p><strong>Engagement mutuel et suivi personnalisé premium</strong></p>
+                    <p><strong>Engagement mutuel et suivi premium</strong></p>
                     <ul style="list-style: none;">
-                        <li>• <strong>Préqualification automatisée</strong> : candidats motivés et disponibles</li>
-                        <li>• <strong>Double validation obligatoire</strong> pour activer le processus</li>
-                        <li>• <strong>Suivi personnalisé premium</strong> pour chaque profil actif</li>
-                        <li>• <strong>Rotation intelligente</strong> en cas de désistement</li>
+                        <li>• <strong>Préqualification garantie</strong> : candidats motivés et immédiatement disponibles</li>
+                        <li>• <strong>Double validation obligatoire</strong> pour éviter les malentendus</li>
+                        <li>• <strong>Accompagnement personnel</strong> pour chaque profil engagé</li>
+                        <li>• <strong>Remplacement automatique</strong> : dès qu'un candidat se retire, réactivez instantanément votre accès complet</li>
                     </ul>
                 </div>
                 
                 <div class="card">
                     <h4>
                         <i class="fas fa-search" style="color: var(--primary); margin-right: 12px;"></i>
-                        CVthèque préqualifiée illimitée
+                        Base de données complète accessible
                     </h4>
-                    <p><strong>Exploration et sourcing sans contrainte</strong></p>
+                    <p><strong>Exploration et sourcing intelligents</strong></p>
                     <ul style="list-style: none;">
-                        <li>• <strong>Accès illimité</strong> à notre base de données complète</li>
-                        <li>• <strong>Consultation libre</strong> : parcourez sans limitation</li>
-                        <li>• <strong>Analyse contextuelle unique</strong> des motivations réelles</li>
-                        <li>• <strong>Classement par pertinence</strong> et prêt à l'emploi</li>
+                        <li>• <strong>Accès permanent</strong> à notre base complète de candidats préqualifiés</li>
+                        <li>• <strong>Navigation libre</strong> : explorez autant que nécessaire</li>
+                        <li>• <strong>Réactivation instantanée</strong> : passez de 10 à 9 candidats actifs ? Votre accès complet se réactive automatiquement</li>
+                        <li>• <strong>Classement intelligent</strong> par ordre de pertinence pour votre poste</li>
                     </ul>
                 </div>
+            </div>
+            
+            <div class="explanation-box">
+                <p><strong>Concrètement :</strong> vous explorez librement jusqu'à trouver 10 candidats parfaits. Pendant leur processus, vous vous concentrez sur eux. Dès qu'un se retire, boom ! Votre accès complet revient pour maintenir vos 10 connexions optimales.</p>
+            </div>
+            
+            <div class="section-cta">
+                <p>Découvrez cette approche révolutionnaire</p>
+                <button class="btn-primary" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
+                    Demander l'Early Access
+                </button>
             </div>
         </div>
     </section>
@@ -1678,8 +1736,8 @@
         <div class="container">
             <div class="dashboard-container">
                 <div class="dashboard-header">
-                    <h2 class="dashboard-title">Interface centralisée</h2>
-                    <p class="dashboard-subtitle">Un tableau de bord complet qui centralise et fluidifie tout votre processus de recrutement avec 6 modules essentiels</p>
+                    <h2 class="dashboard-title">Votre centre de commande recrutement</h2>
+                    <p class="dashboard-subtitle">6 modules essentiels pour ne jamais perdre le contrôle de vos recrutements</p>
                 </div>
                 
                 <div class="dashboard-grid">
@@ -1690,10 +1748,10 @@
                             </div>
                             <div class="module-badge nouveau">Nouveau</div>
                         </div>
-                        <h3 class="module-title">Créer un poste</h3>
-                        <p class="module-description">Créez vos process personnalisés et publiez vos offres avec parsing automatique</p>
+                        <h3 class="module-title">Créer une offre</h3>
+                        <p class="module-description">Créez vos processus personnalisés et publiez vos offres avec lecture automatique</p>
                         <ul class="module-features">
-                            <li>Parsing intelligent des données du poste</li>
+                            <li>Lecture intelligente des données du poste</li>
                             <li>Contexte et culture d'entreprise</li>
                             <li>Définition des interlocuteurs</li>
                             <li>Configuration du workflow de recrutement</li>
@@ -1708,7 +1766,7 @@
                             </div>
                             <div class="module-badge count">5 nouveaux</div>
                         </div>
-                        <h3 class="module-title">Mes sélections</h3>
+                        <h3 class="module-title">Mes favoris</h3>
                         <p class="module-description">Visualisez les profils les plus prometteurs via des fiches détaillées</p>
                         <ul class="module-features">
                             <li>Nom, prénom et coordonnées complètes</li>
@@ -1762,7 +1820,7 @@
                             </div>
                             <div class="module-badge count">3 non lus</div>
                         </div>
-                        <h3 class="module-title">Messagerie</h3>
+                        <h3 class="module-title">Messages</h3>
                         <p class="module-description">Communiquez de manière centralisée avec candidats et équipes</p>
                         <ul class="module-features">
                             <li>Communication avec les membres de l'entreprise</li>
@@ -1780,7 +1838,7 @@
                             </div>
                             <div class="module-badge">Paramètres</div>
                         </div>
-                        <h3 class="module-title">Organisation</h3>
+                        <h3 class="module-title">Équipe</h3>
                         <p class="module-description">Collaboration facilitée avec permissions et workflows personnalisés</p>
                         <ul class="module-features">
                             <li>Ajout de membres dans l'entreprise</li>
@@ -1803,13 +1861,13 @@
             <div class="tenex-signature">
                 <div class="tenex-signature-content">
                     <i class="fas fa-quote-left" style="margin-right: 8px; opacity: 0.8;"></i>
-                    <strong>Tenex</strong>, c'est la simplicité d'un recrutement accessible à tous, la précision d'un matching contextuel unique au monde, et l'efficacité d'un processus optimisé sans perte de temps.
+                    <strong>Tenex</strong>, c'est la simplicité d'un recrutement accessible à tous, la précision d'un ciblage unique au monde, et l'efficacité d'un processus qui s'adapte à vos besoins.
                     <i class="fas fa-quote-right" style="margin-left: 8px; opacity: 0.8;"></i>
                 </div>
             </div>
 
             <div class="final-cta-content">
-                <p>Rejoignez notre liste d'attente Early Access exclusive et soyez parmi les premiers à découvrir comment Tenex peut transformer votre approche du recrutement.</p>
+                <p>Rejoignez notre liste d'attente Early Access exclusive. Soyez parmi les premiers à découvrir comment Tenex peut transformer votre approche du recrutement.</p>
                 <button class="btn-primary" onclick="document.getElementById('betaForm').scrollIntoView({behavior: 'smooth'})">
                     Demander l'Early Access
                 </button>
