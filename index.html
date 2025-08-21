@@ -250,6 +250,40 @@
             opacity: 0.9;
         }
 
+        /* Nouveau style pour les informations Early Access */
+        .early-access-info {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .early-access-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: white;
+        }
+
+        .early-access-info p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            margin: 0;
+        }
+
+        .early-access-highlight {
+            background: rgba(16, 102, 128, 0.3);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: var(--spacing-xs);
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
         .form-group {
             margin-bottom: var(--spacing-sm);
         }
@@ -1536,11 +1570,16 @@
                     </div>
                     
                     <h1>La première plateforme qui permet à tout le monde de recruter facilement et professionnellement</h1>
-                    <p class="subtitle">Tenex révolutionne le recrutement grâce à une technologie intelligente et contextuelle. Recrutez sans expertise RH préalable ou boostez votre productivité avec notre CVthèque entièrement préqualifiée.</p>
+                    <p class="subtitle">Tenex révolutionne le recrutement grâce à une technologie intelligente et contextuelle. <strong>Intervenant sur l'ensemble de l'Île-de-France</strong>, nous couvrons les fonctions support pour tout type d'entreprise : <strong>PME, Start-up, Groupes, ETI...</strong> Recrutez sans expertise RH préalable ou boostez votre productivité avec notre CVthèque entièrement préqualifiée.</p>
                 </div>
                 
                 <div class="cta-section">
                     <h2>Accès privilégié Early Access</h2>
+                    <div class="early-access-info">
+                        <h3>🎯 Offre de lancement exclusive</h3>
+                        <p><strong>30 jours gratuits</strong> avec 3 annonces simultanées</p>
+                        <div class="early-access-highlight">Places limitées !</div>
+                    </div>
                     <p>Rejoignez notre liste d'attente pour être alerté dès le lancement de la plateforme</p>
                     
                     <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D0900000DZleo" method="POST" id="betaForm">
